@@ -76,11 +76,43 @@ test('clear local storage', function() {
 	localStorage.clear();
 	ok(localStorage.length == 0, 'no items left in local storage');
 });
-test('tui object', function() {
-	ok(tui, 'mib object exists');
+test('mib object', function() {
+	ok(mib, 'mib object exists');
 });
-test('tuiajax object', function() {
-	ok(tui.ajax, 'tui.ajax object exists');
+test('ajax object', function() {
+	ok(ajax, 'ajax object exists');
 });
-
+test('login object', function() {
+	ok(login, 'login object exists');
+});
+test('feedback', function() {
+	ok(feedback, 'feedback exists');
+});
+test('activity selector', function() {
+	ok(activity_selector, 'activity selector exists');
+});
+test('planner', function() {
+	ok(planner, 'planner exists');
+});
+test('profile', function() {
+	ok(profile, 'profile exists');
+});
+test('store object', function() {
+	mib.store('key', {punch: 'line'});
+	var result = mib.retrieve('key');
+	ok(result.punch == 'line', 'retrieved attribute');
+	result = mib.retrieve_remove('key');
+	ok(result.punch == 'line', 'retrieved_removed attribute');
+	ok(!mib.retrieve('key'), 'retrieving erases the object');
+});
+test('show help', function() {
+	ok(mib.help_needed('a'), 'help a should be needed');
+	ok(mib.help_needed('a'), 'help a should be needed still');
+	mib.discard_help('a');
+	ok(!mib.help_needed('a'), 'discarded help a should not be needed');
+	ok(mib.help_needed('b'), 'help b should be needed');
+	mib.discard_help('b');
+	ok(!mib.help_needed('b'), 'help b should not be needed');
+	ok(!mib.help_needed('a'), 'help a should not be needed still');
+});
 

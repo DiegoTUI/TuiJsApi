@@ -450,3 +450,5 @@ var ajax_inflight = new function()
 	}
 }
 
+module.exports = tui.ajax;
+
