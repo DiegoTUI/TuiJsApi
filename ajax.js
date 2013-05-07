@@ -139,7 +139,7 @@ tui.ajax = new function()
 	// self-reference
 	var self = this;
 
-	var self.aux = "hallo peoples";
+	self.aux = "hallo peoples";
 
 	/**
 	 * Function to submit data using Ajax, with instrumentation.
