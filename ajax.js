@@ -83,10 +83,6 @@ var ajax_request = function(options)
 				tui.instrument(status, elapsed, self.url);
 			}
 		};
-		if ('password' in self.data)
-		{
-			params.type = 'POST';
-		}
 		$.ajax(params);
 	}
 
@@ -110,23 +106,23 @@ var ajax_request = function(options)
 				self.send();
 				return;
 			}
-			error = new Error('server_not_responding', 'Server not responding: ' + jqxhr.statusText);
+			error = new tui.Error('server_not_responding', 'Server not responding: ' + jqxhr.statusText);
 		}
 		else if (status == 'error' && jqxhr.status == 401)
 		{
-			error = new Error('invalid_login', 'Invalid email or password');
+			error = new tui.Error('invalid_login', 'Invalid email or password');
 		}
 		else if (status == 'error')
 		{
-			error = new Error('server_error', 'Server error: ' + jqxhr.statusText);
+			error = new tui.Error('server_error', 'Server error: ' + jqxhr.statusText);
 		}
 		else if (status == 'parsererror')
 		{
-			error = new Error('parse_error', 'Parse error: ' + jqxhr.statusText);
+			error = new tui.Error('parse_error', 'Parse error: ' + jqxhr.statusText);
 		}
 		else
 		{
-			error = new Error('unspecified_error', 'Unspecified error: ' + jqxhr.statusText);
+			error = new tui.Error('unspecified_error', 'Unspecified error: ' + jqxhr.statusText);
 		}
 		if (self.nok)
 		{

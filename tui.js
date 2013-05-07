@@ -114,6 +114,52 @@ var tui = new function()
 	}
 
 	/**
+	 * Find out if the argument is a string.
+	 */
+	self.is_string = function(argument)
+	{
+		return typeof argument == 'string';
+	}
+
+	/**
+	 * Clone an object, including functions.
+	 */
+	self.clone_object = function(object)
+	{
+		var cloned = (object instanceof Array) ? [] : {};
+		for (var i in object)
+		{
+			if (object[i] && typeof object[i] == "object")
+			{
+				cloned[i] = clone_object(object[i]);
+			}
+			else
+			{
+				cloned[i] = object[i];
+			}
+		}
+		return cloned;
+	};
+
+	/**
+	 * Converts numeric degrees to radians.
+	 */
+	self.toRad = function(number)
+	{
+		return number * Math.PI / 180;
+	}
+
+	/**
+	 * Prototype for errors.
+	 */
+	self.Error = function(code, message)
+	{
+		this.error = true;
+		this.code = code;
+		this.message = message;
+	}
+
+	/**
 	 * Finish loading the page. Used for instrumentation.
 	 */
 	self.finish_loading = function()
