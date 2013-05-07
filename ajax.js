@@ -131,6 +131,8 @@ var ajax_request = function(options)
 	}
 }
 
+tui.aux = "rantamplan";
+
 /**
  * object to encapsulate Ajax globals and functions.
  */
