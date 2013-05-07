@@ -7,7 +7,7 @@
  */
 
 if (typeof tui === 'undefined')
-	var tui = require ('tui.js');
+	var tui = require ('/js/tui.js');
 
 /**
  * An ajax request object.
