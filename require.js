@@ -23,6 +23,9 @@ function require(file)
 		debug('requiring ' + file);
 	}
 	$.getScript(file);
+	console.log("Requiring module");
+	for (key in module.exports)
+		console.log(key);
 	return module.exports;
 }
 
