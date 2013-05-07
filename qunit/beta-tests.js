@@ -80,7 +80,7 @@ test('tui object', function() {
 	ok(tui, 'tui object exists');
 });
 test('tuiajax object', function() {
-	ok(tui.ajax, 'tui.ajax object exists');
+	ok(tui, 'tui.ajax object exists');
 });
 
 
