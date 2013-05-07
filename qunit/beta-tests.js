@@ -80,7 +80,8 @@ test('tui object', function() {
 	ok(tui, 'tui object exists');
 });
 test('tuiajax object', function() {
-	console.log("Logging some crap: " + typeof tui.aux + " - " + tui.aux);//+ (typeof tui != 'undefined'));
+	console.log("Logging some crap: " + typeof tui.aux + " - " + tui.aux);
+	console.log("Logging some other crap: " + typeof tui.ajax.aux + " - " + tui.ajax.aux);
 	QUnit.log(function( details ) {
 	  console.log( "Log: ", details.result, details.message, details.source);
 	});
