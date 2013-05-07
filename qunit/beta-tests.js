@@ -86,7 +86,7 @@ test('tuiajax object', function() {
 	QUnit.log(function( details ) {
 	  console.log( "Log: ", details.result, details.message, details.source);
 	});
-	ok(tui, 'tui.ajax object exists');
+	ok(tui.ajax, 'tui.ajax object exists');
 });
 
 
