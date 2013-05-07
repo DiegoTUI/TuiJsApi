@@ -77,7 +77,7 @@ test('clear local storage', function() {
 	ok(localStorage.length == 0, 'no items left in local storage');
 });
 test('tui object', function() {
-	ok(tui, 'mib object exists');
+	ok(tui, 'tui object exists');
 });
 test('tuiajax object', function() {
 	ok(tui.ajax, 'tui.ajax object exists');
