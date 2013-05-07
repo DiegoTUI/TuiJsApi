@@ -71,7 +71,7 @@ function nok(error)
 /**
  * Run tests. Check that objects exists. If they exist, the code compiles.
  */
-module('beta');
+QUnit.module('beta');
 test('clear local storage', function() {
 	localStorage.clear();
 	ok(localStorage.length == 0, 'no items left in local storage');
