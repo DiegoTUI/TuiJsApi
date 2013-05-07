@@ -80,7 +80,7 @@ test('tui object', function() {
 	ok(tui, 'tui object exists');
 });
 test('tuiajax object', function() {
-	log("Logging some crap: " + tui);
+	QUnit.log("Logging some crap: " + tui);
 	ok(tui, 'tui.ajax object exists');
 });
 
