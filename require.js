@@ -26,8 +26,6 @@ function require(file)
 	$.getScript(file);
 	$.ajaxSetup({async:true});
 	console.log("Requiring module");
-	for (key in module.exports)
-		console.log(key);
 	return module.exports;
 }
 
