@@ -22,7 +22,9 @@ function require(file)
 	{
 		debug('requiring ' + file);
 	}
+	$.ajaxSetup({async:false});
 	$.getScript(file);
+	$.ajaxSetup({async:true});
 	console.log("Requiring module");
 	for (key in module.exports)
 		console.log(key);
