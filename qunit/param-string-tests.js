@@ -12,7 +12,7 @@ var baseString = 'Hallo $who$. You $action$ my $relative$';
 /**
  * Run tests. Check that the parametrized string returns the desired result.
  */
-QUnit.module('param-string');
+/*QUnit.module('param-string');
 test('undefined parametrizedString', function() {
 	var paramString = new ParametrizedString ();
 	ok(paramString.replaceAll() === 'undefined', 'empty parametrizedString returned undefined');
@@ -49,4 +49,4 @@ test('too few params', function() {
 	var paramString = new ParametrizedString (baseString, params);
 	ok(paramString.replaceAll() == 'Hallo peoples. You fuck my $relative$', 'string replaced correctly');
 	ok(paramString.getLooseKeys().length === 1, 'Should have 1 loose key');
-});
+});*/
