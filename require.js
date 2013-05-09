@@ -13,7 +13,7 @@
 var module = {exports: {}};
 
 /**
- * Adapt the require to import from the browser.
+ * Adapt the require to import synchronously from the browser.
  */
 function require(file)
 {
@@ -25,7 +25,6 @@ function require(file)
 	$.ajaxSetup({async:false});
 	$.getScript(file);
 	$.ajaxSetup({async:true});
-	console.log("Requiring module");
 	return module.exports;
 }
 

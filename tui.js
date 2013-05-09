@@ -380,5 +380,3 @@ var tui = new function()
 tui.start_time = new Date().getTime();
 //export module
 module.exports = tui;
-console.log("About to export tui");
-
