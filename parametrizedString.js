@@ -6,8 +6,10 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
-if (typeof tui === 'undefined')
+if (typeof tui === 'undefined') {
+	console.log("parametrizedString.js - requiring tui");
 	var tui = require ('/js/tui.js');
+}
 
 /**
  * The parametrized string.

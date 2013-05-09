@@ -6,8 +6,10 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
-if (typeof tui === 'undefined')
+if (typeof tui === 'undefined') {
+	console.log("ajax.js - requiring tui");
 	var tui = require ('/js/tui.js');
+}
 
 /**
  * An ajax request object.
@@ -129,8 +131,6 @@ var ajaxRequest = function(options)
 		}
 	}
 }
-
-tui.aux = "rantamplan";
 
 /**
  * object to encapsulate Ajax globals and functions.
