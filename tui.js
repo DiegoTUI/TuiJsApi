@@ -16,7 +16,6 @@ var tui = new function()
 	var self = this;
 
 	// urls
-	self.aux = "you fuck my mother";
 
 	// globals
 	self.debugMode = false;

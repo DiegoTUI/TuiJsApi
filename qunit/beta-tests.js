@@ -1,9 +1,8 @@
 /**
- * MoveinBlue website.
+ * TuiInnovation.
  * Beta unit tests.
- * http://moveinblue.com/
  *
- * Copyright (C) 2011 MoveinBlue.
+ * Copyright (C) 2013 TuiInnovation.
  */
 
 /* declare spurious Firebug globals */
