@@ -15,7 +15,7 @@ var __e3_;
 /**
  * Count the properties in a collection.
  */
-function count_properties(collection)
+function countProperties(collection)
 {
 	var total = 0;
 	for (var property in collection)
@@ -28,20 +28,20 @@ function count_properties(collection)
 /**
  * Check that the given collection has the specified number of items.
  */
-function check_collection(collection, name, items)
+function checkCollection(collection, name, items)
 {
-	var count = count_properties(collection);
+	var count = countProperties(collection);
 	ok(count == items, name + ' should have ' + items + ' items, not ' + count);
 }
 
 /**
  * Get a function that checks the number of items in a collection.
  */
-function collection_checker(name, items)
+function collectionChecker(name, items)
 {
 	return function(collection)
 	{
-		check_collection(collection, name, items);
+		checkCollection(collection, name, items);
 		start();
 	}
 }
@@ -49,7 +49,7 @@ function collection_checker(name, items)
 /**
  * Returns a generic OK function, with the given message.
  */
-function generic_ok(message)
+function genericOk(message)
 {
 	return function(data)
 	{

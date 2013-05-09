@@ -12,14 +12,14 @@ if (typeof tui === 'undefined')
 /**
  * An ajax request object.
  */
-var ajax_request = function(options)
+var ajaxRequest = function(options)
 {
 	// self-reference
 	var self = this;
 
 	// globals
-	var max_retries = 3;
-	var ajax_timeout = 4000;
+	var maxRetries = 3;
+	var ajaxTimeout = 4000;
 
 	// instance data
 	self.retries = 0;
@@ -33,7 +33,7 @@ var ajax_request = function(options)
 	 * timeout: connection time out.
 	 * once: if the request is to be sent just once.
 	 */
-	self.set_options = function(options)
+	self.setOptions = function(options)
 	{
 		if (!options)
 		{
@@ -41,24 +41,23 @@ var ajax_request = function(options)
 		}
 		if (options.data)
 		{
-			login.add_token(options.data);
 			self.data = options.data;
 		}
 		self.url = options.url;
 		self.ok = options.ok;
 		self.nok = options.nok;
-		self.ajax_timeout = options.timeout || 4000;
+		self.ajaxTimeout = options.timeout || 4000;
 		self.once = options.once;
 	}
 
-	self.set_options(options);
+	self.setOptions(options);
 
 	/**
 	 * Function to send the Ajax request.
 	 */
 	self.send = function()
 	{
-		if (ajax_inflight.contains(self.url))
+		if (ajaxInflight.contains(self.url))
 		{
 			// there is another request to the same URL in flight
 			tui.error('duplicated call to ' + self.url);
@@ -68,18 +67,18 @@ var ajax_request = function(options)
 				return;
 			}
 		}
-		ajax_inflight.add(self.url);
-		var start_time = new Date().getTime();
+		ajaxInflight.add(self.url);
+		var startTime = new Date().getTime();
 		var params = {
 			data: self.data,
 			url: self.url,
 			dataType: 'json',
-			timeout: ajax_timeout,
+			timeout: ajaxTimeout,
 			success: self.ok,
 			complete: function(jqxhr, status) {
-				self.ajax_complete(jqxhr, status);
-				ajax_inflight.remove(self.url);
-				var elapsed = new Date().getTime() - start_time;
+				self.ajaxComplete(jqxhr, status);
+				ajaxInflight.remove(self.url);
+				var elapsed = new Date().getTime() - startTime;
 				tui.instrument(status, elapsed, self.url);
 			}
 		};
@@ -89,7 +88,7 @@ var ajax_request = function(options)
 	/**
 	 * Ajax call complete, manage errors and call the callbacks.
 	 */
-	self.ajax_complete = function(jqxhr, status)
+	self.ajaxComplete = function(jqxhr, status)
 	{
 		if (status == 'success')
 		{
@@ -100,9 +99,9 @@ var ajax_request = function(options)
 		if (status == 'timeout')
 		{
 			self.retries++;
-			if (self.retries < max_retries)
+			if (self.retries < maxRetries)
 			{
-				ajax_timeout += 2000;
+				ajaxTimeout += 2000;
 				self.send();
 				return;
 			}
@@ -150,12 +149,12 @@ tui.ajax = new function()
 	 */
 	self.send = function(data, url, ok, nok, timeout)
 	{
-		var options = create_options(data, url, ok, nok, timeout);
+		var options = createOptions(data, url, ok, nok, timeout);
 		if (!options)
 		{
 			return;
 		}
-		var request = new ajax_request(options);
+		var request = new ajaxRequest(options);
 		request.send();
 	}
 
@@ -165,15 +164,15 @@ tui.ajax = new function()
 	 * ok: function to call with data after a success.
 	 * nok: function to call with error object after a failure.
 	 */
-	self.send_once = function(data, url, ok, nok, timeout)
+	self.sendOnce = function(data, url, ok, nok, timeout)
 	{
-		var options = create_options(data, url, ok, nok, timeout);
+		var options = createOptions(data, url, ok, nok, timeout);
 		if (!options)
 		{
 			return;
 		}
 		options.once = true;
-		var request = new ajax_request(options);
+		var request = new ajaxRequest(options);
 		request.send();
 	}
 
@@ -185,7 +184,7 @@ tui.ajax = new function()
 	{
 		return function(data)
 		{
-			self.run_pipeline(pipeline, data);
+			self.runPipeline(pipeline, data);
 		};
 	}
 
@@ -195,7 +194,7 @@ tui.ajax = new function()
 	 * For a single callback it is called with the values.
 	 * For a pipeline each function is called in order; if it returns a value it replaces the original.
 	 */
-	self.process_values = function(callback)
+	self.processValues = function(callback)
 	{
 		return function(data)
 		{
@@ -204,14 +203,14 @@ tui.ajax = new function()
 				callback(data.values);
 				return;
 			}
-			self.run_pipeline(callback, data.values);
+			self.runPipeline(callback, data.values);
 		};
 	}
 
 	/**
 	 * Process each element in an array using a callback.
 	 */
-	self.process_each = function(callback)
+	self.processEach = function(callback)
 	{
 		return function(data)
 		{
@@ -232,7 +231,7 @@ tui.ajax = new function()
 	 * Each function in the pipeline has its turn to use or modify the data.
 	 * If a function returns a value, it substitutes the original data.
 	 */
-	self.run_pipeline = function(pipeline, data)
+	self.runPipeline = function(pipeline, data)
 	{
 		while (pipeline.length > 0)
 		{
@@ -241,7 +240,7 @@ tui.ajax = new function()
 			{
 				continue;
 			}
-			if (!self.check_callback(callback, 'Wrong callback in pipeline'))
+			if (!self.checkCallback(callback, 'Wrong callback in pipeline'))
 			{
 				continue;
 			}
@@ -258,7 +257,7 @@ tui.ajax = new function()
 	 * Check that the callback is null, or a function.
 	 * Returns true, or shows an error and returns false.
 	 */
-	self.check_callback = function(callback, message)
+	self.checkCallback = function(callback, message)
 	{
 		if (!callback)
 		{
@@ -275,10 +274,10 @@ tui.ajax = new function()
 	/**
 	 * Create the options for the request, encapsulating all request data.
 	 */
-	function create_options(data, url, ok, nok, timeout)
+	function createOptions(data, url, ok, nok, timeout)
 	{
-		if (!self.check_callback(ok, 'ok for ' + url + ' is not a function') ||
-				!self.check_callback(nok, 'nok for ' + url + ' is not a function'))
+		if (!self.checkCallback(ok, 'ok for ' + url + ' is not a function') ||
+				!self.checkCallback(nok, 'nok for ' + url + ' is not a function'))
 		{
 			tui.error(url);
 			return;
@@ -288,7 +287,7 @@ tui.ajax = new function()
 			nok('Invalid URL');
 			return;
 		}
-		var retrieved = ajax_cache.retrieve(data, url);
+		var retrieved = ajaxCache.retrieve(data, url);
 		if (retrieved)
 		{
 			if (ok)
@@ -300,7 +299,7 @@ tui.ajax = new function()
 		return {
 			data: data,
 			url: url,
-			ok: ajax_cache.store_ok(ok, url),
+			ok: ajaxCache.storeOk(ok, url),
 			nok: nok,
 			timeout: timeout
 		}
@@ -310,37 +309,37 @@ tui.ajax = new function()
 /**
  * Pseudo-global to encapsulate a cache for Ajax call results.
  */
-var ajax_cache = new function()
+var ajaxCache = new function()
 {
 	// self-reference
 	var self = this;
 
 	// globals
-	var cache_prefix = 'web.cache.';
+	var cachePrefix = 'web.cache.';
 
 	/**
 	 * A structure with url: {days cached, version}. Increase the version to force a reload.
 	 */
-	var cached_urls = {};
+	var cachedUrls = {};
 
 	/**
 	 * Ensure that the given URL is cached for at least one day.
 	 * version: optional version number; increase by one to force a reload.
 	 */
-	self.ensure_cached = function(url, version)
+	self.ensureCached = function(url, version)
 	{
-		if (!(url in cached_urls))
+		if (!(url in cachedUrls))
 		{
-			cached_urls[url] = {days: 1, version: version || 1};
+			cachedUrls[url] = {days: 1, version: version || 1};
 		}
 	}
 
 	/**
 	 * Return a callback that calls ok(), then stores the result in the cache.
 	 */
-	self.store_ok = function(ok, url)
+	self.storeOk = function(ok, url)
 	{
-		if (!(url in cached_urls))
+		if (!(url in cachedUrls))
 		{
 			return ok;
 		}
@@ -359,13 +358,13 @@ var ajax_cache = new function()
 	 */
 	self.store = function(url, data)
 	{
-		if (!(url in cached_urls))
+		if (!(url in cachedUrls))
 		{
 			return;
 		}
 		data.stored = new Date().getTime();
-		data.version = cached_urls[url].version;
-		localStorage[cache_prefix + url] = JSON.stringify(data);
+		data.version = cachedUrls[url].version;
+		localStorage[cachePrefix + url] = JSON.stringify(data);
 	}
 
 	/**
@@ -375,7 +374,7 @@ var ajax_cache = new function()
 	 */
 	self.retrieve = function(data, url)
 	{
-		if (!(url in cached_urls))
+		if (!(url in cachedUrls))
 		{
 			return null;
 		}
@@ -383,16 +382,16 @@ var ajax_cache = new function()
 		{
 			return null;
 		}
-		var cached_config = cached_urls[url];
-		var serialized = localStorage[cache_prefix + url];
+		var cachedConfig = cachedUrls[url];
+		var serialized = localStorage[cachePrefix + url];
 		if (!serialized)
 		{
 			return null;
 		}
-		var cached_data;
+		var cachedData;
 		try
 		{
-			cached_data = JSON.parse(serialized);
+			cachedData = JSON.parse(serialized);
 		}
 		catch (exception)
 		{
@@ -400,24 +399,24 @@ var ajax_cache = new function()
 			return null;
 		}
 		// check version and expiration date
-		if (!cached_data.version || cached_data.version != cached_config.version)
+		if (!cachedData.version || cachedData.version != cachedConfig.version)
 		{
 			return null;
 		}
-		var valid_interval = cached_config.days * (1000 * 3600 * 24);
+		var validInterval = cachedConfig.days * (1000 * 3600 * 24);
 		var current = new Date().getTime();
-		if (!cached_data.stored || cached_data.stored + valid_interval < current)
+		if (!cachedData.stored || cachedData.stored + validInterval < current)
 		{
 			return null;
 		}
-		return cached_data;
+		return cachedData;
 	}
 }
 
 /**
  * An ajax store of inflight calls for successive calls to the same url.
  */
-var ajax_inflight = new function()
+var ajaxInflight = new function()
 {
 	// self-reference
 	var self = this;

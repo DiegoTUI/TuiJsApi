@@ -19,27 +19,27 @@ var tui = new function()
 	self.aux = "you fuck my mother";
 
 	// globals
-	self.debug_mode = false;
-	self.start_time = 0;
-	self.browser_version = null;
-	self.send_events = {
+	self.debugMode = false;
+	self.startTime = 0;
+	self.browserVersion = null;
+	self.sendEvents = {
 		load: true,
 		error: true,
 		timeout: true,
-		parsererror: true
+		parserError: true
 	};
 
 	/**
 	 * Check out for testing mode: turns on local access and instrumentation.
 	 */
-	self.is_testing = function()
+	self.isTesting = function()
 	{
 		if (window.parent && window.parent != window)
 		{
-			// check is_testing in parent
-			return window.parent.tui.is_testing();
+			// check isTesting in parent
+			return window.parent.tui.isTesting();
 		}
-		if (!is_console_active())
+		if (!isConsoleActive())
 		{
 			return false;
 		}
@@ -58,7 +58,7 @@ var tui = new function()
 	self.instrument = function(type, duration, message)
 	{
 		var event = type + '.' + duration + '.' + message;
-		if (self.is_testing() || is_console_active())
+		if (self.isTesting() || isConsoleActive())
 		{
 			var message = 'testing.' + event;
 			if (type == 'error')
@@ -70,7 +70,7 @@ var tui = new function()
 				console.log(message);
 			}
 		}
-		if (!self.send_events[type])
+		if (!self.sendEvents[type])
 		{
 			return;
 		}
@@ -88,19 +88,19 @@ var tui = new function()
 	}
 
 	/**
-	 * Show a debug message: only if tui.debug_mode is active and the console can be logged to.
+	 * Show a debug message: only if tui.debugMode is active and the console can be logged to.
 	 */
 	self.debug = function(message)
 	{
-		if (!self.debug_mode)
+		if (!self.debugMode)
 		{
 			return;
 		}
-		if (self.is_testing())
+		if (self.isTesting())
 		{
 			message = 'debug.' + message;
 		}
-		if (is_console_active())
+		if (isConsoleActive())
 		{
 			console.log(message);
 		}
@@ -111,13 +111,13 @@ var tui = new function()
 	 */
 	self.error = function(message)
 	{
-		self.instrument('error', compute_elapsed(), message);
+		self.instrument('error', computeElapsed(), message);
 	}
 
 	/**
 	 * Find out if the argument is a string.
 	 */
-	self.is_string = function(argument)
+	self.isString = function(argument)
 	{
 		return typeof argument == 'string';
 	}
@@ -125,14 +125,14 @@ var tui = new function()
 	/**
 	 * Clone an object, including functions.
 	 */
-	self.clone_object = function(object)
+	self.cloneObject = function(object)
 	{
 		var cloned = (object instanceof Array) ? [] : {};
 		for (var i in object)
 		{
 			if (object[i] && typeof object[i] == "object")
 			{
-				cloned[i] = clone_object(object[i]);
+				cloned[i] = cloneObject(object[i]);
 			}
 			else
 			{
@@ -163,15 +163,15 @@ var tui = new function()
 	/**
 	 * Finish loading the page. Used for instrumentation.
 	 */
-	self.finish_loading = function()
+	self.finishLoading = function()
 	{
-		self.instrument('load', compute_elapsed(), window.location.href);
+		self.instrument('load', computeElapsed(), window.location.href);
 	}
 
 	/**
 	 * Finish a visual change. Used for instrumentation.
 	 */
-	self.finish_change = function(message, timeout)
+	self.finishChange = function(message, timeout)
 	{
 		if (!message)
 		{
@@ -192,44 +192,44 @@ var tui = new function()
 	/**
 	 * Clear test data. Use only for testing purposes, as admin user.
 	 */
-	self.clear_test_data = function(ok, nok)
+	self.clearTestData = function(ok, nok)
 	{
-		ajax.send({}, self.api_url_clear_test_data, ok, nok);
+		//ajax.send({}, self.api_url_clear_test_data, ok, nok);
 	}
 
 	/**
 	 * Format a date coming from the API: yyyy-mm-dd.
 	 */
-	self.format_date = function(date_string)
+	self.formatDate = function(dateString)
 	{
-		if (!date_string)
+		if (!dateString)
 		{
 			return null;
 		}
-		return date_string.substringUpTo('T');
+		return dateString.substringUpTo('T');
 	}
 
 	/**
 	 * Format a time coming from the API: yyyy-mm-ddThh:mm+00.00.
 	 */
-	self.format_time = function(date_string)
+	self.formatTime = function(dateString)
 	{
-		return date_string.substringUpTo('+').substringFrom('T');
+		return dateString.substringUpTo('+').substringFrom('T');
 	}
 
 	/**
 	 * Parse a date string from the API into a Date object.
 	 * Date is in ISO format yyyy-mm-ddThh:mm+00.00.
 	 */
-	self.parse_date = function(date_string, offset)
+	self.parseDate = function(dateString, offset)
 	{
-		if (!date_string)
+		if (!dateString)
 		{
 			return null;
 		}
-		var year = parseInt(date_string.substr(0, 4), 10);
-		var month = parseInt(date_string.substr(5, 2), 10);
-		var day = parseInt(date_string.substr(8, 2), 10);
+		var year = parseInt(dateString.substr(0, 4), 10);
+		var month = parseInt(dateString.substr(5, 2), 10);
+		var day = parseInt(dateString.substr(8, 2), 10);
 		if (offset)
 		{
 			day += offset;
@@ -240,7 +240,7 @@ var tui = new function()
 	/**
 	 * Return the date object in ISO 8601 format: yyyy-mm-dd.
 	 */
-	self.iso_date = function(date)
+	self.isoDate = function(date)
 	{
 		 return date.getFullYear() + '-'
 			 + pad00(date.getMonth()+1)+'-'
@@ -270,7 +270,7 @@ var tui = new function()
 	/**
 	 * Retrieve a value from localStorage, remove it.
 	 */
-	self.retrieve_remove = function(key)
+	self.retrieveRemove = function(key)
 	{
 		var value = self.retrieve(key);
 		if (!value)
@@ -286,68 +286,68 @@ var tui = new function()
 	/**
 	 * Detect the browser brand and the particular version.
 	 */
-	self.detect_browser_version = function()
+	self.detectBrowserVersion = function()
 	{
-		if (self.browser_version)
+		if (self.browserVersion)
 		{
-			return self.browser_version;
+			return self.browserVersion;
 		}
-		self.browser_version =
+		self.browserVersion =
 		{
-			user_agent: navigator.userAgent,
+			userAgent: navigator.userAgent,
 			version: '0',
 			browser: 'unknown'
 		}
-		var lower_agent = navigator.userAgent.toLowerCase();
+		var lowerAgent = navigator.userAgent.toLowerCase();
 		// PhantomJS is not detected in jQuery
-		if (/phantomjs/.test(lower_agent))
+		if (/phantomjs/.test(lowerAgent))
 		{
-			return extract_version('phantomjs', $.browser.version);
+			return extractVersion('phantomjs', $.browser.version);
 		}
 		if($.browser.msie)
 		{
-			return extract_version('msie', $.browser.version);
+			return extractVersion('msie', $.browser.version);
 		}
 		// Chrome is not detected in jQuery
-		if(/chrome/.test(lower_agent))
+		if(/chrome/.test(lowerAgent))
 		{
-			return extract_version('chrome', lower_agent.substring(lower_agent.indexOf('chrome/') +7));
+			return extractVersion('chrome', lowerAgent.substring(lowerAgent.indexOf('chrome/') +7));
 		}
 		if($.browser.safari)
 		{
-			return extract_version('safari', lower_agent.substring(lower_agent.indexOf('safari/') +7));
+			return extractVersion('safari', lowerAgent.substring(lowerAgent.indexOf('safari/') +7));
 		}
 		if($.browser.mozilla)
 		{
 			//Is it Firefox?
-			if(lower_agent.indexOf('firefox') != -1)
+			if(lowerAgent.indexOf('firefox') != -1)
 			{
-				return extract_version('firefox', lower_agent.substring(lower_agent.indexOf('firefox/') + 8));
+				return extractVersion('firefox', lowerAgent.substring(lowerAgent.indexOf('firefox/') + 8));
 			}
 			// If not then it must be another Mozilla
-			return extract_version('another_mozilla', lower_agent);
+			return extractVersion('another_mozilla', lowerAgent);
 		}
 		if($.browser.opera)
 		{
-			return extract_version('opera', lower_agent.substring(lower_agent.indexOf('version/') + 8));
+			return extractVersion('opera', lowerAgent.substring(lowerAgent.indexOf('version/') + 8));
 		}
-		return self.browser_version;
+		return self.browserVersion;
 	}
 
 	/**
 	 * Extract the version number, cache and return.
 	 */
-	function extract_version(browser, full_version)
+	function extractVersion(browser, fullVersion)
 	{
-		self.browser_version.browser =  browser;
-		self.browser_version.version = full_version.substringUpTo('.');
-		return self.browser_version;
+		self.browserVersion.browser =  browser;
+		self.browserVersion.version = fullVersion.substringUpTo('.');
+		return self.browserVersion;
 	}
 
 	/**
 	 * Check out if the console is active for logging.
 	 */
-	function is_console_active()
+	function isConsoleActive()
 	{
 		if (typeof console == 'undefined')
 		{
@@ -359,11 +359,11 @@ var tui = new function()
 	/**
 	 * Compute elapsed time up to now.
 	 */
-	function compute_elapsed()
+	function computeElapsed()
 	{
-		if (self.start_time != 0)
+		if (self.startTime != 0)
 		{
-			return new Date().getTime() - self.start_time;
+			return new Date().getTime() - self.startTime;
 		}
 		return 0;
 	}
@@ -377,6 +377,6 @@ var tui = new function()
 	}
 }
 
-tui.start_time = new Date().getTime();
+tui.startTime = new Date().getTime();
 //export module
 module.exports = tui;
