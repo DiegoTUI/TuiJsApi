@@ -42,7 +42,7 @@ tui.parametrizedString = function(baseString, parameters)
 	 self.getLooseKeys = function() {
 	 	var replaced = self.replaceAll();
 	 	if (replaced != 'undefined')
-	 		return replaced.match(/(?<=$)(.*?)(?=$)/);
+	 		return replaced.match(/(?<=$)(.*?)(?=$)/i);
 	 	return replaced;
 	 }
 
