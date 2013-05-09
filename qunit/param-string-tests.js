@@ -5,7 +5,7 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
-var ParametrizedString = require ('/js/parametrizedString.js'); 
+//var ParametrizedString = require ('/js/parametrizedString.js'); 
 
 var baseString = 'Hallo $who$. You $action$ my $relative$';
 
