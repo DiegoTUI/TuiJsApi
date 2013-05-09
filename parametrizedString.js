@@ -29,7 +29,7 @@ tui.parametrizedString = function(baseString, parameters)
 
 		if (baseString && parameters) {
 			for (var key in parameters) {
-				replaced = replaced.replace("$"+key+"$",parameters.key);
+				replaced = replaced.replace("$"+key+"$",parameters[key]);
 			}
 		}
 
