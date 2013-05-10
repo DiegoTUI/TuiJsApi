@@ -25,8 +25,6 @@ test('exact match', function() {
 		relative: "mother"
 	};
 	var paramString = new tui.parametrizedString (baseString, params);
-	console.log("Exact match - replaceAll: " + paramString.replaceAll());
-	console.log("Exact match - looseKeys: " + paramString.getLooseKeys());
 	ok(paramString.replaceAll() == 'Hallo peoples. You fuck my mother', 'string replaced correctly');
 	ok(paramString.getLooseKeys() === null, 'exact match. No loose keys');
 });
@@ -39,8 +37,6 @@ test('too many params', function() {
 		extra2: "extra2"
 	};
 	var paramString = new tui.parametrizedString (baseString, params);
-	console.log("Too many params - replaceAll: " + paramString.replaceAll());
-	console.log("Too many params - looseKeys: " + paramString.getLooseKeys());
 	ok(paramString.replaceAll() == 'Hallo peoples. You fuck my mother', 'string replaced correctly');
 	ok(paramString.getLooseKeys() === null, 'too many params. No loose keys');
 });
@@ -51,8 +47,6 @@ test('too few params', function() {
 		extra2: "extra2"
 	};
 	var paramString = new tui.parametrizedString (baseString, params);
-	console.log("Too few params - replaceAll: " + paramString.replaceAll());
-	console.log("Too few params - looseKeys: " + paramString.getLooseKeys());
 	ok(paramString.replaceAll() == 'Hallo peoples. You fuck my $relative$', 'string replaced correctly');
 	ok(paramString.getLooseKeys().length === 1, 'Should have 1 loose key');
 });
