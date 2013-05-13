@@ -65,7 +65,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 						if (value.length != 1) tui.error ("Malformed descriptionMap. More than 1 element in inner array: " + value);
 						var innerObject = value[0];
 						//get in the list replacing the dots by spaces
-						element.find(key.replace(/./g,' ')).each(function(){
+						element.find(key.replace('.',' ')).each(function(){
 							var elementInList = {};
 							for (var innerKey in innerObject) {
 								elementInList[innerkey] = valueInXml($(this), innerObject[innerKey]);
@@ -93,10 +93,10 @@ tui.xmlReader = function(xmlString, descriptionMap)
 		var attribute = path.substringFrom('.@');
 		var value = null;
 		if (attribute === '') {	//No attributes
-			value = xmlObject.find(realPath.replace(/./g,' ')).text();
+			value = xmlObject.find(realPath.replace('.',' ')).text();
 		}
 		else {	//There is an attribute at the end
-			value = xmlObject.find(realPath.replace(/./g,' ')).attr(attribute);
+			value = xmlObject.find(realPath.replace('.',' ')).attr(attribute);
 		}
 		tui.debug("Value for path " + path + ": " + value + ". RealPath: " + realPath + " - Attribute: " + attribute + " - Replaced RealPath: " + realPath.replace(/./g,' '));
 		return value;
