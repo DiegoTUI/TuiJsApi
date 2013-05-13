@@ -5,8 +5,7 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
-var xmlString = 
-'<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketAvailRS.xsd" totalItems="27" echoToken="DummyEchoToken">
+var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketAvailRS.xsd" totalItems="27" echoToken="DummyEchoToken">
 	<AuditData>
 		<ProcessTime>647</ProcessTime>
 		<Timestamp>2013-05-13 10:49:38.031</Timestamp>
