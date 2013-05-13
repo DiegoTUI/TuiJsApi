@@ -141,7 +141,7 @@ test('a capon', function() {
 	var xmlobject = $(xmlString);
 	xmlobject.find("ServiceTicket").each(function(){
 		tui.debug ("Entered ServiceTicket");
-		$(this).find("TicketInfo ImageList Image").each(function(){
+		$(this).find("ImageList Image").each(function(){
 			tui.debug("Image type: " + $(this).find("Type").text());
 			tui.debug("Image url: " + $(this).find("Url").text());
 		});
