@@ -68,7 +68,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 						element.find(key.replace('.',' ')).each(function(){
 							var elementInList = {};
 							for (var innerKey in innerObject) {
-								elementInList[innerkey] = valueInXml($(this), innerObject[innerKey]);
+								elementInList[innerKey] = valueInXml($(this), innerObject[innerKey]);
 							}
 							result[key].push(elementInList);
 						});
