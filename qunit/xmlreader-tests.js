@@ -150,11 +150,8 @@ test('a capon', function() {
 		});
 		$(this).find("TicketInfo DescriptionList").each(function(){
 			tui.debug("Node name: " + this.nodeName);
-			$(this).find("Type").each(function(){
-				tui.debug("Inner Node name: " + this.nodeName);
-				tui.debug("Description type: " + $(this).attr("type"));
-				tui.debug("Description itself: " + $(this).text());
-			});
+			tui.debug("Description type: " + $(this).attr("type"));
+			tui.debug("Description itself: " + $(this).text());
 		});
 	});
 });
