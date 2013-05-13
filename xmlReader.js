@@ -96,7 +96,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 			value = xmlObject.find(realPath.replace(/./g,' ')).text();
 		}
 		else {	//There is an attribute at the end
-			value xmlObject.find(realPath.replace(/./g,' ')).attr(attribute);
+			value = xmlObject.find(realPath.replace(/./g,' ')).attr(attribute);
 		}
 		tui.debug("Value for path " + path + ": " + value);
 		return value;
