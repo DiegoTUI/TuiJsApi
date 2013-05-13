@@ -63,6 +63,8 @@ var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/sch
 				<Description type="generalDescription" languageCode="SPA">Descripcion 2</Description> \
 			</DescriptionList> \
 			<ImageList> \
+				<Image type="generalDescription" languageCode="ENG">Image 1</Image> \
+				<Image type="generalDescription" languageCode="SPA">Image 2</Image> \
 				<Image> \
 					<Type>L</Type> \
 					<Order>0</Order> \
