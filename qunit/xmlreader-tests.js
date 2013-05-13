@@ -146,7 +146,7 @@ test('a capon', function() {
 			$(this).find("Type").each(function(){
 				tui.debug("Image type: " + $(this).text());
 			});
-			$(this).each(function(){
+			$(this).find().each(function(){
 				tui.debug("Image type2: " + $(this).find("Type").text());
 			});
 			//tui.debug("Image type: " + $(this).find("Type").text());
