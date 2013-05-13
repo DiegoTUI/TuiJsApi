@@ -112,7 +112,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 			var element = elementsInPath[i];
 			xmlObject = xmlObject.find(element);
 		}
-		return xmlObject;
+		return $(xmlObject);
 	}
 
 	return self;
