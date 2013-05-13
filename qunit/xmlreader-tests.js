@@ -86,6 +86,31 @@ var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/sch
 	</ServiceTicket> \
 </TicketAvailRS>';
 
+var crap = '<Header> \
+	<Level> \
+		<craplist> \
+			<item code="1">ITEM1</item> \
+			<item code="2">ITEM2</item> \
+			<item code="3">ITEM3</item> \
+		</craplist> \
+		<othercraplist> \
+			<item code="1">ITEM1</item> \
+			<item code="2">ITEM2</item> \
+		</othercraplist> \
+	</Level> \
+	<Level> \
+		<craplist> \
+			<item code="1">ITEM1</item> \
+		</craplist> \
+		<othercraplist> \
+			<item code="1">ITEM1</item> \
+			<item code="2">ITEM2</item> \
+			<item code="3">ITEM3</item> \
+			<item code="4">ITEM4</item> \
+		</othercraplist> \
+	</Level> \
+</Header>';
+
 var descriptionMap = [
 {'DateFrom':'DateFrom.@date'},
 {'DateTo':'DateTo.@date'},
@@ -101,6 +126,16 @@ var descriptionMap = [
  * Run tests. Parse the above xml with the above descriptionMap and see what we got
  */
 QUnit.module('xmlreader');
+test('holy piece of crap', function() {
+	var xmlobject = $(crap);
+	xmlobject.find("Level").each(function(){
+		tui.debug ("Entered Level");
+		$(this).find("craplist").each(function(){
+			tui.debug("craplist item: " + $(this).attr("code"));
+		});
+	});
+});
+/*
 test('parsing test xml', function() {
 	var xmlReader = new tui.xmlReader (xmlString, descriptionMap);
 	var parsedXml = xmlReader.readObjects('ServiceTicket');
@@ -124,4 +159,4 @@ test('parsing test xml', function() {
 		ok(DescriptionList.length === 2, 'Only 2 descriptions in the list: ' + DescriptionList.length);
 	}
 	
-});
+});*/
