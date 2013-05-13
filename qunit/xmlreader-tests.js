@@ -102,7 +102,7 @@ var descriptionMap = [
  */
 QUnit.module('xmlreader');
 test('parsing test xml', function() {
-	var xmlReader = new tui.xmlreader (xmlString, descriptionMap);
+	var xmlReader = new tui.xmlReader (xmlString, descriptionMap);
 	var parsedXml = xmlReader.readObjects('ServiceTicket');
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml should be an array');
