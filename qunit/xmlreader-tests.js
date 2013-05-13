@@ -87,8 +87,8 @@ var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/sch
 </TicketAvailRS>';
 
 var descriptionMap = [
-'DateFrom',
-'DateTo',
+{'DateFrom':'DateFrom.@date'},
+{'DateTo':'DateTo.@date'},
 'Currency',
 {'CurrencyCode': 'Currency.@code'},
 {'Name': 'TicketInfo.Name'},
@@ -105,18 +105,18 @@ test('parsing test xml', function() {
 	var xmlReader = new tui.xmlReader (xmlString, descriptionMap);
 	var parsedXml = xmlReader.readObjects('ServiceTicket');
 	//Now chek some stuff about the parsed xml
-	ok(parsedXml instanceof Array, 'parsedXml should be an array');
-	ok(parsedXml.length === 2, 'parsedXml should have 2 elements');
-	ok(parsedXml[0].dateFrom === 'DateFrom1', 'dateFrom incorrect');
-	ok(parsedXml[0].dateTo === 'DateTo1', 'dateTo incorrect');
-	ok(parsedXml[1].dateFrom === 'DateFrom2', 'dateFrom incorrect');
-	ok(parsedXml[1].dateTo === 'DateTo2', 'dateTo incorrect');
-	ok(parsedXml[0].Currency === 'Euro1', 'Currency incorrect');
-	ok(parsedXml[0].CurrencyCode === 'EUR1', 'CurrencyCode incorrect');
-	ok(parsedXml[1].Currency === 'Euro2', 'Currency incorrect');
-	ok(parsedXml[1].CurrencyCode === 'EUR2', 'CurrencyCode incorrect');
-	ok(parsedXml[0].Name === 'Ticket1', 'Name incorrect');
-	ok(parsedXml[1].Name === 'Ticket2', 'Name incorrect');
+	ok(parsedXml instanceof Array, 'parsedXml is an array');
+	ok(parsedXml.length === 2, 'parsedXml has 2 elements');
+	ok(parsedXml[0].dateFrom === 'DateFrom1', 'dateFrom is correct in 1');
+	ok(parsedXml[0].dateTo === 'DateTo1', 'dateTo is correct in 1');
+	ok(parsedXml[1].dateFrom === 'DateFrom2', 'dateFrom is correct in 2');
+	ok(parsedXml[1].dateTo === 'DateTo2', 'dateTo is correct in 2');
+	ok(parsedXml[0].Currency === 'Euro1', 'Currency is correct in 1');
+	ok(parsedXml[0].CurrencyCode === 'EUR1', 'CurrencyCode is correct in 1');
+	ok(parsedXml[1].Currency === 'Euro2', 'Currency is correct in 2');
+	ok(parsedXml[1].CurrencyCode === 'EUR2', 'CurrencyCode is correct in 2');
+	ok(parsedXml[0].Name === 'Ticket1', 'Ticket name is correct in 1');
+	ok(parsedXml[1].Name === 'Ticket2', 'Ticket name is correct in 2');
 	for (var i=0; i<parsedXml.length; i++) {
 		var ImageList = parsedXml[i]['TicketInfo.ImageList'];
 		var DescriptionList = parsedXml[i]['TicketInfo.DescriptionList'];

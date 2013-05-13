@@ -91,12 +91,15 @@ tui.xmlReader = function(xmlString, descriptionMap)
 	function valueInXml (xmlObject, path) {
 		var realPath = path.substringUpTo('.@');
 		var attribute = path.substringFrom('.@');
+		var value = null;
 		if (attribute === '') {	//No attributes
-			return xmlObject.find(realPath.replace(/./g,' ')).text();
+			value = xmlObject.find(realPath.replace(/./g,' ')).text();
 		}
 		else {	//There is an attribute at the end
-			return xmlObject.find(realPath.replace(/./g,' ')).attr(attribute);
+			value xmlObject.find(realPath.replace(/./g,' ')).attr(attribute);
 		}
+		tui.debug("Value for path " + path + ": " + value);
+		return value;
 	}
 
 	/**
