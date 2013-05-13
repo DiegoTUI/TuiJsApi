@@ -120,7 +120,7 @@ test('parsing test xml', function() {
 	for (var i=0; i<parsedXml.length; i++) {
 		var ImageList = parsedXml[i]['TicketInfo.ImageList'];
 		var DescriptionList = parsedXml[i]['TicketInfo.DescriptionList'];
-		ok(imageList.length === 3, 'Only 3 images in the list');
+		ok(ImageList.length === 3, 'Only 3 images in the list');
 		ok(DescriptionList.length === 2, 'Only 2 descriptions in the list');
 	}
 	

@@ -18,7 +18,7 @@ var tui = new function()
 	// urls
 
 	// globals
-	self.debugMode = false;
+	self.debugMode = true;
 	self.startTime = 0;
 	self.browserVersion = null;
 	self.sendEvents = {
