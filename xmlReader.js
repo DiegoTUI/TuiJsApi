@@ -52,6 +52,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 			var item = descriptionMap[i];
 			if (typeof item === 'string') {	//It's a string
 				result[item] = element.find(item).text();
+				tui.debug("Found string in descriptionMap. Field: " + item +". Value: " + result[item]);
 			} 
 			else if (typeof item === 'object') {	//It's a dictionary
 				//get the first (and only) key of the dictionary
@@ -63,8 +64,8 @@ tui.xmlReader = function(xmlString, descriptionMap)
 						//The array should contain only one element and it should be a dictionary
 						if (value.length != 1) tui.error ("Malformed descriptionMap. More than 1 element in inner array: " + value);
 						var innerObject = value[0];
-						//get in the list
-						valueInXml(element,key).each(function(){
+						//get in the list replcing the dots by spaces
+						element.find(key.replace(/./g,' ')).each(function(){
 							var elementInList = {};
 							for (var innerKey in innerObject) {
 								elementInList[innerkey] = valueInXml($(this), innerObject[innerKey]);
@@ -88,17 +89,14 @@ tui.xmlReader = function(xmlString, descriptionMap)
 	 * path: a string like "Description.@languageCode" containing the path to look in. "@" is for attributes
 	 */
 	function valueInXml (xmlObject, path) {
-		var elementsInPath = path.split('.');
-		for (var i=0; i<elementsInPath.length; i++) {
-			var element = elementsInPath[i];
-			//Is it an attribute?
-			if (element.startsWith('@')) {
-				return xmlObject.attr(element.substringFrom('@'));
-			}
-			//It is not an attribute. Go deeper.
-			xmlObject = xmlObject.find(element);
+		var realPath = path.substringUpTo('.@');
+		var attribute = path.substringFrom('.@');
+		if (attribute === '') {	//No attributes
+			return xmlObject.find(realPath.replace(/./g,' ')).text();
 		}
-		return xmlObject.text();
+		else {	//There is an attribute at the end
+			return xmlObject.find(realPath.replace(/./g,' ')).attr(attribute);
+		}
 	}
 
 	/**
