@@ -66,6 +66,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 						var innerObject = value[0];
 						//get in the list replacing the dots by spaces
 						element.find(key.replace('.',' ')).each(function(){
+							tui.debug("Checking for: " + key);
 							var elementInList = {};
 							for (var innerKey in innerObject) {
 								elementInList[innerKey] = valueInXml($(this), innerObject[innerKey]);
