@@ -65,6 +65,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 						if (value.length != 1) tui.error ("Malformed descriptionMap. More than 1 element in inner array: " + value);
 						var innerObject = value[0];
 						//get in the list replacing the dots by spaces
+						tui.debug("about to iterate " + element.nodeName + " with replaced key: " + key.replace('.',' '));
 						element.find(key.replace('.',' ')).each(function(){
 							tui.debug("Checking for: " + key);
 							var elementInList = {};
