@@ -107,10 +107,10 @@ test('parsing test xml', function() {
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');
 	ok(parsedXml.length === 2, 'parsedXml has 2 elements');
-	ok(parsedXml[0].dateFrom === 'DateFrom1', 'dateFrom is correct in 1');
-	ok(parsedXml[0].dateTo === 'DateTo1', 'dateTo is correct in 1');
-	ok(parsedXml[1].dateFrom === 'DateFrom2', 'dateFrom is correct in 2');
-	ok(parsedXml[1].dateTo === 'DateTo2', 'dateTo is correct in 2');
+	ok(parsedXml[0].DateFrom === 'DateFrom1', 'dateFrom is correct in 1');
+	ok(parsedXml[0].DateTo === 'DateTo1', 'dateTo is correct in 1');
+	ok(parsedXml[1].DateFrom === 'DateFrom2', 'dateFrom is correct in 2');
+	ok(parsedXml[1].DateTo === 'DateTo2', 'dateTo is correct in 2');
 	ok(parsedXml[0].Currency === 'Euro1', 'Currency is correct in 1');
 	ok(parsedXml[0].CurrencyCode === 'EUR1', 'CurrencyCode is correct in 1');
 	ok(parsedXml[1].Currency === 'Euro2', 'Currency is correct in 2');
