@@ -117,22 +117,33 @@ var descriptionMap = [
 'Currency',
 {'CurrencyCode': 'Currency.@code'},
 {'Name': 'TicketInfo.Name'},
-{'TicketInfo.ImageList': [{'Type': 'Image.Type',
+{'TicketInfo.ImageList.Image': [{'Type': 'Image.Type',
 							'Url': 'Image.Url'}]},
-{'TicketInfo.DescriptionList':[{'Type': 'Description.@type',
+{'TicketInfo.DescriptionList.Image':[{'Type': 'Description.@type',
 					 			'Description': 'Description'}]}];
 
 /**
  * Run tests. Parse the above xml with the above descriptionMap and see what we got
  */
 QUnit.module('xmlreader');
-test('holy piece of crap', function() {
+/*test('holy piece of crap', function() {
 	var xmlobject = $(crap);
 	xmlobject.find("Level").each(function(){
 		tui.debug ("Entered Level");
 		$(this).find("craplist item").each(function(){
 			tui.debug("craplist item: " + $(this).attr("code"));
 			tui.debug("craplist name: " + $(this).text());
+		});
+	});
+});*/
+
+test('a capon', function() {
+	var xmlobject = $(xmlString);
+	xmlobject.find("ServiceTicket").each(function(){
+		tui.debug ("Entered ServiceTicket");
+		$(this).find("TicketInfo ImageList Image").each(function(){
+			tui.debug("Image type: " + $(this).find("Type").text());
+			tui.debug("Image url: " + $(this).find("Url").text());
 		});
 	});
 });
