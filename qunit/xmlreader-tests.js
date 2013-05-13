@@ -5,14 +5,14 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
-var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketAvailRS.xsd" totalItems="27" echoToken="DummyEchoToken">
-	<AuditData>
-		<ProcessTime>647</ProcessTime>
-		<Timestamp>2013-05-13 10:49:38.031</Timestamp>
-		<RequestHost>10.162.29.83</RequestHost>
-		<ServerName>FORM</ServerName>
-		<ServerId>FO</ServerId>
-		<SchemaRelease>2005/06</SchemaRelease>
+var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketAvailRS.xsd" totalItems="27" echoToken="DummyEchoToken"> \
+	<AuditData> \
+		<ProcessTime>647</ProcessTime> \
+		<Timestamp>2013-05-13 10:49:38.031</Timestamp> \
+		<RequestHost>10.162.29.83</RequestHost> \
+		<ServerName>FORM</ServerName> \
+		<ServerId>FO</ServerId> \
+		<SchemaRelease>2005/06</SchemaRelease>  \
 		<HydraCoreRelease>2.0.201304221213</HydraCoreRelease>
 		<HydraEnumerationsRelease>1.0.201304221213</HydraEnumerationsRelease>
 		<MerlinRelease>N/A</MerlinRelease>
