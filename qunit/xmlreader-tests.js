@@ -92,10 +92,10 @@ var descriptionMap = [
 'Currency',
 {'CurrencyCode': 'Currency.@code'},
 {'Name': 'TicketInfo.Name'},
-{'TicketInfo.ImageList.Image': [{'Type': 'Type',
-							'Url': 'Url'}]},
-{'TicketInfo.DescriptionList.Description':[{'Type': '@type',
-					 			'Description': ''}]}];
+{'TicketInfo.ImageList': [{'Type': 'Image.Type',
+							'Url': 'Image.Url'}]},
+{'TicketInfo.DescriptionList':[{'Type': 'Description.@type',
+					 			'Description': 'Description'}]}];
 
 /**
  * Run tests. Parse the above xml with the above descriptionMap and see what we got
