@@ -90,7 +90,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 	 */
 	function valueInXml (xmlObject, path) {
 		var realPath = path.substringUpTo('.@');
-		var attribute = path.substringFrom('.@');
+		var attribute = path.substringFrom('@');
 		var value = null;
 		if (attribute === '') {	//No attributes
 			value = xmlObject.find(realPath.replace('.',' ')).text();
@@ -98,7 +98,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 		else {	//There is an attribute at the end
 			value = xmlObject.find(realPath.replace('.',' ')).attr(attribute);
 		}
-		tui.debug("Value for path " + path + ": " + value + ". RealPath: " + realPath + " - Attribute: " + attribute + " - Replaced RealPath: " + realPath.replace(/./g,' '));
+		tui.debug("Value for path " + path + ": " + value + ". RealPath: " + realPath + " - Attribute: " + attribute + " - Replaced RealPath: " + realPath.replace('.',' '));
 		return value;
 	}
 
