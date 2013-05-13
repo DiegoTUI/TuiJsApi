@@ -130,7 +130,7 @@ test('holy piece of crap', function() {
 	var xmlobject = $(crap);
 	xmlobject.find("Level").each(function(){
 		tui.debug ("Entered Level");
-		$(this).find("craplist").each(function(){
+		$(this).find("craplist item").each(function(){
 			tui.debug("craplist item: " + $(this).attr("code"));
 		});
 	});
