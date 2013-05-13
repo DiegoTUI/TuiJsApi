@@ -132,6 +132,7 @@ test('holy piece of crap', function() {
 		tui.debug ("Entered Level");
 		$(this).find("craplist item").each(function(){
 			tui.debug("craplist item: " + $(this).attr("code"));
+			tui.debug("craplist name: " + $(this).text());
 		});
 	});
 });
