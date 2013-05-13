@@ -144,6 +144,7 @@ test('a capon', function() {
 		$(this).find("TicketInfo ImageList").each(function(){
 			tui.debug("Node name: " + this.nodeName);
 			$(this).find("Type").each(function(){
+				tui.debug("Inner Node name: " + this.nodeName);
 				tui.debug("Image type: " + $(this).text());
 			});
 			$(this).each(function(){
