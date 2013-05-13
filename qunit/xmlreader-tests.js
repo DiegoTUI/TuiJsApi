@@ -147,12 +147,14 @@ test('a capon', function() {
 				tui.debug("Inner Node name: " + this.nodeName);
 				tui.debug("Image type: " + $(this).text());
 			});
-			$(this).each(function(){
-				tui.debug("Node name: " + this.nodeName);
-				tui.debug("Image type2: " + $(this).find("Type").text());
+		});
+		$(this).find("TicketInfo DescriptionList").each(function(){
+			tui.debug("Node name: " + this.nodeName);
+			$(this).find("Type").each(function(){
+				tui.debug("Inner Node name: " + this.nodeName);
+				tui.debug("Description type: " + $(this).attr("type"));
+				tui.debug("Description itself: " + $(this).text());
 			});
-			//tui.debug("Image type: " + $(this).find("Type").text());
-			//tui.debug("Image url: " + $(this).find("Url").text());
 		});
 	});
 });
