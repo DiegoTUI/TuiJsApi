@@ -59,7 +59,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 				for (var key in item) {
 					var value = item[key];
 					if (value instanceof Array) {	//It's a list
-						tui.debug("Key: " + key + "is listified as: " + key.listify());
+						tui.debug("Key: " + key + " is listified as: " + key.listify());
 						//initialize list
 						result[key.listify()] = [];
 						//The array should contain only one element and it should be a dictionary
