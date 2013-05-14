@@ -30,8 +30,8 @@ var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/sch
 				<Description type="generalDescription" languageCode="SPA">Descripcion 12</Description> \
 			</DescriptionList> \
 			<ImageList> \
-				<Images type="generalDescription" languageCode="ENG">Description 1</Images> \
-				<Images type="generalDescription" languageCode="SPA">Descripcion 2</Images> \
+				<Image type="generalDescription" languageCode="ENG">Description 1</Image> \
+				<Image type="generalDescription" languageCode="SPA">Descripcion 2</Image> \
 			</ImageList> \
 		</TicketInfo> \
 	</ServiceTicket> \
@@ -125,7 +125,7 @@ test('a capon', function() {
 	var xmlobject = $(xmlString);
 	xmlobject.find("ServiceTicket").each(function(){
 		tui.debug ("Entered ServiceTicket");
-		$(this).find("TicketInfo ImageList Images").each(function(){
+		$(this).find("TicketInfo ImageList Image").each(function(){
 			tui.debug("Node name: " + this.nodeName);
 			$(this).find("Type").each(function(){
 				tui.debug("Inner Node name: " + this.nodeName);
