@@ -95,7 +95,8 @@ var crap = '<Header> \
 	</Level> \
 </Header>';
 
-var stack = '<ServiceTicket> \
+var stack = '<TicketAvailRS> \
+  <ServiceTicket> \
       <TicketInfo xsi:type="ProductTicket"> \
         <DescriptionList> \
             <Description type="generalDescription" languageCode="ENG">Description 1</Description> \
@@ -106,7 +107,8 @@ var stack = '<ServiceTicket> \
             <Image type="generalImage">Image 2</Image> \
         </ImageList> \
       </TicketInfo> \
-    </ServiceTicket>';
+    </ServiceTicket> \
+</TicketAvailRS>';
 
 var descriptionMap = [
 {'DateFrom':'DateFrom.@date'},
