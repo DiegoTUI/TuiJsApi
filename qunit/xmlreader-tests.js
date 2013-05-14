@@ -165,6 +165,9 @@ test('a capon II', function() {
 			console.log("Description type: " + $(this).attr("type"));
 			console.log("Description itself: " + $(this).text());
 		});
+		$(this).find("TicketInfo").each(function(){
+			console.log ("Entered TicketInfo");
+		});
 		$(this).find("TicketInfo DescriptionList Description").each(function(){
 			console.log ("Entered Description");
 			console.log("Node name: " + this.nodeName);
