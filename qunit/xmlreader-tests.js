@@ -26,6 +26,10 @@ var xmlString = '<TicketAvailRS xsi-schemaLocation="http://www.hotelbeds.com/sch
 			<Code>000200515</Code> \
 			<Name>Ticket1</Name> \
 			<DescriptionList> \
+				<Description type="generalDescription" languageCode="ENG">Description 11</Description> \
+				<Description type="generalDescription" languageCode="SPA">Descripcion 12</Description> \
+			</DescriptionList> \
+			<ImageList> \
 				<Image> \
 					<Type>L</Type> \
 					<Order>0</Order> \
@@ -44,10 +48,6 @@ var xmlString = '<TicketAvailRS xsi-schemaLocation="http://www.hotelbeds.com/sch
 					<VisualizationOrder>0</VisualizationOrder> \
 					<Url>Image13</Url> \
 				</Image> \
-			</DescriptionList> \
-			<ImageList> \
-				<Image type="generalDescription" languageCode="ENG">Description 1</Image> \
-				<Image type="generalDescription" languageCode="SPA">Descripcion 2</Image> \
 			</ImageList> \
 		</TicketInfo> \
 	</ServiceTicket> \
@@ -59,8 +59,8 @@ var xmlString = '<TicketAvailRS xsi-schemaLocation="http://www.hotelbeds.com/sch
 			<Code>000200515</Code> \
 			<Name>Ticket2</Name> \
 			<DescriptionList> \
-				<Crap type="generalDescription" languageCode="ENG">Description 21</Crap> \
-				<Crap type="generalDescription" languageCode="SPA">Descripcion 22</Crap> \
+				<Description type="generalDescription" languageCode="ENG">Description 21</Description> \
+				<Description type="generalDescription" languageCode="SPA">Descripcion 22</Description> \
 			</DescriptionList> \
 			<ImageList> \
 				<Image> \
@@ -153,7 +153,7 @@ QUnit.module('xmlreader');
 });*/
 
 test('a capon', function() {
-	var xmlobject = $(xmlString);
+	var xmlobject = $($.parseXML(xmlString));
 	xmlobject.find("ServiceTicket").each(function(){
 		tui.debug ("Entered ServiceTicket");
 		$(this).find('TicketInfo ImageList Image').each(function(){
