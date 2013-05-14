@@ -132,10 +132,10 @@ var descriptionMap = [
 'Currency',
 {'CurrencyCode': 'Currency.@code'},
 {'Name': 'TicketInfo.Name'},
-{'TicketInfo.ImageList.Image': [{'Type': 'Image.Type',
-							'Url': 'Image.Url'}]},
-{'TicketInfo.DescriptionList.Image':[{'Type': 'Description.@type',
-					 			'Description': 'Description'}]}];
+{'TicketInfo.DescriptionList.Description':[{'Type': '@type',
+					 			'Description': ''}]},
+{'TicketInfo.ImageList.Image': [{'Type': 'Type',
+							'Url': 'Url'}]}];
 
 /**
  * Run tests. Parse the above xml with the above descriptionMap and see what we got
@@ -198,7 +198,7 @@ test('a capon', function() {
 		});
 	});
 });*/
-/*
+
 test('parsing test xml', function() {
 	var xmlReader = new tui.xmlReader (xmlString, descriptionMap);
 	var parsedXml = xmlReader.readObjects('ServiceTicket');
@@ -222,4 +222,4 @@ test('parsing test xml', function() {
 		ok(DescriptionList.length === 2, 'Only 2 descriptions in the list: ' + DescriptionList.length);
 	}
 	
-});*/
+});
