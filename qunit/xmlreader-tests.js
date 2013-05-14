@@ -168,7 +168,6 @@ test('a capon', function() {
 			tui.debug("Description itself: " + $(this).text());
 		});
 	});
-});
 
 /*test('a capon II', function() {
 	var xmlobject = $($.parseXML('<foo xs\:type="onetype">bar</foo>'))
