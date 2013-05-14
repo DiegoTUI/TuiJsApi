@@ -93,7 +93,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 	function valueInXml (xmlObject, path) {
 		var realPath = path.substringUpTo('.@');
 		var attribute = path.substringFrom('@');
-		var tip = realPath.length == 0 ? xmlObject : xmlObject.find(key.replace(/\./g,' '));
+		var tip = realPath.length == 0 ? xmlObject : xmlObject.find(path.replace(/\./g,' '));
 		var value = null;
 		if (attribute === '') {	//No attributes
 			value = tip.text();
