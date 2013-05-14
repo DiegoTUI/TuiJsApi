@@ -71,11 +71,11 @@ tui.xmlReader = function(xmlString, descriptionMap)
 							for (var innerKey in innerObject) {
 								elementInList[innerKey] = valueInXml(this, innerObject[innerKey]);
 							}
-							result[key].push(elementInList);
+							result[key.listify()].push(elementInList);
 						});
 					}
 					else if (typeof value === 'string') {	//It's a deep value
-						result[key.listify()] = valueInXml(element, value);
+						result[key] = valueInXml(element, value);
 					}
 					break;	//we only consider the first key
 				}
