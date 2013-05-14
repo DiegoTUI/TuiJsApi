@@ -5,7 +5,7 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
-var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketAvailRS.xsd" totalItems="27" echoToken="DummyEchoToken"> \
+var xmlString = '<TicketAvailRS xsi-schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketAvailRS.xsd" totalItems="27" echoToken="DummyEchoToken"> \
 	<AuditData> \
 		<ProcessTime>647</ProcessTime> \
 		<Timestamp>2013-05-13 10:49:38.031</Timestamp> \
@@ -18,16 +18,32 @@ var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/sch
 		<MerlinRelease>N/A</MerlinRelease> \
 	</AuditData> \
 	<PaginationData currentPage="1" totalPages="2"/> \
-	<ServiceTicket xsi:type="ServiceTicket" availToken="9ey6mENxtyujqkVKnqvpMA=="> \
+	<ServiceTicket xsi-type="ServiceTicket" availToken="9ey6mENxtyujqkVKnqvpMA=="> \
 		<DateFrom date="DateFrom1"/> \
 		<DateTo date="DateTo1"/> \
 		<Currency code="EUR1">Euro1</Currency> \
-		<TicketInfo xsi:type="ProductTicket"> \
+		<TicketInfo xsi-type="ProductTicket"> \
 			<Code>000200515</Code> \
 			<Name>Ticket1</Name> \
 			<DescriptionList> \
-				<Description type="generalDescription" languageCode="ENG">Description 11</Description> \
-				<Description type="generalDescription" languageCode="SPA">Descripcion 12</Description> \
+				<Image> \
+					<Type>L</Type> \
+					<Order>0</Order> \
+					<VisualizationOrder>0</VisualizationOrder> \
+					<Url>Image11</Url> \
+				</Image> \
+				<Image> \
+					<Type>S</Type> \
+					<Order>0</Order> \
+					<VisualizationOrder>0</VisualizationOrder> \
+					<Url>Image12</Url> \
+				</Image> \
+				<Image> \
+					<Type>S</Type> \
+					<Order>0</Order> \
+					<VisualizationOrder>0</VisualizationOrder> \
+					<Url>Image13</Url> \
+				</Image> \
 			</DescriptionList> \
 			<ImageList> \
 				<Image type="generalDescription" languageCode="ENG">Description 1</Image> \
@@ -35,11 +51,11 @@ var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/sch
 			</ImageList> \
 		</TicketInfo> \
 	</ServiceTicket> \
-	<ServiceTicket xsi:type="ServiceTicket" availToken="9ey6mENxtyujqkVKnqvpMA=="> \
+	<ServiceTicket xsi-type="ServiceTicket" availToken="9ey6mENxtyujqkVKnqvpMA=="> \
 		<DateFrom date="DateFrom2"/> \
 		<DateTo date="DateTo2"/> \
 		<Currency code="EUR2">Euro2</Currency> \
-		<TicketInfo xsi:type="ProductTicket"> \
+		<TicketInfo xsi-type="ProductTicket"> \
 			<Code>000200515</Code> \
 			<Name>Ticket2</Name> \
 			<DescriptionList> \
@@ -47,24 +63,24 @@ var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/sch
 				<Crap type="generalDescription" languageCode="SPA">Descripcion 22</Crap> \
 			</DescriptionList> \
 			<ImageList> \
-				<Shit> \
+				<Image> \
 					<Type>L</Type> \
 					<Order>0</Order> \
 					<VisualizationOrder>0</VisualizationOrder> \
-					<Url>Image1</Url> \
-				</Shit> \
-				<Shit> \
+					<Url>Image21</Url> \
+				</Image> \
+				<Image> \
 					<Type>S</Type> \
 					<Order>0</Order> \
 					<VisualizationOrder>0</VisualizationOrder> \
-					<Url>Image2</Url> \
-				</Shit> \
-				<Shit> \
+					<Url>Image22</Url> \
+				</Image> \
+				<Image> \
 					<Type>S</Type> \
 					<Order>0</Order> \
 					<VisualizationOrder>0</VisualizationOrder> \
-					<Url>Image3</Url> \
-				</Shit> \
+					<Url>Image23</Url> \
+				</Image> \
 			</ImageList> \
 		</TicketInfo> \
 	</ServiceTicket> \
@@ -97,7 +113,7 @@ var crap = '<Header> \
 
 var stack = '<TicketAvailRS> \
   <ServiceTicket> \
-      <TicketInfo xsi:type="ProductTicket"> \
+      <TicketInfo xsi-type="ProductTicket"> \
         <DescriptionList> \
             <Description type="generalDescription" languageCode="ENG">Description 1</Description> \
             <Description type="generalDescription" languageCode="SPA">Descripcion 2</Description> \
@@ -136,15 +152,14 @@ QUnit.module('xmlreader');
 	});
 });*/
 
-/*test('a capon', function() {
+test('a capon', function() {
 	var xmlobject = $(xmlString);
 	xmlobject.find("ServiceTicket").each(function(){
 		tui.debug ("Entered ServiceTicket");
 		$(this).find('TicketInfo ImageList Image').each(function(){
 			tui.debug("Node name: " + this.nodeName);
-			$(this).find("Type").each(function(){
-				tui.debug("Inner Node name: " + this.nodeName);
-				tui.debug("Image type: " + $(this).text());
+			tui.debug("Image type: " + $(this).find("Type").text());
+			tui.debug("Image url: " + $(this).find("Url").text());
 			});
 		});
 		$(this).find("TicketInfo DescriptionList Description").each(function(){
@@ -153,12 +168,12 @@ QUnit.module('xmlreader');
 			tui.debug("Description itself: " + $(this).text());
 		});
 	});
-});*/
+});
 
-test('a capon II', function() {
+/*test('a capon II', function() {
 	var xmlobject = $($.parseXML('<foo xs\:type="onetype">bar</foo>'))
 	//var xmlobject = $($.parseXML('<?xml version="1.0" encoding ="utf-8"?><TicketAvailRS><ServiceTicket><TicketInfo kakafu:type="ProductTicket">kk</TicketInfo></ServiceTicket></TicketAvailRS>'));
-	//var xmlobject = $($.parseXML('<TicketAvailRS><ServiceTicket><TicketInfo xsi:type="ProductTicket"><DescriptionList><Description type="generalDescription" languageCode="ENG">Description 1</Description><Description type="generalDescription" languageCode="SPA">Descripcion 2</Description></DescriptionList><ImageList><Image type="generalImage">Image 1</Image><Image type="generalImage">Image 2</Image></ImageList></TicketInfo></ServiceTicket></TicketAvailRS>'));
+	//var xmlobject = $($.parseXML('<TicketAvailRS><ServiceTicket><TicketInfo xsi-type="ProductTicket"><DescriptionList><Description type="generalDescription" languageCode="ENG">Description 1</Description><Description type="generalDescription" languageCode="SPA">Descripcion 2</Description></DescriptionList><ImageList><Image type="generalImage">Image 1</Image><Image type="generalImage">Image 2</Image></ImageList></TicketInfo></ServiceTicket></TicketAvailRS>'));
 	xmlobject.find("ServiceTicket").each(function(i, e){
 		console.log ("Entered ServiceTicket: " + i);
 		$(e).find("TicketInfo DescriptionList Description").each(function(){
@@ -183,7 +198,7 @@ test('a capon II', function() {
 			console.log("Image itself: " + $(this).text());
 		});
 	});
-});
+});*/
 /*
 test('parsing test xml', function() {
 	var xmlReader = new tui.xmlReader (xmlString, descriptionMap);
