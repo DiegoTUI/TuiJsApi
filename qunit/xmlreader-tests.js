@@ -125,14 +125,14 @@ test('a capon', function() {
 	var xmlobject = $(xmlString);
 	xmlobject.find("ServiceTicket").each(function(){
 		tui.debug ("Entered ServiceTicket");
-		$(this).find("TicketInfo ImageList Shit").each(function(){
+		$(this).find("TicketInfo ImageList Images").each(function(){
 			tui.debug("Node name: " + this.nodeName);
 			$(this).find("Type").each(function(){
 				tui.debug("Inner Node name: " + this.nodeName);
 				tui.debug("Image type: " + $(this).text());
 			});
 		});
-		$(this).find("TicketInfo DescriptionList Images").each(function(){
+		$(this).find("TicketInfo DescriptionList Description").each(function(){
 			tui.debug("Node name: " + this.nodeName);
 			tui.debug("Description type: " + $(this).attr("type"));
 			tui.debug("Description itself: " + $(this).text());
