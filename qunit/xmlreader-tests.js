@@ -156,7 +156,8 @@ QUnit.module('xmlreader');
 });*/
 
 test('a capon II', function() {
-	var xmlobject = $($.parseXML('<TicketAvailRS><ServiceTicket><TicketInfo xsi:type="ProductTicket"><DescriptionList><Description type="generalDescription" languageCode="ENG">Description 1</Description><Description type="generalDescription" languageCode="SPA">Descripcion 2</Description></DescriptionList><ImageList><Image type="generalImage">Image 1</Image><Image type="generalImage">Image 2</Image></ImageList></TicketInfo></ServiceTicket></TicketAvailRS>'));
+	var xmlobject = $($.parseXML('<TicketAvailRS><ServiceTicket><TicketInfo xsi:type="ProductTicket">kk</TicketInfo></ServiceTicket></TicketAvailRS>'));
+	//var xmlobject = $($.parseXML('<TicketAvailRS><ServiceTicket><TicketInfo xsi:type="ProductTicket"><DescriptionList><Description type="generalDescription" languageCode="ENG">Description 1</Description><Description type="generalDescription" languageCode="SPA">Descripcion 2</Description></DescriptionList><ImageList><Image type="generalImage">Image 1</Image><Image type="generalImage">Image 2</Image></ImageList></TicketInfo></ServiceTicket></TicketAvailRS>'));
 	xmlobject.find("ServiceTicket").each(function(i, e){
 		console.log ("Entered ServiceTicket: " + i);
 		$(e).find("TicketInfo DescriptionList Description").each(function(){
