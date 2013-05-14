@@ -65,7 +65,6 @@ tui.xmlReader = function(xmlString, descriptionMap)
 						if (value.length != 1) tui.error ("Malformed descriptionMap. More than 1 element in inner array: " + value);
 						var innerObject = value[0];
 						//get in the list replacing the dots by spaces
-						tui.debug("about to iterate " + element.nodeName + " with replaced key: " + key.replace(/\./g,' '));
 						element.find(key.replace(/\./g,' ')).each(function(){
 							tui.debug("Checking for: " + key);
 							var elementInList = {};
@@ -101,7 +100,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 		else {	//There is an attribute at the end
 			value = tip.attr(attribute);
 		}
-		tui.debug("Value for path " + path + ": " + value + ". RealPath: " + realPath + " - Attribute: " + attribute + " - Replaced RealPath: " + realPath.replace('.',' '));
+		tui.debug("Value for path " + path + ": " + value + ". RealPath: " + realPath + " - Attribute: " + attribute + " - Replaced RealPath: " + realPath.replace(/\./g,' '));
 		return value;
 	}
 

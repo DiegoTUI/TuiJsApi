@@ -86,46 +86,6 @@ var xmlString = '<TicketAvailRS xsi-schemaLocation="http://www.hotelbeds.com/sch
 	</ServiceTicket> \
 </TicketAvailRS>';
 
-var crap = '<Header> \
-	<Level> \
-		<craplist> \
-			<item code="1">ITEM1</item> \
-			<item code="2">ITEM2</item> \
-			<item code="3">ITEM3</item> \
-		</craplist> \
-		<othercraplist> \
-			<item code="1">ITEM1</item> \
-			<item code="2">ITEM2</item> \
-		</othercraplist> \
-	</Level> \
-	<Level> \
-		<craplist> \
-			<item code="1">ITEM1</item> \
-		</craplist> \
-		<othercraplist> \
-			<item code="1">ITEM1</item> \
-			<item code="2">ITEM2</item> \
-			<item code="3">ITEM3</item> \
-			<item code="4">ITEM4</item> \
-		</othercraplist> \
-	</Level> \
-</Header>';
-
-var stack = '<TicketAvailRS> \
-  <ServiceTicket> \
-      <TicketInfo xsi-type="ProductTicket"> \
-        <DescriptionList> \
-            <Description type="generalDescription" languageCode="ENG">Description 1</Description> \
-            <Description type="generalDescription" languageCode="SPA">Descripcion 2</Description> \
-        </DescriptionList> \
-        <ImageList> \
-            <Image type="generalImage">Image 1</Image> \
-            <Image type="generalImage">Image 2</Image> \
-        </ImageList> \
-      </TicketInfo> \
-    </ServiceTicket> \
-</TicketAvailRS>';
-
 var descriptionMap = [
 {'DateFrom':'DateFrom.@date'},
 {'DateTo':'DateTo.@date'},
@@ -141,63 +101,6 @@ var descriptionMap = [
  * Run tests. Parse the above xml with the above descriptionMap and see what we got
  */
 QUnit.module('xmlreader');
-/*test('holy piece of crap', function() {
-	var xmlobject = $(crap);
-	xmlobject.find("Level").each(function(){
-		tui.debug ("Entered Level");
-		$(this).find("craplist item").each(function(){
-			tui.debug("craplist item: " + $(this).attr("code"));
-			tui.debug("craplist name: " + $(this).text());
-		});
-	});
-});*/
-
-test('a capon', function() {
-	var xmlobject = $($.parseXML(xmlString));
-	xmlobject.find("ServiceTicket").each(function(){
-		tui.debug ("Entered ServiceTicket");
-		$(this).find("TicketInfo DescriptionList Description").each(function(){
-			tui.debug("Node name: " + this.nodeName);
-			tui.debug("Description type: " + $(this).attr("type"));
-			tui.debug("Description itself: " + $(this).text());
-		});
-		$(this).find('TicketInfo ImageList Image').each(function(){
-			tui.debug("Node name: " + this.nodeName);
-			tui.debug("Image type: " + $(this).find("Type").text());
-			tui.debug("Image url: " + $(this).find("Url").text());
-			});
-		});
-	});
-
-/*test('a capon II', function() {
-	var xmlobject = $($.parseXML('<foo xs\:type="onetype">bar</foo>'))
-	//var xmlobject = $($.parseXML('<?xml version="1.0" encoding ="utf-8"?><TicketAvailRS><ServiceTicket><TicketInfo kakafu:type="ProductTicket">kk</TicketInfo></ServiceTicket></TicketAvailRS>'));
-	//var xmlobject = $($.parseXML('<TicketAvailRS><ServiceTicket><TicketInfo xsi-type="ProductTicket"><DescriptionList><Description type="generalDescription" languageCode="ENG">Description 1</Description><Description type="generalDescription" languageCode="SPA">Descripcion 2</Description></DescriptionList><ImageList><Image type="generalImage">Image 1</Image><Image type="generalImage">Image 2</Image></ImageList></TicketInfo></ServiceTicket></TicketAvailRS>'));
-	xmlobject.find("ServiceTicket").each(function(i, e){
-		console.log ("Entered ServiceTicket: " + i);
-		$(e).find("TicketInfo DescriptionList Description").each(function(){
-			console.log ("Entered Description e");
-			console.log("Node name: " + this.nodeName);
-			console.log("Description type: " + $(this).attr("type"));
-			console.log("Description itself: " + $(this).text());
-		});
-		$(this).find("TicketInfo").each(function(){
-			console.log ("Entered TicketInfo");
-		});
-		$(this).find("TicketInfo DescriptionList Description").each(function(){
-			console.log ("Entered Description");
-			console.log("Node name: " + this.nodeName);
-			console.log("Description type: " + $(this).attr("type"));
-			console.log("Description itself: " + $(this).text());
-		});
-		$(this).find("TicketInfo ImageList Image").each(function(){
-			console.log ("Entered Image");
-			console.log("Node name: " + this.nodeName);
-			console.log("Image type: " + $(this).attr("type"));
-			console.log("Image itself: " + $(this).text());
-		});
-	});
-});*/
 
 test('parsing test xml', function() {
 	var xmlReader = new tui.xmlReader (xmlString, descriptionMap);
