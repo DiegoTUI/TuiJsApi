@@ -95,6 +95,19 @@ var crap = '<Header> \
 	</Level> \
 </Header>';
 
+var stack = '<ServiceTicket> \
+      <TicketInfo xsi:type="ProductTicket"> \
+        <DescriptionList> \
+            <Description type="generalDescription" languageCode="ENG">Description 1</Description> \
+            <Description type="generalDescription" languageCode="SPA">Descripcion 2</Description> \
+        </DescriptionList> \
+        <ImageList> \
+            <Image type="generalImage">Image 1</Image> \
+            <Image type="generalImage">Image 2</Image> \
+        </ImageList> \
+      </TicketInfo> \
+    </ServiceTicket>';
+
 var descriptionMap = [
 {'DateFrom':'DateFrom.@date'},
 {'DateTo':'DateTo.@date'},
@@ -121,11 +134,11 @@ QUnit.module('xmlreader');
 	});
 });*/
 
-test('a capon', function() {
+/*test('a capon', function() {
 	var xmlobject = $(xmlString);
 	xmlobject.find("ServiceTicket").each(function(){
 		tui.debug ("Entered ServiceTicket");
-		$(this).find('TicketInfo ImageList "Image"').each(function(){
+		$(this).find('TicketInfo ImageList Image').each(function(){
 			tui.debug("Node name: " + this.nodeName);
 			$(this).find("Type").each(function(){
 				tui.debug("Inner Node name: " + this.nodeName);
@@ -136,6 +149,23 @@ test('a capon', function() {
 			tui.debug("Node name: " + this.nodeName);
 			tui.debug("Description type: " + $(this).attr("type"));
 			tui.debug("Description itself: " + $(this).text());
+		});
+	});
+});*/
+
+test('a capon II', function() {
+	var xmlobject = $(stack);
+	xmlobject.find("ServiceTicket").each(function(){
+		console.log ("Entered ServiceTicket");
+		$(this).find("TicketInfo DescriptionList Description").each(function(){
+			console.log("Node name: " + this.nodeName);
+			console.log("Description type: " + $(this).attr("type"));
+			console.log("Description itself: " + $(this).text());
+		});
+		$(this).find("TicketInfo ImageList Image").each(function(){
+			console.log("Node name: " + this.nodeName);
+			console.log("Image type: " + $(this).attr("type"));
+			console.log("Image itself: " + $(this).text());
 		});
 	});
 });
