@@ -95,7 +95,7 @@ var crap = '<Header> \
 	</Level> \
 </Header>';
 
-var stack = '<TicketAvailRS> \
+var stack = '<root> \
   <ServiceTicket> \
       <TicketInfo xsi:type="ProductTicket"> \
         <DescriptionList> \
@@ -108,7 +108,7 @@ var stack = '<TicketAvailRS> \
         </ImageList> \
       </TicketInfo> \
     </ServiceTicket> \
-</TicketAvailRS>';
+</root>';
 
 var descriptionMap = [
 {'DateFrom':'DateFrom.@date'},
@@ -156,7 +156,7 @@ QUnit.module('xmlreader');
 });*/
 
 test('a capon II', function() {
-	var xmlobject = $($.parseXML(xmlString));
+	var xmlobject = $($.parseXML(stack));
 	xmlobject.find("ServiceTicket").each(function(i, e){
 		console.log ("Entered ServiceTicket: " + i);
 		$(e).find("TicketInfo DescriptionList Description").each(function(){
