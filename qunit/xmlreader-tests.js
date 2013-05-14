@@ -156,16 +156,16 @@ test('a capon', function() {
 	var xmlobject = $($.parseXML(xmlString));
 	xmlobject.find("ServiceTicket").each(function(){
 		tui.debug ("Entered ServiceTicket");
+		$(this).find("TicketInfo DescriptionList Description").each(function(){
+			tui.debug("Node name: " + this.nodeName);
+			tui.debug("Description type: " + $(this).attr("type"));
+			tui.debug("Description itself: " + $(this).text());
+		});
 		$(this).find('TicketInfo ImageList Image').each(function(){
 			tui.debug("Node name: " + this.nodeName);
 			tui.debug("Image type: " + $(this).find("Type").text());
 			tui.debug("Image url: " + $(this).find("Url").text());
 			});
-		});
-		$(this).find("TicketInfo DescriptionList Description").each(function(){
-			tui.debug("Node name: " + this.nodeName);
-			tui.debug("Description type: " + $(this).attr("type"));
-			tui.debug("Description itself: " + $(this).text());
 		});
 	});
 
