@@ -157,14 +157,22 @@ QUnit.module('xmlreader');
 
 test('a capon II', function() {
 	var xmlobject = $($.parseXML(stack));
-	xmlobject.find("ServiceTicket").each(function(){
-		console.log ("Entered ServiceTicket");
+	xmlobject.find("ServiceTicket").each(function(i, e){
+		console.log ("Entered ServiceTicket: " + i);
+		$(e).find("TicketInfo DescriptionList Description").each(function(){
+			console.log ("Entered Description e");
+			console.log("Node name: " + this.nodeName);
+			console.log("Description type: " + $(this).attr("type"));
+			console.log("Description itself: " + $(this).text());
+		});
 		$(this).find("TicketInfo DescriptionList Description").each(function(){
+			console.log ("Entered Description");
 			console.log("Node name: " + this.nodeName);
 			console.log("Description type: " + $(this).attr("type"));
 			console.log("Description itself: " + $(this).text());
 		});
 		$(this).find("TicketInfo ImageList Image").each(function(){
+			console.log ("Entered Image");
 			console.log("Node name: " + this.nodeName);
 			console.log("Image type: " + $(this).attr("type"));
 			console.log("Image itself: " + $(this).text());
