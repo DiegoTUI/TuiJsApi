@@ -74,3 +74,12 @@ String.prototype.substringFromLast = function(str)
 	return this.slice(this.lastIndexOf(str) + 1);
 }
 
+/**
+ * Splits the string using the dot as separator and returns the last element of the split with "List"
+ * added at the end.
+ */
+String.prototype.listify = function ()
+{
+	return this.split('.').pop() + "List";
+};
+

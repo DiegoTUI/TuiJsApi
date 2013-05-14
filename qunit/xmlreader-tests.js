@@ -119,8 +119,8 @@ test('parsing test xml', function() {
 	ok(parsedXml[0].Name === 'Ticket1', 'Ticket name is correct in 1');
 	ok(parsedXml[1].Name === 'Ticket2', 'Ticket name is correct in 2');
 	for (var i=0; i<parsedXml.length; i++) {
-		var ImageList = parsedXml[i]['TicketInfo.ImageList.Image'];
-		var DescriptionList = parsedXml[i]['TicketInfo.DescriptionList.Description'];
+		var ImageList = parsedXml[i]['TicketInfo.ImageList.Image'.listify()];
+		var DescriptionList = parsedXml[i]['TicketInfo.DescriptionList.Description'.listify()];
 		ok(ImageList.length === 3, 'Only 3 images in the list: ' + ImageList.length);
 		ok(DescriptionList.length === 2, 'Only 2 descriptions in the list: ' + DescriptionList.length);
 	}

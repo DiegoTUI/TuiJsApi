@@ -60,7 +60,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 					var value = item[key];
 					if (value instanceof Array) {	//It's a list
 						//initialize list
-						result[key] = [];
+						result[key.listify()] = [];
 						//The array should contain only one element and it should be a dictionary
 						if (value.length != 1) tui.error ("Malformed descriptionMap. More than 1 element in inner array: " + value);
 						var innerObject = value[0];
@@ -75,7 +75,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 						});
 					}
 					else if (typeof value === 'string') {	//It's a deep value
-						result[key] = valueInXml(element, value);
+						result[key.listify()] = valueInXml(element, value);
 					}
 					break;	//we only consider the first key
 				}
