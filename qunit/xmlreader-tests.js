@@ -156,7 +156,7 @@ QUnit.module('xmlreader');
 });*/
 
 test('a capon II', function() {
-	var xmlobject = $($.parseXML(stack));
+	var xmlobject = $($.parseXML('<foo>bar</foo>'));
 	xmlobject.find("ServiceTicket").each(function(i, e){
 		console.log ("Entered ServiceTicket: " + i);
 		$(e).find("TicketInfo DescriptionList Description").each(function(){
