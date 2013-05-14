@@ -91,7 +91,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 	 * path: a string like "Description.@languageCode" containing the path to look in. "@" is for attributes
 	 */
 	function valueInXml (xmlObject, path) {
-		var realPath = path.substringUpTo('.@');
+		var realPath = path.substringUpTo('@');
 		var attribute = path.substringFrom('@');
 		var tip = realPath.length == 0 ? xmlObject : xmlObject.find(realPath.replace(/\./g,' '));
 		var value = null;
