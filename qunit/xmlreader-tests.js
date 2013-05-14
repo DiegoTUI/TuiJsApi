@@ -30,24 +30,8 @@ var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/sch
 				<Description type="generalDescription" languageCode="SPA">Descripcion 2</Description> \
 			</DescriptionList> \
 			<ImageList> \
-				<Image> \
-					<Type>L</Type> \
-					<Order>0</Order> \
-					<VisualizationOrder>0</VisualizationOrder> \
-					<Url>Image1</Url> \
-				</Image> \
-				<Image> \
-					<Type>S</Type> \
-					<Order>0</Order> \
-					<VisualizationOrder>0</VisualizationOrder> \
-					<Url>Image2</Url> \
-				</Image> \
-				<Image> \
-					<Type>S</Type> \
-					<Order>0</Order> \
-					<VisualizationOrder>0</VisualizationOrder> \
-					<Url>Image3</Url> \
-				</Image> \
+				<Image type="generalDescription" languageCode="ENG">Description 1</Image> \
+				<Image type="generalDescription" languageCode="SPA">Descripcion 2</Image> \
 			</ImageList> \
 		</TicketInfo> \
 	</ServiceTicket> \
