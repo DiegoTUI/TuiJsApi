@@ -103,8 +103,8 @@ var stack = '<TicketAvailRS> \
             <Description type="generalDescription" languageCode="SPA">Descripcion 2</Description> \
         </DescriptionList> \
         <ImageList> \
-            <Images type="generalImage">Image 1</Images> \
-            <Images type="generalImage">Image 2</Images> \
+            <Image type="generalImage">Image 1</Image> \
+            <Image type="generalImage">Image 2</Image> \
         </ImageList> \
       </TicketInfo> \
     </ServiceTicket> \
@@ -156,7 +156,7 @@ QUnit.module('xmlreader');
 });*/
 
 test('a capon II', function() {
-	var xmlobject = $(stack);
+	var xmlobject = $($.parseXML(stack));
 	xmlobject.find("ServiceTicket").each(function(){
 		console.log ("Entered ServiceTicket");
 		$(this).find("TicketInfo DescriptionList Description").each(function(){
@@ -164,7 +164,7 @@ test('a capon II', function() {
 			console.log("Description type: " + $(this).attr("type"));
 			console.log("Description itself: " + $(this).text());
 		});
-		$(this).find("TicketInfo ImageList Images").each(function(){
+		$(this).find("TicketInfo ImageList Image").each(function(){
 			console.log("Node name: " + this.nodeName);
 			console.log("Image type: " + $(this).attr("type"));
 			console.log("Image itself: " + $(this).text());
