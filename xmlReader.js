@@ -31,7 +31,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 		//initialize result
 		var result =[];
 		//wrap the string in a jquery object
-		var xmlObject = $(xmlString);
+		var xmlObject = $($.parseXML(xmlString));
 		//parse it
 		xmlObject.find(tag).each(function() {
 			result.push(processElement($(this)));
