@@ -47,24 +47,24 @@ var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/sch
 				<Crap type="generalDescription" languageCode="SPA">Descripcion 22</Crap> \
 			</DescriptionList> \
 			<ImageList> \
-				<Image> \
+				<Shit> \
 					<Type>L</Type> \
 					<Order>0</Order> \
 					<VisualizationOrder>0</VisualizationOrder> \
 					<Url>Image1</Url> \
-				</Image> \
-				<Image> \
+				</Shit> \
+				<Shit> \
 					<Type>S</Type> \
 					<Order>0</Order> \
 					<VisualizationOrder>0</VisualizationOrder> \
 					<Url>Image2</Url> \
-				</Image> \
-				<Image> \
+				</Shit> \
+				<Shit> \
 					<Type>S</Type> \
 					<Order>0</Order> \
 					<VisualizationOrder>0</VisualizationOrder> \
 					<Url>Image3</Url> \
-				</Image> \
+				</Shit> \
 			</ImageList> \
 		</TicketInfo> \
 	</ServiceTicket> \
@@ -125,7 +125,7 @@ test('a capon', function() {
 	var xmlobject = $(xmlString);
 	xmlobject.find("ServiceTicket").each(function(){
 		tui.debug ("Entered ServiceTicket");
-		$(this).find("TicketInfo ImageList Image").each(function(){
+		$(this).find("TicketInfo ImageList Shit").each(function(){
 			tui.debug("Node name: " + this.nodeName);
 			$(this).find("Type").each(function(){
 				tui.debug("Inner Node name: " + this.nodeName);
