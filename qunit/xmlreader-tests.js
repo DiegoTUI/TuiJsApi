@@ -43,8 +43,8 @@ var xmlString = '<TicketAvailRS xsi:schemaLocation="http://www.hotelbeds.com/sch
 			<Code>000200515</Code> \
 			<Name>Ticket2</Name> \
 			<DescriptionList> \
-				<Description type="generalDescription" languageCode="ENG">Description 21</Description> \
-				<Description type="generalDescription" languageCode="SPA">Descripcion 22</Description> \
+				<Image type="generalDescription" languageCode="ENG">Description 21</Image> \
+				<Image type="generalDescription" languageCode="SPA">Descripcion 22</Image> \
 			</DescriptionList> \
 			<ImageList> \
 				<Image> \
@@ -132,7 +132,7 @@ test('a capon', function() {
 				tui.debug("Image type: " + $(this).text());
 			});
 		});
-		$(this).find("TicketInfo ImageList Image").each(function(){
+		$(this).find("TicketInfo DescriptionList Image").each(function(){
 			tui.debug("Node name: " + this.nodeName);
 			tui.debug("Description type: " + $(this).attr("type"));
 			tui.debug("Description itself: " + $(this).text());
