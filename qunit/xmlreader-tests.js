@@ -97,6 +97,34 @@ var ticketAvailMap = [
 {'TicketInfo.ImageList.Image': [{'Type': 'Type',
 							'Url': 'Url'}]}];
 
+var ticketClassificationListString = '<TicketClassificationListRS xsi:schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketClassificationListRS.xsd" totalItems="9" echoToken="DummyEchoToken"> \
+	<AuditData> \
+		<ProcessTime>4</ProcessTime> \
+		<Timestamp>2013-05-15 13:21:03.741</Timestamp> \
+		<RequestHost>10.162.29.83</RequestHost> \
+		<ServerName>FORM</ServerName> \
+		<ServerId>FO</ServerId> \
+		<SchemaRelease>2005/06</SchemaRelease> \
+		<HydraCoreRelease>2.0.201304221213</HydraCoreRelease> \
+		<HydraEnumerationsRelease>1.0.201304221213</HydraEnumerationsRelease> \
+		<MerlinRelease>N/A</MerlinRelease> \
+	</AuditData> \
+	<Classification code="CULTU">Culture & Museums</Classification> \
+	<Classification code="FD">Full Day</Classification> \
+	<Classification code="FOOD">Food & Nightlife</Classification> \
+	<Classification code="HD">In the morning</Classification> \
+	<Classification code="MD">Multi Day Services</Classification> \
+	<Classification code="OUTAC">Outdoor & Adventure</Classification> \
+	<Classification code="PARTE">Theme & Aquatic Parks</Classification> \
+	<Classification code="SHOW">Shows and Events</Classification> \
+	<Classification code="SIGHT">Sightseeing & Tours</Classification> \
+</TicketClassificationListRS>';
+
+var ticketClassificationListMap = [
+{'TotalItems':'@totalItems'},
+{'Classification':[{'Code':'@code',
+					'Name':''}]}];
+
 /**
  * Run tests. Parse the above xmls with the above descriptionMaps and see what we got
  */
@@ -124,5 +152,16 @@ test('TicketAvail parsing test xml', function() {
 		ok(ImageList.length === 3, 'Only 3 images in the list: ' + ImageList.length);
 		ok(DescriptionList.length === 2, 'Only 2 descriptions in the list: ' + DescriptionList.length);
 	}
-	
+});
+
+test('ticketClassificationList parsing test xml', function() {
+	var xmlReader = new tui.xmlReader (ticketClassificationListString, ticketClassificationListMap);
+	var parsedXml = xmlReader.readObjects('');	//Trying to read the base object
+	//Now chek some stuff about the parsed xml
+	ok(parsedXml instanceof Array, 'parsedXml is an array');
+	ok(parsedXml.length === 1, 'parsedXml has 2 elements');
+	ok(parsedXml[0].TotalItems === '9', 'TotalItems retrieved is correct');
+	ok(parsedXml[0].ClassificationList.length === 9, 'ClassificationList has 9 elements');
+	ok(parsedXml[0].ClassificationList[0].Code === 'CULTU', 'Code in element 1 is ok');
+	ok(parsedXml[0].ClassificationList[0].Name === 'Culture & Museums', 'Code in element 1 is ok');
 });
