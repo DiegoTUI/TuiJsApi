@@ -5,7 +5,7 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
-var xmlString = '<TicketAvailRS xsi-schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketAvailRS.xsd" totalItems="27" echoToken="DummyEchoToken"> \
+var ticketAvailString = '<TicketAvailRS xsi-schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketAvailRS.xsd" totalItems="27" echoToken="DummyEchoToken"> \
 	<AuditData> \
 		<ProcessTime>647</ProcessTime> \
 		<Timestamp>2013-05-13 10:49:38.031</Timestamp> \
@@ -86,7 +86,7 @@ var xmlString = '<TicketAvailRS xsi-schemaLocation="http://www.hotelbeds.com/sch
 	</ServiceTicket> \
 </TicketAvailRS>';
 
-var descriptionMap = [
+var ticketAvailMap = [
 {'DateFrom':'DateFrom.@date'},
 {'DateTo':'DateTo.@date'},
 'Currency',
@@ -98,12 +98,12 @@ var descriptionMap = [
 							'Url': 'Url'}]}];
 
 /**
- * Run tests. Parse the above xml with the above descriptionMap and see what we got
+ * Run tests. Parse the above xmls with the above descriptionMaps and see what we got
  */
 QUnit.module('xmlreader');
 
-test('parsing test xml', function() {
-	var xmlReader = new tui.xmlReader (xmlString, descriptionMap);
+test('TicketAvail parsing test xml', function() {
+	var xmlReader = new tui.xmlReader (ticketAvailString, ticketAvailMap);
 	var parsedXml = xmlReader.readObjects('ServiceTicket');
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');
