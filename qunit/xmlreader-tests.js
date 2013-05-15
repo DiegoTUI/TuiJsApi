@@ -157,9 +157,10 @@ test('TicketAvail parsing test xml', function() {
 test('ticketClassificationList parsing test xml', function() {
 	var xmlReader = new tui.xmlReader (ticketClassificationListString, ticketClassificationListMap);
 	var parsedXml = xmlReader.readObjects('');	//Trying to read the base object
+	tui.debug("parsedXML: " + JSON.stringify(parsedXML));
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');
-	ok(parsedXml.length === 1, 'parsedXml has 2 elements');
+	ok(parsedXml.length === 1, 'parsedXml has 1 elements');
 	ok(parsedXml[0].TotalItems === '9', 'TotalItems retrieved is correct');
 	ok(parsedXml[0].ClassificationList.length === 9, 'ClassificationList has 9 elements');
 	ok(parsedXml[0].ClassificationList[0].Code === 'CULTU', 'Code in element 1 is ok');
