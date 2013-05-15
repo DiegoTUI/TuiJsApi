@@ -97,7 +97,7 @@ var ticketAvailMap = [
 {'TicketInfo.ImageList.Image': [{'Type': 'Type',
 							'Url': 'Url'}]}];
 
-var ticketClassificationListString = '<TicketClassificationListRS xsi:schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketClassificationListRS.xsd" totalItems="9" echoToken="DummyEchoToken"> \
+var ticketClassificationListString = '<TicketClassificationListRS xsi-schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketClassificationListRS.xsd" totalItems="9" echoToken="DummyEchoToken"> \
 	<AuditData> \
 		<ProcessTime>4</ProcessTime> \
 		<Timestamp>2013-05-15 13:21:03.741</Timestamp> \
