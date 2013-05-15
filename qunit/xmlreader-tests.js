@@ -109,6 +109,15 @@ var ticketClassificationListString = '<TicketClassificationListRS xsi-schemaLoca
 		<HydraEnumerationsRelease>1.0.201304221213</HydraEnumerationsRelease> \
 		<MerlinRelease>N/A</MerlinRelease> \
 	</AuditData> \
+	<Classification code="CULTU">Culture & Museums</Classification> \
+	<Classification code="FD">Full Day</Classification> \
+	<Classification code="FOOD">Food & Nightlife</Classification> \
+	<Classification code="HD">In the morning</Classification> \
+	<Classification code="MD">Multi Day Services</Classification> \
+	<Classification code="OUTAC">Outdoor & Adventure</Classification> \
+	<Classification code="PARTE">Theme & Aquatic Parks</Classification> \
+	<Classification code="SHOW">Shows and Events</Classification> \
+	<Classification code="SIGHT">Sightseeing & Tours</Classification> \
 </TicketClassificationListRS>';
 
 var ticketClassificationListMap = [
