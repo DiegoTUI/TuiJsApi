@@ -130,7 +130,7 @@ var ticketClassificationListMap = [
  */
 QUnit.module('xmlreader');
 
-/*test('TicketAvail parsing test xml', function() {
+test('TicketAvail parsing test xml', function() {
 	var xmlReader = new tui.xmlReader (ticketAvailString, ticketAvailMap);
 	var parsedXml = xmlReader.readObjects('ServiceTicket');
 	//Now chek some stuff about the parsed xml
@@ -164,8 +164,4 @@ test('ticketClassificationList parsing test xml', function() {
 	ok(parsedXml[0].ClassificationList.length === 9, 'ClassificationList has 9 elements');
 	ok(parsedXml[0].ClassificationList[0].Code === 'CULTU', 'Code in element 1 is ok');
 	ok(parsedXml[0].ClassificationList[0].Name === 'Culture & Museums', 'Code in element 1 is ok');
-});*/
-
-test('ticketClassificationList parsing test xml', function() {
-	var xmlReader = $($.parseXML('<foo xmlns:prod="http://datypic.com/prod" prod:id="holycrap">bar</foo>'))
 });
