@@ -155,18 +155,8 @@ test('TicketAvail parsing test xml', function() {
 });
 
 test('ticketClassificationList parsing test xml', function() {
-	var xmlObject = $($.parseXML(ticketClassificationListString));
-	var xmlObject2 = $(ticketClassificationListString);
-	var xmlObject3 = $(":root", $.parseXML(ticketClassificationListString));
-	tui.debug('Total Items:' + xmlObject2.attr('totalItems') + '.');
-	tui.debug('Total Items2:' + xmlObject.filter(":first").attr('totalItems') + '.');
-	tui.debug('Total Items3:' + xmlObject.filter(":root").attr('totalItems') + '.');
-	tui.debug('Total Items4:' + xmlObject.find(":first").attr('totalItems') + '.');
-	tui.debug('Total Items5:' + xmlObject.find(":root").attr('totalItems') + '.');
-	tui.debug('Total Items6:' + xmlObject3.attr('totalItems') + '.');
 	var xmlReader = new tui.xmlReader (ticketClassificationListString, ticketClassificationListMap);
 	var parsedXml = xmlReader.readObjects('');	//Trying to read the base object
-	tui.debug("parsedXML: " + JSON.stringify(parsedXml));
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');
 	ok(parsedXml.length === 1, 'parsedXml has 1 elements');
@@ -174,4 +164,21 @@ test('ticketClassificationList parsing test xml', function() {
 	ok(parsedXml[0].ClassificationList.length === 9, 'ClassificationList has 9 elements');
 	ok(parsedXml[0].ClassificationList[0].Code === 'CULTU', 'Code in element 1 is ok');
 	ok(parsedXml[0].ClassificationList[0].Name === 'Culture Museums', 'Code in element 1 is ok');
+	ok(parsedXml[0].ClassificationList[1].Code === 'FD', 'Code in element 2 is ok');
+	ok(parsedXml[0].ClassificationList[1].Name === 'Full Day', 'Code in element 2 is ok');
+	ok(parsedXml[0].ClassificationList[2].Code === 'FOOD', 'Code in element 3 is ok');
+	ok(parsedXml[0].ClassificationList[2].Name === 'Food Nightlife', 'Code in element 3 is ok');
+	ok(parsedXml[0].ClassificationList[3].Code === 'HD', 'Code in element 4 is ok');
+	ok(parsedXml[0].ClassificationList[3].Name === 'In the morning', 'Code in element 4 is ok');
+	ok(parsedXml[0].ClassificationList[4].Code === 'MD', 'Code in element 5 is ok');
+	ok(parsedXml[0].ClassificationList[4].Name === 'Multi Day Services', 'Code in element 5 is ok');
+	ok(parsedXml[0].ClassificationList[5].Code === 'OUTAC', 'Code in element 6 is ok');
+	ok(parsedXml[0].ClassificationList[5].Name === 'Outdoor Adventure', 'Code in element 6 is ok');
+	ok(parsedXml[0].ClassificationList[6].Code === 'PARTE', 'Code in element 7 is ok');
+	ok(parsedXml[0].ClassificationList[6].Name === 'Theme Aquatic Parks', 'Code in element 7 is ok');
+	ok(parsedXml[0].ClassificationList[7].Code === 'SHOW', 'Code in element 8 is ok');
+	ok(parsedXml[0].ClassificationList[7].Name === 'Shows and Events', 'Code in element 8 is ok');
+	ok(parsedXml[0].ClassificationList[8].Code === 'SIGHT', 'Code in element 9 is ok');
+	ok(parsedXml[0].ClassificationList[8].Name === 'Sightseeing Tours', 'Code in element 9 is ok');
+
 });
