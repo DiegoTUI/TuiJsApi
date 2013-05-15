@@ -157,8 +157,13 @@ test('TicketAvail parsing test xml', function() {
 test('ticketClassificationList parsing test xml', function() {
 	var xmlObject = $($.parseXML(ticketClassificationListString));
 	var xmlObject2 = $(ticketClassificationListString);
+	var xmlObject3 = $(":root", $.parseXML(ticketClassificationListString));
 	tui.debug('Total Items:' + xmlObject2.attr('totalItems') + '.');
 	tui.debug('Total Items2:' + xmlObject.filter(":first").attr('totalItems') + '.');
+	tui.debug('Total Items3:' + xmlObject.filter(":root").attr('totalItems') + '.');
+	tui.debug('Total Items4:' + xmlObject.find(":first").attr('totalItems') + '.');
+	tui.debug('Total Items5:' + xmlObject.find(":root").attr('totalItems') + '.');
+	tui.debug('Total Items6:' + xmlObject3.attr('totalItems') + '.');
 	var xmlReader = new tui.xmlReader (ticketClassificationListString, ticketClassificationListMap);
 	var parsedXml = xmlReader.readObjects('');	//Trying to read the base object
 	tui.debug("parsedXML: " + JSON.stringify(parsedXml));
