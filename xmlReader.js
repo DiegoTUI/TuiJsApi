@@ -32,7 +32,7 @@ tui.xmlReader = function(xmlString, descriptionMap)
 		var result =[];
 		//wrap the string in a jquery object
 		var xmlObject = $($.parseXML(xmlString));
-		var objectToBrowse = tag.length > 0 ? xmlObject.find(tag) : xmlObject;
+		var objectToBrowse = tag.length > 0 ? xmlObject.find(tag) : xmlObject.find(":root");
 		//parse it
 		objectToBrowse.each(function() {
 			result.push(processElement(this));
