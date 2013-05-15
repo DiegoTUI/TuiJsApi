@@ -35,7 +35,6 @@ tui.xmlReader = function(xmlString, descriptionMap)
 		var objectToBrowse = tag.length > 0 ? xmlObject.find(tag) : xmlObject;
 		//parse it
 		objectToBrowse.each(function() {
-			tui.debug('about to call processElement');
 			result.push(processElement(this));
 		});
 		
