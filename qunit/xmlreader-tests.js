@@ -167,5 +167,5 @@ test('ticketClassificationList parsing test xml', function() {
 });*/
 
 test('ticketClassificationList parsing test xml', function() {
-	var xmlReader = $($.parseXML('<foo xmlns:prod="http://datypic.com/prod">bar</foo>'))
+	var xmlReader = $($.parseXML('<foo xmlns:prod="http://datypic.com/prod" prod:id="holycrap">bar</foo>'))
 });
