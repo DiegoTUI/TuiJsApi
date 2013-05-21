@@ -16,7 +16,7 @@ QUnit.module('param-string');
 test('undefined parametrizedString', function() {
 	var paramString = new tui.parametrizedString ();
 	ok(typeof (paramString.replaceAll()) === 'undefined', 'empty parametrizedString returned undefined');
-	ok(typeof (paramString.getLooseKeys()) === 'undefined', 'empty parametrizedString returned undefined loose keys');
+	ok(paramString.getLooseKeys().length === 0, 'empty parametrizedString returned empty loose keys');
 });
 test('exact match', function() {
 	var params = {
@@ -27,7 +27,7 @@ test('exact match', function() {
 	var paramString = new tui.parametrizedString (baseString, params);
 	ok(paramString.replaceAll() == 'Hallo peoples. You fuck my mother', 'string replaced correctly');
 	ok(paramString.replaceAllClean() == 'Hallo peoples. You fuck my mother', 'string replaced correctly');
-	ok(paramString.getLooseKeys() === null, 'exact match. No loose keys');
+	ok(paramString.getLooseKeys().length === 0, 'exact match. No loose keys');
 });
 test('too many params', function() {
 	var params = {
@@ -40,7 +40,7 @@ test('too many params', function() {
 	var paramString = new tui.parametrizedString (baseString, params);
 	ok(paramString.replaceAll() == 'Hallo peoples. You fuck my mother', 'string replaced correctly');
 	ok(paramString.replaceAllClean() == 'Hallo peoples. You fuck my mother', 'string replaced correctly');
-	ok(paramString.getLooseKeys() === null, 'too many params. No loose keys');
+	ok(paramString.getLooseKeys().length === 0, 'too many params. No loose keys');
 });
 test('too few params', function() {
 	var params = {
