@@ -22,6 +22,7 @@ tui.ticketAvailRequest = function(parameters)
 
 	//requires
 	var ParametrizedString = require('/js/parametrizedString.js');
+	var ajax = require('/js/ajax.js')
 
 	//Initialize parameters
 	initParams();
@@ -34,7 +35,7 @@ tui.ticketAvailRequest = function(parameters)
 	self.sendRequest = function(ok, nok) {
 		var parametrizedRequest = new ParametrizedString(tui.atlas.ticketAvailRequest, parameters);
 		tui.debug("about to launch request: " + parametrizedRequest.replaceAllClean());
-		tui.ajax.send(parametrizedRequest.replaceAllClean(), tui.atlas.url, ok, nok);
+		ajax.send(parametrizedRequest.replaceAllClean(), tui.atlas.url, ok, nok);
 	}
 
 	/**
