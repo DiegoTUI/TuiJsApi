@@ -56,6 +56,7 @@ var ajaxRequest = function(options)
 
 	/**
 	 * Function to send the Ajax request.
+	 * Default type is POST
 	 */
 	self.send = function()
 	{
@@ -74,6 +75,7 @@ var ajaxRequest = function(options)
 		var params = {
 			data: self.data,
 			url: self.url,
+			type: "POST",
 			dataType: 'json',
 			timeout: ajaxTimeout,
 			success: self.ok,
