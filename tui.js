@@ -1,9 +1,8 @@
 /*
  * TuiInnovation main object.
  * Global variables and functions.
- * http://moveinblue.com/
  *
- * Copyright (C) 2011 MoveinBlue.
+ * Copyright (C) 2013 TuiInnovation.
  */
 
 
@@ -21,12 +20,18 @@ var tui = new function()
 	self.debugMode = true;
 	self.startTime = 0;
 	self.browserVersion = null;
+	self.echoTokenLength = 8;
+	self.sessionIdLength = 8;
 	self.sendEvents = {
 		load: true,
 		error: true,
 		timeout: true,
 		parserError: true
 	};
+	//Requests and description maps from ATLAS
+	self.atlas = require('/js/atlas.js');
+	//Default values for requests in ATLAS
+	self.atlasDefaults = require('/js/atlasDefaults.js');
 
 	/**
 	 * Check out for testing mode: turns on local access and instrumentation.
@@ -244,6 +249,24 @@ var tui = new function()
 		 return date.getFullYear() + '-'
 			 + pad00(date.getMonth()+1)+'-'
 			 + pad00(date.getDate());
+	}
+
+	/**
+	 * Return the date object in ATLAS format: yyyymmdd.
+	 */
+	self.atlasDate = function(date)
+	{
+		 return date.getFullYear() + 
+			 + pad00(date.getMonth()+1)+
+			 + pad00(date.getDate());
+	}
+
+	/**
+	 * Return a random string of length
+	 */
+	self.randomString = function(length)
+	{
+		 return Math.random().toString(36).substr(2, length);
 	}
 
 	/**
