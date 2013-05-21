@@ -37,6 +37,19 @@ tui.parametrizedString = function(baseString, parameters)
 	}
 
 	/**
+	 * Returns baseString with all the parameters replaced and the loose keys cleaned
+	 */
+	self.replaceAllClean = function() {
+		var replaced = self.replaceAll();
+		var looseKeys = self.getLooseKeys();
+		for (var i=0; i<looseKeys.length; i++) {
+			replaced = replaced.replace(looseKeys[i], '');
+		}
+
+		return replaced;
+	}
+
+	/**
 	 * Returns an array of strings with the $keys$ that are in baseString, but not in parameters
 	 */
 	 self.getLooseKeys = function() {

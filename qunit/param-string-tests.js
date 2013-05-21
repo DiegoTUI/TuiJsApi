@@ -26,6 +26,7 @@ test('exact match', function() {
 	};
 	var paramString = new tui.parametrizedString (baseString, params);
 	ok(paramString.replaceAll() == 'Hallo peoples. You fuck my mother', 'string replaced correctly');
+	ok(paramString.replaceAllClean() == 'Hallo peoples. You fuck my mother', 'string replaced correctly');
 	ok(paramString.getLooseKeys() === null, 'exact match. No loose keys');
 });
 test('too many params', function() {
@@ -38,6 +39,7 @@ test('too many params', function() {
 	};
 	var paramString = new tui.parametrizedString (baseString, params);
 	ok(paramString.replaceAll() == 'Hallo peoples. You fuck my mother', 'string replaced correctly');
+	ok(paramString.replaceAllClean() == 'Hallo peoples. You fuck my mother', 'string replaced correctly');
 	ok(paramString.getLooseKeys() === null, 'too many params. No loose keys');
 });
 test('too few params', function() {
@@ -48,5 +50,6 @@ test('too few params', function() {
 	};
 	var paramString = new tui.parametrizedString (baseString, params);
 	ok(paramString.replaceAll() == 'Hallo peoples. You fuck my $relative$', 'string replaced correctly');
+	ok(paramString.replaceAllClean() == 'Hallo peoples. You fuck my ', 'string replaced correctly');
 	ok(paramString.getLooseKeys().length === 1, 'Should have 1 loose key');
 });
