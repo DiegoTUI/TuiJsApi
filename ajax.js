@@ -303,7 +303,7 @@ tui.ajax = new function()
 			url: url,
 			ok: ajaxCache.storeOk(ok, url),
 			nok: nok,
-			type: isPost ? "GET" : "POST",
+			type: isPost ? "POST" : "GET",
 			timeout: timeout
 		}
 	}
