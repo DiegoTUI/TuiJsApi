@@ -56,7 +56,7 @@ tui.parametrizedString = function(baseString, parameters)
 	 	var replaced = self.replaceAll();
 	 	var result = [];
 	 	if (typeof replaced != 'undefined') {
-	 		var matched = replaced.match(/\$[^\$]+\$/);
+	 		var matched = replaced.match(/\$[^\$]+\$/g);
 	 		result = (matched === null) ? [] : matched;
 
 	 	}
