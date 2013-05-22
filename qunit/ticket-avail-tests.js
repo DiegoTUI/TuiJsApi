@@ -36,7 +36,7 @@ tui.debug("Passed QUnit module");
 });*/
 
 asyncTest('raw ajax call', function() {
-	var xmlrequest = '<?xml version="1.0" encoding="UTF-8"?><TicketAvailRQ echoToken="DummyEchoToken" sessionId="DummySessionId" \
+	var xmlrequest = '<TicketAvailRQ echoToken="DummyEchoToken" sessionId="DummySessionId" \
   xmlns="http://www.hotelbeds.com/schemas/2005/06/messages" \
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketAvailRQ.xsd">  \
   <Language>ENG</Language> \
@@ -61,9 +61,9 @@ asyncTest('raw ajax call', function() {
 	//var data = xmlrequest;
 	var data2 = {field1:"number1", field2:"number2"};
 	tui.debug("About to send data: " + JSON.stringify(data));
-	tui.ajax.send(data, url, ok_ticket_avail_request, nok);
+	tui.ajax.send(data, url, ok_ticket_avail_request, nok, true);
 	tui.debug("About to send data2: " + JSON.stringify(data2));
-	tui.ajax.send(data2, url2, ok_ticket_avail_request, nok);
+	tui.ajax.send(data2, url2, ok_ticket_avail_request, nok, true);
 });
 
 
