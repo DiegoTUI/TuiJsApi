@@ -23,7 +23,7 @@ atlasDefaults["ticketAvailRequest"] = {
 		Destination_code: "PMI",
 		DateFrom_date: function(){
 			var date = new Date();
-			return date.getFullYear() + 
+			return '' + date.getFullYear() + 
 			 + (date.getMonth()+1)+
 			 + date.getDate();
 		}
