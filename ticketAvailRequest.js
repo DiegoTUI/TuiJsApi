@@ -48,6 +48,7 @@ tui.ticketAvailRequest = function(parameters)
 		if (!("sessionId" in parameters))
 			parameters["sessionId"] = tui.randomString(tui.sessionIdLength);*/
 		//TODO: go with the rest of default parameters
+		tui.debug("atlasDefaults for ticketAvailRequest: " + JSON.stringify(tui.atlasDefaults.ticketAvailRequest)); 
 		for (var key in tui.atlasDefaults.ticketAvailRequest) {
 			if (!(key in parameters))
 				parameters[key] = tui.atlasDefaults.ticketAvailRequest[key];
