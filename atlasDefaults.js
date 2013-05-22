@@ -8,8 +8,9 @@
 /**
  * Pseudo-global to store Atlas defaults for requests and
  */
-var atlasDefaults = {
-	ticketAvailRequest : {
+var atlasDefaults = {};
+
+atlasDefaults["ticketAvailRequest"] = {
 		echoToken: tui.randomString(tui.echoTokenLength),
 		sessionId: tui.randomString(tui.sessionIdLength),
 		Language: "ENG",
@@ -22,8 +23,7 @@ var atlasDefaults = {
 		Destination_code: "PMI",
 		DateFrom_date: today(),
 		DateTo_date: tomorrow()
-	}
-}
+	};
 
 function today() {
 	var date = new Date();
