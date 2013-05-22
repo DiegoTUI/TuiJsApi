@@ -46,15 +46,16 @@ asyncTest('raw ajax call', function() {
   <DateFrom date="20130723"/> \
   <DateTo date="20130724"/> \
 </TicketAvailRQ>';
-	//var url= 'http://212.170.239.71/appservices/http/FrontendService';
-	var url= 'http://212.170.239.71/appservices/http/FrontendService?xml_request=' + xmlrequest;
+	var url= 'http://212.170.239.71/appservices/http/FrontendService';
+	//var url= 'http://212.170.239.71/appservices/http/FrontendService?xml_request=' + xmlrequest;
 	var url2 = 'http://54.246.80.107/api/test_post.php'
 	tui.debug("Passed var xmlrequest");
-	//var data = {"xml_request": xmlrequest};
-	var data = xmlrequest;
+	var data = {"xml_request": xmlrequest};
+	//var data = xmlrequest;
 	var data2 = {field1:"number1", field2:"number2"};
-	tui.debug("About to send data: " + JSON.stringify(data2));
-	//tui.ajax.send(data, url, ok_ticket_avail_request, nok);
+	tui.debug("About to send data: " + JSON.stringify(data));
+	tui.ajax.send(data, url, ok_ticket_avail_request, nok);
+	tui.debug("About to send data2: " + JSON.stringify(data2));
 	tui.ajax.send(data2, url2, ok_ticket_avail_request, nok);
 });
 
