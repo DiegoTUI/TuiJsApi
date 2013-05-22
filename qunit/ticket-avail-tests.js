@@ -12,6 +12,13 @@ function ok_ticket_avail_request(data)
 	start();
 }
 
+function nok(error)
+{
+	var message = error.message || 'test failed';
+	ok(false, message);
+	start();
+}
+
 
 /* run tests */
 QUnit.module('ticket-avail');
