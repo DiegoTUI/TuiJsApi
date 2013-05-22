@@ -40,5 +40,10 @@ function tomorrow() {
 			 + pad00(date.getDate());
 }
 
+function pad00(number)
+{
+	return number < 10 ? '0' + number : number;
+}
+
 //export module
 module.exports = atlasDefaults;
