@@ -31,7 +31,7 @@ var tui = new function()
 
 	//Default values for requests in ATLAS
 	//self.atlasDefaults = require('/js/atlasDefaults.js');
-	self.atlasDefaults = {ticketAvailRequest : {
+	self.atlasDefaults["ticketAvailRequest"] = {
 		echoToken: tui.randomString(tui.echoTokenLength),
 		sessionId: tui.randomString(tui.sessionIdLength),
 		Language: "ENG",
@@ -44,7 +44,7 @@ var tui = new function()
 		Destination_code: "PMI",
 		DateFrom_date: today(),
 		DateTo_date: tomorrow()
-	}};
+	};
 	//Requests and description maps from ATLAS
 	self.atlas = require('/js/atlas.js');
 	
