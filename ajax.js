@@ -80,6 +80,7 @@ var ajaxRequest = function(options)
 			timeout: ajaxTimeout,
 			success: self.ok,
 			complete: function(jqxhr, status) {
+				tui.debug("Ajax complete. Status: " + status + " - jqxhr: " + JSON.stringify(jqxhr));
 				self.ajaxComplete(jqxhr, status);
 				ajaxInflight.remove(self.url);
 				var elapsed = new Date().getTime() - startTime;
