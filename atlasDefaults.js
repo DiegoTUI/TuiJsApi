@@ -10,6 +10,8 @@
  */
 var atlasDefaults = {
 	ticketAvailRequest : {
+		echoToken: tui.randomString(tui.echoTokenLength),
+		sessionId: tui.randomString(tui.sessionIdLength),
 		Language: "ENG",
 		Credentials_User: "ISLAS",
 		Credentials_Password: "ISLAS",
