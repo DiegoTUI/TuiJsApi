@@ -20,9 +20,9 @@ atlasDefaults["ticketAvailRequest"] = {
 		PaginationData_pageNumber: "1",
 		ServiceOccupancy_AdultCount: "1",
 		ServiceOccupancy_ChildCount: "0",
-		Destination_code: "PMI",
-		DateFrom_date: today(),
-		DateTo_date: tomorrow()
+		Destination_code: "PMI"
+	//	DateFrom_date: today(),
+	//	DateTo_date: tomorrow()
 	};
 
 function today() {
