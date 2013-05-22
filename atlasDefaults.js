@@ -21,7 +21,12 @@ atlasDefaults["ticketAvailRequest"] = {
 		ServiceOccupancy_AdultCount: "1",
 		ServiceOccupancy_ChildCount: "0",
 		Destination_code: "PMI",
-		DateFrom_date: function(){return "kkadelavaca"}
+		DateFrom_date: function(){
+			var date = new Date();
+			return date.getFullYear() + 
+			 + (date.getMonth()+1)+
+			 + date.getDate();
+		}
 	//	DateTo_date: tomorrow()
 	};
 
