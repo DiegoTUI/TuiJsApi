@@ -8,7 +8,7 @@
 
 function ok_ticket_avail_request(data)
 {
-	tui.debug("Data received TicketAvailRQ: " + data);
+	tui.debug("Data received TicketAvailRQ: " + JSON.stringify(data));
 	start();
 }
 
