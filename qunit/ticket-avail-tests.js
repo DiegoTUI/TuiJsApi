@@ -36,7 +36,7 @@ tui.debug("Passed QUnit module");
 });*/
 
 asyncTest('raw ajax call', function() {
-	var xmlrequest = '<TicketAvailRQ echoToken="DummyEchoToken" sessionId="DummySessionId" \
+	var xmlrequest = '<?xml version="1.0" encoding="UTF-8"?><TicketAvailRQ echoToken="DummyEchoToken" sessionId="DummySessionId" \
   xmlns="http://www.hotelbeds.com/schemas/2005/06/messages" \
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketAvailRQ.xsd">  \
   <Language>ENG</Language> \
