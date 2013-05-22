@@ -30,14 +30,10 @@ asyncTest('ticketAvailRequest', function() {
 		ServiceOccupancy_AdultCount: "1"
 	};
 
-	var parametrizedRequest = new tui.parametrizedString(tui.atlas.ticketAvailRequest, parameters);
-	tui.debug("replaceAll: " + parametrizedRequest.replaceAll());
-	tui.debug("replaceAllClean: " + parametrizedRequest.replaceAllClean());
-	tui.debug("Loose keys: " + JSON.stringify(parametrizedRequest.getLooseKeys()));
-	//tui.debug("Passed var parameters");
-	//var ticketAvailRQ = new tui.ticketAvailRequest(parameters);
-	//tui.debug("Passed var ticketAvailRQ");
-	//ticketAvailRQ.sendRequest(ok_ticket_avail_request, nok);
+	tui.debug("Passed var parameters");
+	var ticketAvailRQ = new tui.ticketAvailRequest(parameters);
+	tui.debug("Passed var ticketAvailRQ");
+	ticketAvailRQ.sendRequest(ok_ticket_avail_request, nok);
 });
 
 /*asyncTest('raw ajax call', function() {
