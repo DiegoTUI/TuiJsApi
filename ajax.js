@@ -121,7 +121,7 @@ var ajaxRequest = function(options)
 		}
 		else if (status == 'parsererror')
 		{
-			error = new tui.Error('parse_error', 'Parse error: ' + jqxhr.statusText);
+			error = new tui.Error('parse_error', 'Parse error: ' + JSON.stringify(jqxhr));
 		}
 		else
 		{

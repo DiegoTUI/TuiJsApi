@@ -53,7 +53,7 @@ asyncTest('raw ajax call', function() {
 	//var data = {"xml_request": xmlrequest};
 	var data = xmlrequest;
 	var data2 = {field1:"number1", field2:"number2"};
-	tui.debug("About to send data: " + JSON.stringify(data));
+	tui.debug("About to send data: " + JSON.stringify(data2));
 	//tui.ajax.send(data, url, ok_ticket_avail_request, nok);
 	tui.ajax.send(data2, url2, ok_ticket_avail_request, nok);
 });
