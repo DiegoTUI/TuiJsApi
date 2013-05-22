@@ -30,7 +30,21 @@ var tui = new function()
 	};
 
 	//Default values for requests in ATLAS
-	self.atlasDefaults = require('/js/atlasDefaults.js');
+	//self.atlasDefaults = require('/js/atlasDefaults.js');
+	self.atlasDefaults = {ticketAvailRequest : {
+		echoToken: tui.randomString(tui.echoTokenLength),
+		sessionId: tui.randomString(tui.sessionIdLength),
+		Language: "ENG",
+		Credentials_User: "ISLAS",
+		Credentials_Password: "ISLAS",
+		PaginationData_itemsPerPage: "25",
+		PaginationData_pageNumber: "1",
+		ServiceOccupancy_AdultCount: "1",
+		ServiceOccupancy_ChildCount: "0",
+		Destination_code: "PMI",
+		DateFrom_date: today(),
+		DateTo_date: tomorrow()
+	}};
 	//Requests and description maps from ATLAS
 	self.atlas = require('/js/atlas.js');
 	
