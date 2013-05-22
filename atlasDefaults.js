@@ -21,7 +21,7 @@ atlasDefaults["ticketAvailRequest"] = {
 		ServiceOccupancy_AdultCount: "1",
 		ServiceOccupancy_ChildCount: "0",
 		Destination_code: "PMI"
-		DateFrom_date: function(){return today()},
+		DateFrom_date: "kkdelavaka",
 	//	DateTo_date: tomorrow()
 	};
 
