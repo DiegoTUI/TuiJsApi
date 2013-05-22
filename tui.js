@@ -28,10 +28,12 @@ var tui = new function()
 		timeout: true,
 		parserError: true
 	};
-	//Requests and description maps from ATLAS
-	self.atlas = require('/js/atlas.js');
+
 	//Default values for requests in ATLAS
 	self.atlasDefaults = require('/js/atlasDefaults.js');
+	//Requests and description maps from ATLAS
+	self.atlas = require('/js/atlas.js');
+	
 
 	/**
 	 * Check out for testing mode: turns on local access and instrumentation.

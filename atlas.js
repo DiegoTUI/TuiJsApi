@@ -28,7 +28,7 @@ var atlas = {
   <DateFrom date="$DateFrom_date$"/> \
   <DateTo date="$DateTo_date$"/> \
 </TicketAvailRQ>'	
-}
+};
 
 //export module
 module.exports = atlas;
