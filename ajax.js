@@ -50,6 +50,7 @@ var ajaxRequest = function(options)
 		self.nok = options.nok;
 		self.ajaxTimeout = options.timeout || 4000;
 		self.once = options.once;
+		self.type = options.type ? options.type : "GET";
 	}
 
 	self.setOptions(options);
@@ -75,7 +76,7 @@ var ajaxRequest = function(options)
 		var params = {
 			data: self.data,
 			url: self.url,
-			type: "GET",
+			type: self.type,
 			dataType: 'json',
 			timeout: ajaxTimeout,
 			success: self.ok,
@@ -148,9 +149,9 @@ tui.ajax = new function()
 	 * ok: function to call with data after a success.
 	 * nok: function to call with error object after a failure.
 	 */
-	self.send = function(data, url, ok, nok, timeout)
+	self.send = function(data, url, ok, nok, isPost, timeout)
 	{
-		var options = createOptions(data, url, ok, nok, timeout);
+		var options = createOptions(data, url, ok, nok, isPost, timeout);
 		if (!options)
 		{
 			return;
@@ -165,9 +166,9 @@ tui.ajax = new function()
 	 * ok: function to call with data after a success.
 	 * nok: function to call with error object after a failure.
 	 */
-	self.sendOnce = function(data, url, ok, nok, timeout)
+	self.sendOnce = function(data, url, ok, nok, isPost, timeout)
 	{
-		var options = createOptions(data, url, ok, nok, timeout);
+		var options = createOptions(data, url, ok, nok, isPost, timeout);
 		if (!options)
 		{
 			return;
@@ -275,7 +276,7 @@ tui.ajax = new function()
 	/**
 	 * Create the options for the request, encapsulating all request data.
 	 */
-	function createOptions(data, url, ok, nok, timeout)
+	function createOptions(data, url, ok, nok, isPost, timeout)
 	{
 		if (!self.checkCallback(ok, 'ok for ' + url + ' is not a function') ||
 				!self.checkCallback(nok, 'nok for ' + url + ' is not a function'))
@@ -302,6 +303,7 @@ tui.ajax = new function()
 			url: url,
 			ok: ajaxCache.storeOk(ok, url),
 			nok: nok,
+			type: isPost ? "GET" : "POST",
 			timeout: timeout
 		}
 	}

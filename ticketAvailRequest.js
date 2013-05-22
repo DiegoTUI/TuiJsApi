@@ -36,7 +36,7 @@ tui.ticketAvailRequest = function(parameters)
 		var parametrizedRequest = new ParametrizedString(tui.atlas.ticketAvailRequest, parameters);
 		var data = {xml_request: parametrizedRequest.replaceAllClean()};
 		tui.debug("about to launch request: " + JSON.stringify(data));
-		ajax.send(data, tui.atlas.url, ok, nok);
+		ajax.send(data, tui.atlas.url, ok, nok, /*isPost*/ true);
 	}
 
 	/**
