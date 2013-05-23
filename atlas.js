@@ -12,7 +12,7 @@ if (typeof tuins === 'undefined') {
 /**
  * Pseudo-global to store Atlas requests and description maps
  */
-tuins.atlas = {
+var atlas = {
 	url: 'http://212.170.239.71/appservices/http/FrontendService',
 	ticketAvailRequest : '<TicketAvailRQ echoToken="$echoToken$" sessionId="$sessionId$" \
 		xmlns="http://www.hotelbeds.com/schemas/2005/06/messages" \
@@ -35,4 +35,4 @@ tuins.atlas = {
 };
 
 //export module
-module.exports = {hallo:"peoples"};
+module.exports = atlas;
