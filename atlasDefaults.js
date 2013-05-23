@@ -22,33 +22,21 @@ atlasDefaults["ticketAvailRequest"] = {
 		ServiceOccupancy_AdultCount: "1",
 		ServiceOccupancy_ChildCount: "0",
 		Destination_code: "PMI",
-		DateFrom_date: today
-	//	DateTo_date: tomorrow()
+		DateFrom_date: today,
+		DateTo_date: tomorrow
 	};
 
 function today() {
 	var date = new Date();
-	var number = date.getFullYear()*10000 + date.getMonth()*100 + date.getDate();
+	var number = date.getFullYear()*10000 + (date.getMonth()+1)*100 + date.getDate();
 	return number.toString();
-	//return "kkdelavaca";
-	/*return date.getFullYear().toString() + 
-			 + pad00(date.getMonth()+1)+
-			 + pad00(date.getDate());*/
 }
 
 function tomorrow() {
 	var date = new Date();
 	date.setDate(date.getDate() + 1);
-	return date.getFullYear() + 
-			 + pad00(date.getMonth()+1)+
-			 + pad00(date.getDate());
-}
-
-function pad00(number)
-{
-	tui.debug ("pad00: " + number);
-	return "0"+"5";
-	return number < 10 ? '0' + number.toString() : number.toString();
+	var number = date.getFullYear()*10000 + (date.getMonth()+1)*100 + date.getDate();
+	return number.toString();
 }
 
 //export module
