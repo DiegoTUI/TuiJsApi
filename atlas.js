@@ -35,4 +35,4 @@ tuins.atlas = {
 };
 
 //export module
-module.exports = tuins.atlas;
+module.exports = {hallo:"peoples"};
