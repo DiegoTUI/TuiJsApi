@@ -33,7 +33,8 @@ var tui = new function()
 	self.atlasDefaults = require('/js/atlasDefaults.js');
 	//Requests and description maps from ATLAS
 	self.atlas = require('/js/atlas.js');
-	
+	console.log("just loaded atlas: " + JSON.stringify(self.atlas));
+	console.log("just loaded atlasDefaults: " + JSON.stringify(self.atlasDefaults));
 
 	/**
 	 * Check out for testing mode: turns on local access and instrumentation.
