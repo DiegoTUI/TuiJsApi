@@ -9,9 +9,8 @@
 /**
  * Pseudo-global to store Atlas defaults for requests and
  */
-var atlasDefaults = {};
-
-atlasDefaults["ticketAvailRequest"] = {
+var atlasDefaults = {
+	ticketAvailRequest: {
 	//	echoToken: tui.randomString(tui.echoTokenLength),
 	//	sessionId: tui.randomString(tui.sessionIdLength),
 		Language: "ENG",
@@ -30,22 +29,30 @@ atlasDefaults["ticketAvailRequest"] = {
 			var date = new Date();
 			date.setDate(date.getDate() + 1);
 			return tui.atlasDate (date);
+		}
+};
+
+/*atlasDefaults["ticketAvailRequest"] = {
+	//	echoToken: tui.randomString(tui.echoTokenLength),
+	//	sessionId: tui.randomString(tui.sessionIdLength),
+		Language: "ENG",
+		Credentials_User: "ISLAS",
+		Credentials_Password: "ISLAS",
+		PaginationData_itemsPerPage: "25",
+		PaginationData_pageNumber: "1",
+		ServiceOccupancy_AdultCount: "1",
+		ServiceOccupancy_ChildCount: "0",
+		Destination_code: "PMI",
+		DateFrom_date: function(){
+			var date = new Date();
+			return tui.atlasDate (date);
 		},
-	};
-
-function today() {
-	var date = new Date();
-	//var number = date.getFullYear()*10000 + (date.getMonth()+1)*100 + date.getDate();
-	return (date.getFullYear()*10000 + (date.getMonth()+1)*100 + date.getDate()).toString();
-	//return number.toString();
-}
-
-function tomorrow() {
-	var date = new Date();
-	date.setDate(date.getDate() + 1);
-	var number = date.getFullYear()*10000 + (date.getMonth()+1)*100 + date.getDate();
-	return number.toString();
-}
+		DateTo_date: function(){
+			var date = new Date();
+			date.setDate(date.getDate() + 1);
+			return tui.atlasDate (date);
+		}
+	};*/
 
 //export module
 module.exports = atlasDefaults;
