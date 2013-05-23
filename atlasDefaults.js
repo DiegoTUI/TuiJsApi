@@ -26,7 +26,11 @@ atlasDefaults["ticketAvailRequest"] = {
 			var date = new Date();
 			return tui.atlasDate (date);
 		},
-		DateTo_date: tomorrow
+		DateTo_date: function(){
+			var date = new Date();
+			date.setDate(date.getDate() + 1);
+			return tui.atlasDate (date);
+		},
 	};
 
 function today() {
