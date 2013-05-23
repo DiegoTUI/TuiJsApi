@@ -45,7 +45,7 @@ function pad00(number)
 {
 	tui.debug ("pad00: " + number);
 	//return "jarl";
-	return number < 10 ? '0' + number : number.toString();
+	return number < 10 ? '0' + number.toString() : number.toString();
 }
 
 //export module
