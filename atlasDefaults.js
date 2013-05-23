@@ -1,3 +1,4 @@
+'use strict';
 /*
  * Atlas defaults for requests .
  *
