@@ -10,7 +10,7 @@
  * Pseudo-global to store Atlas defaults for requests and
  */
 var atlasDefaults = {
-	ticketAvailRequest: {
+	"ticketAvailRequest": {
 	//	echoToken: tui.randomString(tui.echoTokenLength),
 	//	sessionId: tui.randomString(tui.sessionIdLength),
 		Language: "ENG",
