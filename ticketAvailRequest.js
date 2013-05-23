@@ -33,7 +33,7 @@ tuins.ticketAvailRequest = function(parameters)
 	 * nok: callback in case of not ok
 	 */
 	self.sendRequest = function(ok, nok) {
-		var parametrizedRequest = new ParametrizedString(tui.atlas.ticketAvailRequest, parameters);
+		var parametrizedRequest = new ParametrizedString(tuins.atlas.ticketAvailRequest, parameters);
 		var data = {xml_request: parametrizedRequest.replaceAllClean()};
 		tui.debug("about to launch request: " + JSON.stringify(data));
 		ajax.send(data, tui.atlas.url, ok, nok, /*isPost*/ true);
@@ -49,10 +49,10 @@ tuins.ticketAvailRequest = function(parameters)
 			parameters["sessionId"] = tui.randomString(tui.sessionIdLength);*/
 		//TODO: go with the rest of default parameters
 		tui.debug("atlasDefaults for ticketAvailRequest: " + JSON.stringify(tui.atlasDefaults.ticketAvailRequest)); 
-		for (var key in tui.atlasDefaults.ticketAvailRequest) {
+		for (var key in tuins.atlasDefaults.ticketAvailRequest) {
 			if (!(key in parameters)){
-				parameters[key] = typeof tui.atlasDefaults.ticketAvailRequest[key] === "function" ?
-											tui.atlasDefaults.ticketAvailRequest[key]() : tui.atlasDefaults.ticketAvailRequest[key];
+				parameters[key] = typeof tuins.atlasDefaults.ticketAvailRequest[key] === "function" ?
+											tuins.atlasDefaults.ticketAvailRequest[key]() : tuins.atlasDefaults.ticketAvailRequest[key];
 			}
 		}
 	}
