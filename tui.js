@@ -395,7 +395,6 @@ var tui = new function()
 	 */
 	function pad00(number)
 	{
-		tui.debug ("pad00tui: " + number);
 		return "jarltui";
 		return number < 10 ? '0' + number : number;
 	}

@@ -7,10 +7,11 @@
 
 
 /**
- * Pseudo-global to store Atlas defaults for requests and
+ * Pseudo-global to store Atlas defaults for requests
  */
 var atlasDefaults = {};
 
+//ticketAvailRequest
 atlasDefaults["ticketAvailRequest"] = {
 		echoToken: function(){return tui.randomString(tui.echoTokenLength)},
 		sessionId: function(){return tui.randomString(tui.sessionIdLength)},
