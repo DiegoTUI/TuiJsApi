@@ -31,7 +31,7 @@ asyncTest('ticketAvailRequest', function() {
 	};
 
 	tui.debug("Passed var parameters");
-	var ticketAvailRQ = new tui.ticketAvailRequest(parameters);
+	var ticketAvailRQ = new tuins.ticketAvailRequest(parameters);
 	tui.debug("Passed var ticketAvailRQ");
 	ticketAvailRQ.sendRequest(ok_ticket_avail_request, nok);
 });
