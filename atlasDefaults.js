@@ -28,7 +28,7 @@ atlasDefaults["ticketAvailRequest"] = {
 function today() {
 	var date = new Date();
 	//return "kkdelavaca";
-	return '' + date.getFullYear() + 
+	return date.getFullYear().toString() + 
 			 + pad00(date.getMonth()+1)+
 			 + pad00(date.getDate());
 }
@@ -44,8 +44,8 @@ function tomorrow() {
 function pad00(number)
 {
 	tui.debug ("pad00: " + number);
-	return "jarl";
-	return number < 10 ? '0' + number : number;
+	//return "jarl";
+	return number < 10 ? '0' + number : number.toString();
 }
 
 //export module
