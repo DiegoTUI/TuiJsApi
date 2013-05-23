@@ -43,7 +43,7 @@ function tomorrow() {
 
 function pad00(number)
 {
-	return number < 10 ? '0' + number : '' + number;
+	return number < 10 ? '0' + number : number;
 }
 
 //export module
