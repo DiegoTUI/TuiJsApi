@@ -5,14 +5,20 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
+if (typeof tuins === 'undefined') {
+  console.log("atlasDefaults.js - initializing tuins");
+  var tuins = {};
+  //console.log("parametrizedString.js - requiring tui");
+  //var tui = require ('/js/tui.js');
+}
 
 /**
  * Pseudo-global to store Atlas defaults for requests
  */
-var atlasDefaults = {};
+tuins.atlasDefaults = {};
 
 //ticketAvailRequest
-atlasDefaults["ticketAvailRequest"] = {
+tuins.atlasDefaults["ticketAvailRequest"] = {
 		echoToken: function(){return tui.randomString(tui.echoTokenLength)},
 		sessionId: function(){return tui.randomString(tui.sessionIdLength)},
 		Language: "ENG",
@@ -35,4 +41,4 @@ atlasDefaults["ticketAvailRequest"] = {
 	};
 
 //export module
-module.exports = atlasDefaults;
+module.exports = tuins.atlasDefaults;

@@ -4,11 +4,17 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
+if (typeof tuins === 'undefined') {
+  console.log("atlas.js - initializing tuins");
+  var tuins = {};
+  //console.log("parametrizedString.js - requiring tui");
+  //var tui = require ('/js/tui.js');
+}
 
 /**
  * Pseudo-global to store Atlas requests and description maps
  */
-var atlas = {
+tuins.atlas = {
 	url: 'http://212.170.239.71/appservices/http/FrontendService',
 	ticketAvailRequest : '<TicketAvailRQ echoToken="$echoToken$" sessionId="$sessionId$" \
 		xmlns="http://www.hotelbeds.com/schemas/2005/06/messages" \
@@ -31,4 +37,4 @@ var atlas = {
 };
 
 //export module
-module.exports = atlas;
+module.exports = tuins.atlas;

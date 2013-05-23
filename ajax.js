@@ -6,9 +6,9 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
-if (typeof tui === 'undefined') {
-	console.log("parametrizedString.js - initializing tui");
-	var tui = {};
+if (typeof tuins === 'undefined') {
+	console.log("ajax.js - initializing tuins");
+	var tuins = {};
 	//console.log("ajax.js - requiring tui");
 	//var tui = require ('/js/tui.js');
 }
@@ -141,7 +141,7 @@ var ajaxRequest = function(options)
 /**
  * object to encapsulate Ajax globals and functions.
  */
-tui.ajax = new function()
+tuins.ajax = new function()
 {
 	// self-reference
 	var self = this;
@@ -454,5 +454,5 @@ var ajaxInflight = new function()
 	}
 }
 
-module.exports = tui.ajax;
+module.exports = tuins.ajax;
 

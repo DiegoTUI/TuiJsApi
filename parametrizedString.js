@@ -6,9 +6,9 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
-if (typeof tui === 'undefined') {
-	console.log("parametrizedString.js - initializing tui");
-	var tui = {};
+if (typeof tuins === 'undefined') {
+	console.log("parametrizedString.js - initializing tuins");
+	var tuins = {};
 	//console.log("parametrizedString.js - requiring tui");
 	//var tui = require ('/js/tui.js');
 }
@@ -18,7 +18,7 @@ if (typeof tui === 'undefined') {
  * baseString: the string with the $keys$ in it
  * parameters: a dictionary with keys and values to be replaced in the baseString
  */
-tui.parametrizedString = function(baseString, parameters)
+tuins.parametrizedString = function(baseString, parameters)
 {
 	// self-reference
 	var self = this;
@@ -68,5 +68,5 @@ tui.parametrizedString = function(baseString, parameters)
 	return self;
 }
 
-module.exports = tui.parametrizedString;
+module.exports = tuins.parametrizedString;
 

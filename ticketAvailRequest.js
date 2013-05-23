@@ -6,16 +6,18 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
-/*if (typeof tui === 'undefined') {
-	console.log("ticketAvailRequest.js - requiring tui");
-	var tui = require ('/js/tui.js');
-}*/
+if (typeof tuins === 'undefined') {
+	console.log("ticketAvailRequest.js - initializing tuins");
+	var tuins = {};
+	//console.log("ticketAvailRequest.js - requiring tui");
+	//var tui = require ('/js/tui.js');
+}
 
 /**
  * The TicketAvail request.
  * parameters: the parameters to build the xml and perform the call
  */
-tui.ticketAvailRequest = function(parameters)
+tuins.ticketAvailRequest = function(parameters)
 {
 	// self-reference
 	var self = this;
@@ -60,5 +62,5 @@ tui.ticketAvailRequest = function(parameters)
 	return self;
 }
 
-module.exports = tui.ticketAvailRequest;
+module.exports = tuins.ticketAvailRequest;
 

@@ -6,9 +6,11 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
-if (typeof tui === 'undefined') {
-	console.log("xmlReader.js - requiring tui");
-	var tui = require ('/js/tui.js');
+if (typeof tuins === 'undefined') {
+	console.log("xmlReader.js - initializing tuins");
+	var tuins = {};
+	//console.log("xmlReader.js - requiring tui");
+	//var tui = require ('/js/tui.js');
 }
 
 /**
@@ -17,7 +19,7 @@ if (typeof tui === 'undefined') {
  * descriptionMap: an array representing the values to be extracted from the xml.
  * see xmlreader-tests to fully understand this class
  */
-tui.xmlReader = function(xmlString, descriptionMap)
+tuins.xmlReader = function(xmlString, descriptionMap)
 {
 	// self-reference
 	var self = this;
@@ -109,5 +111,5 @@ tui.xmlReader = function(xmlString, descriptionMap)
 	return self;
 }
 
-module.exports = tui.xmlReader;
+module.exports = tuins.xmlReader;
 
