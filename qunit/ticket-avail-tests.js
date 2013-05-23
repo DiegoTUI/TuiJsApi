@@ -36,7 +36,7 @@ asyncTest('ticketAvailRequest', function() {
 	ticketAvailRQ.sendRequest(ok_ticket_avail_request, nok);
 });
 
-asyncTest('raw ajax call', function() {
+/*asyncTest('raw ajax call', function() {
 	var xmlrequest = '<TicketAvailRQ echoToken="DummyEchoToken" sessionId="DummySessionId" \
   xmlns="http://www.hotelbeds.com/schemas/2005/06/messages" \
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketAvailRQ.xsd">  \
@@ -65,6 +65,6 @@ asyncTest('raw ajax call', function() {
 	tuins.ajax.send(data, url, ok_ticket_avail_request, nok, true);
 	tui.debug("About to send data2: " + JSON.stringify(data2));
 	tuins.ajax.send(data2, url2, ok_ticket_avail_request, nok, true);
-});
+});*/
 
 

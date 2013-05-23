@@ -7,10 +7,8 @@
  */
 
 if (typeof tuins === 'undefined') {
-	console.log("parametrizedString.js - initializing tuins");
+	tui.debug("parametrizedString.js - initializing tuins");
 	var tuins = {};
-	//console.log("parametrizedString.js - requiring tui");
-	//var tui = require ('/js/tui.js');
 }
 
 /**

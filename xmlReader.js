@@ -7,10 +7,8 @@
  */
 
 if (typeof tuins === 'undefined') {
-	console.log("xmlReader.js - initializing tuins");
+	tui.debug("xmlReader.js - initializing tuins");
 	var tuins = {};
-	//console.log("xmlReader.js - requiring tui");
-	//var tui = require ('/js/tui.js');
 }
 
 /**

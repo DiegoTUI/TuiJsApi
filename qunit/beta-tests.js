@@ -78,8 +78,5 @@ test('clear local storage', function() {
 test('tui object', function() {
 	ok(tui, 'tui object exists');
 });
-test('tuiajax object', function() {
-	ok(tui.ajax, 'tui.ajax object exists');
-});
 
 

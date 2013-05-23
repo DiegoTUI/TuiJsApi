@@ -131,7 +131,7 @@ var ticketClassificationListMap = [
 QUnit.module('xmlreader');
 
 test('TicketAvail parsing test xml', function() {
-	var xmlReader = new tui.xmlReader (ticketAvailString, ticketAvailMap);
+	var xmlReader = new tuins.xmlReader (ticketAvailString, ticketAvailMap);
 	var parsedXml = xmlReader.readObjects('ServiceTicket');
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');
@@ -155,7 +155,7 @@ test('TicketAvail parsing test xml', function() {
 });
 
 test('ticketClassificationList parsing test xml', function() {
-	var xmlReader = new tui.xmlReader (ticketClassificationListString, ticketClassificationListMap);
+	var xmlReader = new tuins.xmlReader (ticketClassificationListString, ticketClassificationListMap);
 	var parsedXml = xmlReader.readObjects('');	//Trying to read the base object
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');

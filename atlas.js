@@ -5,10 +5,8 @@
  */
 
 if (typeof tuins === 'undefined') {
-  console.log("atlas.js - initializing tuins");
+  tui.debug("atlas.js - initializing tuins");
   var tuins = {};
-  //console.log("parametrizedString.js - requiring tui");
-  //var tui = require ('/js/tui.js');
 }
 
 /**
