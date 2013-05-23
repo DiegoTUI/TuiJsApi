@@ -22,7 +22,6 @@ function require(file)
 	{
 		debug('requiring ' + file);
 	}
-	module.exports = {gofuck:"yourself"};
 	$.ajaxSetup({async:false});
 	$.getScript(file);
 	$.ajaxSetup({async:true});
