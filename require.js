@@ -18,9 +18,9 @@ var module = {exports: {}};
 function require(file)
 {
 	file = file.replace('..', '.');
-	if (typeof debug != 'undefined')
+	if (typeof tui.debug != 'undefined')
 	{
-		debug('requiring ' + file);
+		tui.debug('requiring ' + file);
 	}
 	$.ajaxSetup({async:false});
 	$.getScript(file);
