@@ -6,10 +6,10 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
-if (typeof tui === 'undefined') {
+/*if (typeof tui === 'undefined') {
 	console.log("ajax.js - requiring tui");
 	var tui = require ('/js/tui.js');
-}
+}*/
 
 /**
  * An ajax request object.
