@@ -258,9 +258,7 @@ var tui = new function()
 	 */
 	self.atlasDate = function(date)
 	{
-		 return date.getFullYear() + 
-			 + pad00(date.getMonth()+1)+
-			 + pad00(date.getDate());
+		 return (date.getFullYear()*10000 + (date.getMonth()+1)*100 + date.getDate()).toString();
 	}
 
 	/**

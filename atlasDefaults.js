@@ -28,8 +28,9 @@ atlasDefaults["ticketAvailRequest"] = {
 
 function today() {
 	var date = new Date();
-	var number = date.getFullYear()*10000 + (date.getMonth()+1)*100 + date.getDate();
-	return number.toString();
+	//var number = date.getFullYear()*10000 + (date.getMonth()+1)*100 + date.getDate();
+	return (date.getFullYear()*10000 + (date.getMonth()+1)*100 + date.getDate()).toString();
+	//return number.toString();
 }
 
 function tomorrow() {
