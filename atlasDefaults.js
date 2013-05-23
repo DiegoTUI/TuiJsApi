@@ -27,6 +27,7 @@ atlasDefaults["ticketAvailRequest"] = {
 
 function today() {
 	var date = new Date();
+	return "kkdelavaca";
 	return date.getFullYear() + 
 			 + pad00(date.getMonth()+1)+
 			 + pad00(date.getDate());
