@@ -6,7 +6,6 @@
  */
 
 if (typeof tuins === 'undefined') {
-  //tui.debug("atlasDefaults.js - initializing tuins");
   var tuins = {};
 }
 

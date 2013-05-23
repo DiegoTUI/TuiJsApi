@@ -25,7 +25,7 @@ function require(file)
 	$.ajaxSetup({async:false});
 	$.getScript(file);
 	$.ajaxSetup({async:true});
-	console.log("About to return module.exports: " + JSON.stringify(module.exports));
+	
 	return module.exports;
 }
 

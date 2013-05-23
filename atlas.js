@@ -5,14 +5,13 @@
  */
 
 if (typeof tuins === 'undefined') {
-  //tui.debug("atlas.js - initializing tuins");
   var tuins = {};
 }
 
 /**
  * Pseudo-global to store Atlas requests and description maps
  */
-var atlas = {
+tuins.atlas = {
 	url: 'http://212.170.239.71/appservices/http/FrontendService',
 	ticketAvailRequest : '<TicketAvailRQ echoToken="$echoToken$" sessionId="$sessionId$" \
 		xmlns="http://www.hotelbeds.com/schemas/2005/06/messages" \
@@ -35,4 +34,4 @@ var atlas = {
 };
 
 //export module
-module.exports = atlas;
+module.exports = tuins.atlas;
