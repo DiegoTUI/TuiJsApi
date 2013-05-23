@@ -7,10 +7,8 @@
  */
 
 if (typeof tuins === 'undefined') {
-	console.log("ticketAvailRequest.js - initializing tuins");
+	tui.debug("ticketAvailRequest.js - initializing tuins");
 	var tuins = {};
-	//console.log("ticketAvailRequest.js - requiring tui");
-	//var tui = require ('/js/tui.js');
 }
 
 /**

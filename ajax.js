@@ -7,10 +7,8 @@
  */
 
 if (typeof tuins === 'undefined') {
-	console.log("ajax.js - initializing tuins");
+	tui.debug("ajax.js - initializing tuins");
 	var tuins = {};
-	//console.log("ajax.js - requiring tui");
-	//var tui = require ('/js/tui.js');
 }
 
 /**
