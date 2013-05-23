@@ -44,7 +44,7 @@ function tomorrow() {
 function pad00(number)
 {
 	tui.debug ("pad00: " + number);
-	//return "jarl";
+	return "05";
 	return number < 10 ? '0' + number.toString() : number.toString();
 }
 
