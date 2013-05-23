@@ -78,9 +78,7 @@ test('clear local storage', function() {
 test('tui object', function() {
 	ok(tui, 'tui object exists');
 	ok(tui.atlas, 'tui.atlas object exists');
-	ok(tui.atlasDefaults, 'tui.atlas object exists');
-	tui.debug("atlas: " + JSON.stringify(tui.atlas));
-	tui.debug("atlasDefaults: " + JSON.stringify(tui.atlasDefaults));
+	ok(tui.atlasDefaults, 'tui.atlasDefaults object exists');
 });
 
 

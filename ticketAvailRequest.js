@@ -43,12 +43,7 @@ tuins.ticketAvailRequest = function(parameters)
 	 * Check the parameters and creates (if needed) some of the compulsory fields
 	 */
 	function initParams() {
-		/*if (!("echoToken" in parameters))
-			parameters["echoToken"] = tui.randomString(tui.echoTokenLength);
-		if (!("sessionId" in parameters))
-			parameters["sessionId"] = tui.randomString(tui.sessionIdLength);*/
-		//TODO: go with the rest of default parameters
-		tui.debug("atlasDefaults for ticketAvailRequest: " + JSON.stringify(tui.atlasDefaults.ticketAvailRequest)); 
+		//tui.debug("atlasDefaults for ticketAvailRequest: " + JSON.stringify(tui.atlasDefaults.ticketAvailRequest)); 
 		for (var key in tui.atlasDefaults.ticketAvailRequest) {
 			if (!(key in parameters)){
 				parameters[key] = typeof tui.atlasDefaults.ticketAvailRequest[key] === "function" ?

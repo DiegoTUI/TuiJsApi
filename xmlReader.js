@@ -53,14 +53,14 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 			var item = descriptionMap[i];
 			if (typeof item === 'string') {	//It's a string
 				result[item] = $(element).find(item).text();
-				tui.debug("Found string in descriptionMap. Field: " + item +". Value: " + result[item]);
+				//tui.debug("Found string in descriptionMap. Field: " + item +". Value: " + result[item]);
 			} 
 			else if (typeof item === 'object') {	//It's a dictionary
 				//get the first (and only) key of the dictionary
 				for (var key in item) {
 					var value = item[key];
 					if (value instanceof Array) {	//It's a list
-						tui.debug("Key: " + key + " is listified as: " + key.listify());
+						//tui.debug("Key: " + key + " is listified as: " + key.listify());
 						//initialize list
 						result[key.listify()] = [];
 						//The array should contain only one element and it should be a dictionary
@@ -68,7 +68,7 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 						var innerObject = value[0];
 						//get in the list replacing the dots by spaces
 						$(element).find(key.replace(/\./g,' ')).each(function(){
-							tui.debug("Checking for: " + key);
+							//tui.debug("Checking for: " + key);
 							var elementInList = {};
 							for (var innerKey in innerObject) {
 								elementInList[innerKey] = valueInXml(this, innerObject[innerKey]);
@@ -102,7 +102,7 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 		else {	//There is an attribute at the end
 			value = tip.attr(attribute);
 		}
-		tui.debug("Value for path " + path + ": " + value + ". RealPath: " + realPath + " - Attribute: " + attribute + " - Replaced RealPath: " + realPath.replace(/\./g,' '));
+		//tui.debug("Value for path " + path + ": " + value + ". RealPath: " + realPath + " - Attribute: " + attribute + " - Replaced RealPath: " + realPath.replace(/\./g,' '));
 		return value;
 	}
 

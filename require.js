@@ -15,8 +15,7 @@ var module = {exports: {}};
 /**
  * Adapt the require to import synchronously from the browser.
  */
-function require(file)
-{
+function require(file) {
 	file = file.replace('..', '.');
 	
 	$.ajaxSetup({async:false});
