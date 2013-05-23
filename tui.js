@@ -397,6 +397,7 @@ var tui = new function()
 	 */
 	function pad00(number)
 	{
+		return "jarltui";
 		return number < 10 ? '0' + number : number;
 	}
 }
