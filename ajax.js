@@ -61,7 +61,7 @@ var ajaxRequest = function(options)
 	 */
 	self.send = function()
 	{
-		if (ajaxInflight.contains(self.url))
+		if (ajaxInflight.contains(self.url, self.data))
 		{
 			// there is another request to the same URL in flight
 			tui.error('duplicated call to ' + self.url);
@@ -71,7 +71,7 @@ var ajaxRequest = function(options)
 				return;
 			}
 		}
-		ajaxInflight.add(self.url);
+		ajaxInflight.add(self.url, self.data);
 		var startTime = new Date().getTime();
 		var params = {
 			data: self.data,
@@ -80,11 +80,10 @@ var ajaxRequest = function(options)
 			dataType: 'json',
 			timeout: ajaxTimeout,
 			success: self.ok,
-			crossDomain: true,
 			complete: function(jqxhr, status) {
 				tui.debug("Ajax complete. Status: " + status + " - jqxhr: " + JSON.stringify(jqxhr));
 				self.ajaxComplete(jqxhr, status);
-				ajaxInflight.remove(self.url);
+				ajaxInflight.remove(self.url, self.data);
 				var elapsed = new Date().getTime() - startTime;
 				tui.instrument(status, elapsed, self.url);
 			}
@@ -431,25 +430,42 @@ var ajaxInflight = new function()
 	/**
 	 * Find out if there is an inflight request to the URL.
 	 */
-	self.contains = function(url)
-	{
-		return url in inflight;
+	self.contains = function(url, data) {
+		if (url in inflight) {
+			if (data) {
+				if (inflight[url] == data) {
+					return true;
+				}
+				return false;
+			} 
+			return true;
+		}
+		return false;
 	}
 
 	/**
 	 * Add an inflight request to avoid redundant calls.
 	 */
-	self.add = function(url)
-	{
-		inflight[url] = true;
+	self.add = function(url, data) {
+		if (data) {
+			inflight[url] = JSON.stringify(data);
+		} else {
+			inflight[url] = true;
+		}
 	}
 
 	/**
 	 * Remove an inflight request.
 	 */
-	self.remove = function(url)
-	{
-		delete inflight[url];
+	self.remove = function(url, data) {
+		if (url in inflight) {
+			if (data) {
+				if (inflight[url] == data) {
+					delete inflight[url];
+				}
+			}
+			delete inflight[url];
+		}
 	}
 }
 
