@@ -80,9 +80,6 @@ var ajaxRequest = function(options)
 			dataType: 'json',
 			timeout: ajaxTimeout,
 			success: self.ok,
-			beforeSend: function(xhr){
-				xhr.setRequestHeader('Origin2', 'http://212.170.239.71');
-			},
 			complete: function(jqxhr, status) {
 				tui.debug("Ajax complete. Status: " + status + " - jqxhr: " + JSON.stringify(jqxhr));
 				self.ajaxComplete(jqxhr, status);
