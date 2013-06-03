@@ -31,7 +31,7 @@ var ticketAvailString = '<TicketAvailRS xsi-schemaLocation="http://www.hotelbeds
 			</DescriptionList> \
 			<ImageList> \
 				<Image> \
-					<Type>L</Type> \
+					<Type>S</Type> \
 					<Order>0</Order> \
 					<VisualizationOrder>0</VisualizationOrder> \
 					<Url>Image11</Url> \
