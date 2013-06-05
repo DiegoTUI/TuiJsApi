@@ -81,7 +81,7 @@ var ajaxRequest = function(options)
 			timeout: ajaxTimeout,
 			success: self.ok,
 			complete: function(jqxhr, status) {
-				tui.debug("Ajax complete. Status: " + status + " - jqxhr: " + JSON.stringify(jqxhr));
+				//tui.debug("Ajax complete. Status: " + status + " - jqxhr: " + JSON.stringify(jqxhr));
 				self.ajaxComplete(jqxhr, status);
 				ajaxInflight.remove(self.url, self.data);
 				var elapsed = new Date().getTime() - startTime;
@@ -119,6 +119,7 @@ var ajaxRequest = function(options)
 		//Ignore parsererror. Seems like namespaces in the response are giving problems
 		else if (status == 'parsererror')
 		{
+			tui.debug("status parsererror - returning");
 			return;
 			//error = new tui.Error('parse_error', 'Parse error: ' + JSON.stringify(jqxhr));
 		}
