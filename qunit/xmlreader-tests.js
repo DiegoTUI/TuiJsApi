@@ -104,10 +104,11 @@ var ticketAvailMapAlt = [
 	'Currency',
 	{'CurrencyCode': 'Currency.@code'},
 	{'Name': 'TicketInfo.Name'},
-	{'TicketInfo.DescriptionList.Description':[{'Type': '@type',
-					 			'Description': ''}]},
-	{'TicketInfo.ImageList.Image': [{'Type': 'Type',
-							'Url': 'Url'}]}]}
+	{'TicketInfo.DescriptionList.Description':[{'Type': '@type'},
+					 			{'Description': ''}]},
+	{'TicketInfo.ImageList.Image': [{'Type': 'Type'},
+							{'Url': 'Url'}]}
+	]}
 ];
 
 var ticketAvailMap2 = [
@@ -202,13 +203,13 @@ test('TicketAvailAlt parsing test xml', function() {
 	tui.debug("ticketAvail parsed: " + JSON.stringify(parsedXml));
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');
-	ok(parsedXml.length === 1, 'parsedXml has 2 elements');
+	ok(parsedXml.length === 1, 'parsedXml has 1 element');
 	ok(parsedXml[0].TotalItems === '27', 'TotalItems retrieved is correct');
 	ok(parsedXml[0].ServiceTicketList.length === 2, 'ServiceTicketList has 2 elements');
 	ok(parsedXml[0].ServiceTicketList[0].DateFrom === 'DateFrom1', 'dateFrom is correct in 1');
 	ok(parsedXml[0].ServiceTicketList[0].DateTo === 'DateTo1', 'dateTo is correct in 1');
-	ok(parsedXml[1].ServiceTicketList[1].DateFrom === 'DateFrom2', 'dateFrom is correct in 2');
-	ok(parsedXml[1].ServiceTicketList[1].DateTo === 'DateTo2', 'dateTo is correct in 2');
+	ok(parsedXml[0].ServiceTicketList[1].DateFrom === 'DateFrom2', 'dateFrom is correct in 2');
+	ok(parsedXml[0].ServiceTicketList[1].DateTo === 'DateTo2', 'dateTo is correct in 2');
 	/*ok(parsedXml[0].Currency === 'Euro1', 'Currency is correct in 1');
 	ok(parsedXml[0].CurrencyCode === 'EUR1', 'CurrencyCode is correct in 1');
 	ok(parsedXml[1].Currency === 'Euro2', 'Currency is correct in 2');
