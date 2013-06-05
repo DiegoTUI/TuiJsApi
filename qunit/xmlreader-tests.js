@@ -167,13 +167,13 @@ test('TicketAvail parsing test xml', function() {
 		var DescriptionList = parsedXml[i]['TicketInfo.DescriptionList.Description'.listify()];
 		ok(ImageList.length === 3, 'Only 3 images in the list: ' + ImageList.length);
 		for (var j=0; j<3; j++) {
-			ok(ImageList.Type === "S", "wrong image type in ticket " + i + " image " + j);
-			ok(ImageList.Url === "Image"+(i+1)+""+(j+1), "wrong image url in ticket " + i + " image " + j);
+			ok(ImageList[j].Type === "S", "wrong image type in ticket " + i + " image " + j);
+			ok(ImageList[j].Url === "Image"+(i+1)+""+(j+1), "wrong image url in ticket " + i + " image " + j);
 		}
 		ok(DescriptionList.length === 2, 'Only 2 descriptions in the list: ' + DescriptionList.length);
 		for (var j=0; j<2; j++) {
-			ok(DescriptionList.Type === "generalDescription", "wrong description type in ticket " + i + " image " + j);
-			ok(DescriptionList.Description === "Description "+(i+1)+""+(j+1), "wrong description text in ticket " + i + " image " + j);
+			ok(DescriptionList[j].Type === "generalDescription", "wrong description type in ticket " + i + " image " + j);
+			ok(DescriptionList[j].Description === "Description "+(i+1)+""+(j+1), "wrong description text in ticket " + i + " image " + j);
 		}
 	}
 });
