@@ -137,6 +137,7 @@ QUnit.module('xmlreader');
 test('TicketAvail parsing test xml', function() {
 	var xmlReader = new tuins.xmlReader (ticketAvailString, ticketAvailMap);
 	var parsedXml = xmlReader.readObjects('ServiceTicket');
+	tui.debug("ticketAvail parsed: " + JSON.stringify(parsedXml));
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');
 	ok(parsedXml.length === 2, 'parsedXml has 2 elements');
