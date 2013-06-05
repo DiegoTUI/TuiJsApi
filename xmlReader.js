@@ -35,7 +35,7 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 		var objectToBrowse = tag.length > 0 ? xmlObject.find(tag) : xmlObject.find(":root");
 		//parse it
 		objectToBrowse.each(function() {
-			result.push(processElement(this));
+			result.push(processElement2(this));
 		});
 		
 		return result;
@@ -69,7 +69,7 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 						
 						//get in the list replacing the dots by spaces
 						$(element).find(key.replace(/\./g,' ')).each(function(){
-							//tui.debug("Checking for: " + key);
+							tui.debug("Checking for: " + $(this).text());
 							result[listifiedKey].push(processElement2(this));
 						});
 					}
