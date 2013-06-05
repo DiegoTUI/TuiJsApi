@@ -96,35 +96,31 @@ var ajaxRequest = function(options)
 	 */
 	self.ajaxComplete = function(jqxhr, status)
 	{
-		if (status == 'success')
-		{
+		if (status == 'success') {
 			// will be called as success callback (self.ok)
 			return;
 		}
 		var error;
-		if (status == 'timeout')
-		{
+		if (status == 'timeout') {
 			self.retries++;
-			if (self.retries < maxRetries)
-			{
+			if (self.retries < maxRetries) {
 				ajaxTimeout += 2000;
 				self.send();
 				return;
 			}
 			error = new tui.Error('server_not_responding', 'Server not responding: ' + jqxhr.statusText);
 		}
-		else if (status == 'error' && jqxhr.status == 401)
-		{
+		else if (status == 'error' && jqxhr.status == 401) {
 			error = new tui.Error('invalid_login', 'Invalid email or password');
 		}
-		else if (status == 'error')
-		{
+		else if (status == 'error') {
 			error = new tui.Error('server_error', 'Server error: ' + JSON.stringify(jqxhr));
 		}
-		else if (status == 'parsererror')
+		//Ignore parsererror. Seems like namespaces in the response are giving problems
+		/*else if (status == 'parsererror')
 		{
 			error = new tui.Error('parse_error', 'Parse error: ' + JSON.stringify(jqxhr));
-		}
+		}*/
 		else
 		{
 			error = new tui.Error('unspecified_error', 'Unspecified error: ' + jqxhr.statusText);
