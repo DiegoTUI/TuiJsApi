@@ -97,6 +97,19 @@ var ticketAvailMap = [
 {'TicketInfo.ImageList.Image': [{'Type': 'Type',
 							'Url': 'Url'}]}];
 
+var ticketAvailMapAlt = [
+{'TotalItems':'@totalItems'},
+{'ServiceTicket':[{'DateFrom':'DateFrom.@date'},
+	{'DateTo':'DateTo.@date'},
+	'Currency',
+	{'CurrencyCode': 'Currency.@code'},
+	{'Name': 'TicketInfo.Name'},
+	{'TicketInfo.DescriptionList.Description':[{'Type': '@type',
+					 			'Description': ''}]},
+	{'TicketInfo.ImageList.Image': [{'Type': 'Type',
+							'Url': 'Url'}]}]}
+];
+
 var ticketAvailMap2 = [
 {'DateFrom':'DateFrom.@date'},
 {'DateTo':'DateTo.@date'},
@@ -181,6 +194,41 @@ test('TicketAvail parsing test xml', function() {
 			ok(DescriptionList[j].Description === "Description "+(i+1)+""+(j+1), "wrong description text in ticket " + i + " description " + j);
 		}
 	}
+});
+
+test('TicketAvailAlt parsing test xml', function() {
+	var xmlReader = new tuins.xmlReader (ticketAvailString, ticketAvailMapAlt);
+	var parsedXml = xmlReader.readObjects('');
+	tui.debug("ticketAvail parsed: " + JSON.stringify(parsedXml));
+	//Now chek some stuff about the parsed xml
+	ok(parsedXml instanceof Array, 'parsedXml is an array');
+	ok(parsedXml.length === 1, 'parsedXml has 2 elements');
+	ok(parsedXml[0].TotalItems === '27', 'TotalItems retrieved is correct');
+	ok(parsedXml[0].ServiceTicketList.length === 2, 'ServiceTicketList has 2 elements');
+	ok(parsedXml[0].ServiceTicketList[0].DateFrom === 'DateFrom1', 'dateFrom is correct in 1');
+	ok(parsedXml[0].ServiceTicketList[0].DateTo === 'DateTo1', 'dateTo is correct in 1');
+	ok(parsedXml[1].ServiceTicketList[1].DateFrom === 'DateFrom2', 'dateFrom is correct in 2');
+	ok(parsedXml[1].ServiceTicketList[1].DateTo === 'DateTo2', 'dateTo is correct in 2');
+	/*ok(parsedXml[0].Currency === 'Euro1', 'Currency is correct in 1');
+	ok(parsedXml[0].CurrencyCode === 'EUR1', 'CurrencyCode is correct in 1');
+	ok(parsedXml[1].Currency === 'Euro2', 'Currency is correct in 2');
+	ok(parsedXml[1].CurrencyCode === 'EUR2', 'CurrencyCode is correct in 2');
+	ok(parsedXml[0].Name === 'Ticket1', 'Ticket name is correct in 1');
+	ok(parsedXml[1].Name === 'Ticket2', 'Ticket name is correct in 2');
+	for (var i=0; i<parsedXml.length; i++) {
+		var ImageList = parsedXml[i]['TicketInfo.ImageList.Image'.listify()];
+		var DescriptionList = parsedXml[i]['TicketInfo.DescriptionList.Description'.listify()];
+		ok(ImageList.length === 3, 'Only 3 images in the list: ' + ImageList.length);
+		for (var j=0; j<3; j++) {
+			ok(ImageList[j].Type === "S", "wrong image type in ticket " + i + " image " + j);
+			ok(ImageList[j].Url === "Image"+(i+1)+""+(j+1), "wrong image url in ticket " + i + " image " + j);
+		}
+		ok(DescriptionList.length === 2, 'Only 2 descriptions in the list: ' + DescriptionList.length);
+		for (var j=0; j<2; j++) {
+			ok(DescriptionList[j].Type === "generalDescription", "wrong description type in ticket " + i + " description " + j);
+			ok(DescriptionList[j].Description === "Description "+(i+1)+""+(j+1), "wrong description text in ticket " + i + " description " + j);
+		}
+	}*/
 });
 
 test('ticketClassificationList parsing test xml', function() {
