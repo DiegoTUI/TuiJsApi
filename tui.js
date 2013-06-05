@@ -65,6 +65,7 @@ var tui = new function()
 	self.instrument = function(type, duration, message)
 	{
 		var event = type + '.' + duration + '.' + message;
+		self.debug("instrumenting... " + event);
 		if (self.isTesting() || isConsoleActive())
 		{
 			var message = 'testing.' + event;
