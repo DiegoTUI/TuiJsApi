@@ -39,7 +39,7 @@ function ok_ticket_avail_request(data, textStatus, jqXhr)
 	var xmlReader = new tuins.xmlReader (data, ticketAvailMapAlt);
 	var parsedXml = xmlReader.readObjects('');
 	tui.debug("number of serviceTickets retrieved: " + parsedXml.length);
-	ok(parsedXml[0].ServiceTicketList.length.toString === parsedXml[0].TotalItems, "Wrong number of items retrieved. Should have retrieved " + parsedXml[0].TotalItems + "but the parsed array only has " + parsedXml[0].ServiceTicketList.length);
+	ok(parsedXml[0].ServiceTicketList.length == parseInt(parsedXml[0].TotalItems), "Wrong number of items retrieved. Should have retrieved " + parsedXml[0].TotalItems + " but the parsed array only has " + parsedXml[0].ServiceTicketList.length);
 	start();
 }
 
