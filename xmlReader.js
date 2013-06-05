@@ -35,7 +35,6 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 		var objectToBrowse = tag.length > 0 ? xmlObject.find(tag) : xmlObject.find(":root");
 		//parse it
 		objectToBrowse.each(function() {
-			//result.push(processElement(this));
 			result.push(processElement(this, descriptionMap));
 		});
 		
