@@ -117,10 +117,11 @@ var ajaxRequest = function(options)
 			error = new tui.Error('server_error', 'Server error: ' + JSON.stringify(jqxhr));
 		}
 		//Ignore parsererror. Seems like namespaces in the response are giving problems
-		/*else if (status == 'parsererror')
+		else if (status == 'parsererror')
 		{
-			error = new tui.Error('parse_error', 'Parse error: ' + JSON.stringify(jqxhr));
-		}*/
+			return;
+			//error = new tui.Error('parse_error', 'Parse error: ' + JSON.stringify(jqxhr));
+		}
 		else
 		{
 			error = new tui.Error('unspecified_error', 'Unspecified error: ' + jqxhr.statusText);
