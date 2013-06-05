@@ -6,15 +6,15 @@
  */
 
 
-function ok_ticket_avail_request(data)
+function ok_ticket_avail_request(data, textStatus, jqXhr)
 {
 	tui.debug("Data received TicketAvailRQ: " + JSON.stringify(data));
 	start();
 }
 
-function nok(error)
+function nok(jqXhr, textStatus, errorThrown)
 {
-	var message = error.message || 'test failed';
+	var message = errorThrown || 'test failed';
 	ok(false, message);
 	start();
 }
