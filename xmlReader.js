@@ -35,7 +35,8 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 		var objectToBrowse = tag.length > 0 ? xmlObject.find(tag) : xmlObject.find(":root");
 		//parse it
 		objectToBrowse.each(function() {
-			result.push(processElement2(this));
+			//result.push(processElement(this));
+			result.push(processElement2(this, descriptionMap));
 		});
 		
 		return result;
@@ -45,7 +46,7 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 	 * Process an element of the xml according to the description Map and returns an object
 	 * element: a DOM object containing the element to be processed
 	 */
-	function processElement2(element) {
+	function processElement2(element, descriptionMap) {
 		//initialize result
 		var result = {};
 		//iterate descriptionMap
@@ -70,7 +71,7 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 						//get in the list replacing the dots by spaces
 						$(element).find(key.replace(/\./g,' ')).each(function(){
 							tui.debug("Checking for: " + $(this).text());
-							result[listifiedKey].push(processElement2(this));
+							result[listifiedKey].push(processElement2(this, value));
 						});
 					}
 					else if (typeof value === 'string') {	//It's a deep value
