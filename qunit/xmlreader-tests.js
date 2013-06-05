@@ -60,11 +60,11 @@ var ticketAvailString = '<TicketAvailRS xsi-schemaLocation="http://www.hotelbeds
 			<Name>Ticket2</Name> \
 			<DescriptionList> \
 				<Description type="generalDescription" languageCode="ENG">Description 21</Description> \
-				<Description type="generalDescription" languageCode="SPA">Descripcion 22</Description> \
+				<Description type="generalDescription" languageCode="SPA">Description 22</Description> \
 			</DescriptionList> \
 			<ImageList> \
 				<Image> \
-					<Type>L</Type> \
+					<Type>S</Type> \
 					<Order>0</Order> \
 					<VisualizationOrder>0</VisualizationOrder> \
 					<Url>Image21</Url> \
@@ -166,7 +166,15 @@ test('TicketAvail parsing test xml', function() {
 		var ImageList = parsedXml[i]['TicketInfo.ImageList.Image'.listify()];
 		var DescriptionList = parsedXml[i]['TicketInfo.DescriptionList.Description'.listify()];
 		ok(ImageList.length === 3, 'Only 3 images in the list: ' + ImageList.length);
+		for (var j=0; j<3; j++) {
+			ok(ImageList.Type === "S", "wrong image type in ticket " + i + " image " + j);
+			ok(ImageList.Url === "Image"+(i+1)+""+(j+1), "wrong image url in ticket " + i + " image " + j);
+		}
 		ok(DescriptionList.length === 2, 'Only 2 descriptions in the list: ' + DescriptionList.length);
+		for (var j=0; j<2; j++) {
+			ok(DescriptionList.Type === "generalDescription", "wrong description type in ticket " + i + " image " + j);
+			ok(DescriptionList.Description === "Description "+(i+1)+""+(j+1), "wrong description text in ticket " + i + " image " + j);
+		}
 	}
 });
 
