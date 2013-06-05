@@ -92,10 +92,10 @@ var ticketAvailMap = [
 'Currency',
 {'CurrencyCode': 'Currency.@code'},
 {'Name': 'TicketInfo.Name'},
-{'TicketInfo.DescriptionList.Description':[{'Type': '@type',
-					 			'Description': ''}]},
-{'TicketInfo.ImageList.Image': [{'Type': 'Type',
-							'Url': 'Url'}]}];
+{'TicketInfo.DescriptionList.Description':[{'Type': '@type'},
+					 			{'Description': ''}]},
+{'TicketInfo.ImageList.Image': [{'Type': 'Type'},
+							{'Url': 'Url'}]}];
 
 var ticketAvailMapAlt = [
 {'TotalItems':'@totalItems'},
@@ -110,17 +110,6 @@ var ticketAvailMapAlt = [
 							{'Url': 'Url'}]}
 	]}
 ];
-
-var ticketAvailMap2 = [
-{'DateFrom':'DateFrom.@date'},
-{'DateTo':'DateTo.@date'},
-'Currency',
-{'CurrencyCode': 'Currency.@code'},
-{'Name': 'TicketInfo.Name'},
-{'TicketInfo.DescriptionList.Description':[{'Type': '@type'},
-					 			{'Description': ''}]},
-{'TicketInfo.ImageList.Image': [{'Type': 'Type'},
-							{'Url': 'Url'}]}];
 
 var ticketClassificationListString = '<TicketClassificationListRS xsi-schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketClassificationListRS.xsd" totalItems="9" echoToken="DummyEchoToken"> \
 	<AuditData> \
@@ -146,18 +135,13 @@ var ticketClassificationListString = '<TicketClassificationListRS xsi-schemaLoca
 </TicketClassificationListRS>';
 
 var ticketClassificationListMap = [
-{'TotalItems':'@totalItems'},
-{'Classification':[{'Code':'@code',
-					'Name':''}]}];
+{'Code':'@code'},
+{'Name':''}];
 
-var ticketClassificationListMap2 = [
+var ticketClassificationListMapAlt = [
 {'TotalItems':'@totalItems'},
 {'Classification':[{'Code':'@code'},
 					{'Name':''}]}];
-
-var ticketClassificationListMapAlt = [
-{'Code':'@code'},
-{'Name':''}];
 
 /**
  * Run tests. Parse the above xmls with the above descriptionMaps and see what we got
@@ -165,9 +149,9 @@ var ticketClassificationListMapAlt = [
 QUnit.module('xmlreader');
 
 test('TicketAvail parsing test xml', function() {
-	var xmlReader = new tuins.xmlReader (ticketAvailString, ticketAvailMap2);
+	var xmlReader = new tuins.xmlReader (ticketAvailString, ticketAvailMap);
 	var parsedXml = xmlReader.readObjects('ServiceTicket');
-	tui.debug("ticketAvail parsed: " + JSON.stringify(parsedXml));
+	//tui.debug("ticketAvail parsed: " + JSON.stringify(parsedXml));
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');
 	ok(parsedXml.length === 2, 'parsedXml has 2 elements');
@@ -200,7 +184,7 @@ test('TicketAvail parsing test xml', function() {
 test('TicketAvailAlt parsing test xml', function() {
 	var xmlReader = new tuins.xmlReader (ticketAvailString, ticketAvailMapAlt);
 	var parsedXml = xmlReader.readObjects('');
-	tui.debug("ticketAvail parsed: " + JSON.stringify(parsedXml));
+	//tui.debug("ticketAvail parsed: " + JSON.stringify(parsedXml));
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');
 	ok(parsedXml.length === 1, 'parsedXml has 1 element');
@@ -233,9 +217,37 @@ test('TicketAvailAlt parsing test xml', function() {
 });
 
 test('ticketClassificationList parsing test xml', function() {
-	var xmlReader = new tuins.xmlReader (ticketClassificationListString, ticketClassificationListMap2);
+	var xmlReader = new tuins.xmlReader (ticketClassificationListString, ticketClassificationListMap);
+	var parsedXml = xmlReader.readObjects('Classification');	//reading classification tags
+	//tui.debug("ticketClassificationList parsed: " + JSON.stringify(parsedXml));
+	//Now chek some stuff about the parsed xml
+	ok(parsedXml instanceof Array, 'parsedXml is an array');
+	ok(parsedXml.length === 9, 'parsedXml has 9 elements');
+	ok(parsedXml[0].Code === 'CULTU', 'Code in element 1 is ok');
+	ok(parsedXml[0].Name === 'Culture Museums', 'Code in element 1 is ok');
+	ok(parsedXml[1].Code === 'FD', 'Code in element 2 is ok');
+	ok(parsedXml[1].Name === 'Full Day', 'Code in element 2 is ok');
+	ok(parsedXml[2].Code === 'FOOD', 'Code in element 3 is ok');
+	ok(parsedXml[2].Name === 'Food Nightlife', 'Code in element 3 is ok');
+	ok(parsedXml[3].Code === 'HD', 'Code in element 4 is ok');
+	ok(parsedXml[3].Name === 'In the morning', 'Code in element 4 is ok');
+	ok(parsedXml[4].Code === 'MD', 'Code in element 5 is ok');
+	ok(parsedXml[4].Name === 'Multi Day Services', 'Code in element 5 is ok');
+	ok(parsedXml[5].Code === 'OUTAC', 'Code in element 6 is ok');
+	ok(parsedXml[5].Name === 'Outdoor Adventure', 'Code in element 6 is ok');
+	ok(parsedXml[6].Code === 'PARTE', 'Code in element 7 is ok');
+	ok(parsedXml[6].Name === 'Theme Aquatic Parks', 'Code in element 7 is ok');
+	ok(parsedXml[7].Code === 'SHOW', 'Code in element 8 is ok');
+	ok(parsedXml[7].Name === 'Shows and Events', 'Code in element 8 is ok');
+	ok(parsedXml[8].Code === 'SIGHT', 'Code in element 9 is ok');
+	ok(parsedXml[8].Name === 'Sightseeing Tours', 'Code in element 9 is ok');
+
+});
+
+test('ticketClassificationListAlt parsing test xml', function() {
+	var xmlReader = new tuins.xmlReader (ticketClassificationListString, ticketClassificationListMapAlt);
 	var parsedXml = xmlReader.readObjects('');	//Trying to read the base object
-	tui.debug("ticketClassificationList parsed: " + JSON.stringify(parsedXml));
+	//tui.debug("ticketClassificationList parsed: " + JSON.stringify(parsedXml));
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');
 	ok(parsedXml.length === 1, 'parsedXml has 1 elements');
@@ -259,32 +271,5 @@ test('ticketClassificationList parsing test xml', function() {
 	ok(parsedXml[0].ClassificationList[7].Name === 'Shows and Events', 'Code in element 8 is ok');
 	ok(parsedXml[0].ClassificationList[8].Code === 'SIGHT', 'Code in element 9 is ok');
 	ok(parsedXml[0].ClassificationList[8].Name === 'Sightseeing Tours', 'Code in element 9 is ok');
-
-});
-
-test('ticketClassificationListAlt parsing test xml', function() {
-	var xmlReader = new tuins.xmlReader (ticketClassificationListString, ticketClassificationListMapAlt);
-	var parsedXml = xmlReader.readObjects('Classification');	//reading classification tags
-	//Now chek some stuff about the parsed xml
-	ok(parsedXml instanceof Array, 'parsedXml is an array');
-	ok(parsedXml.length === 9, 'parsedXml has 9 elements');
-	ok(parsedXml[0].Code === 'CULTU', 'Code in element 1 is ok');
-	ok(parsedXml[0].Name === 'Culture Museums', 'Code in element 1 is ok');
-	ok(parsedXml[1].Code === 'FD', 'Code in element 2 is ok');
-	ok(parsedXml[1].Name === 'Full Day', 'Code in element 2 is ok');
-	ok(parsedXml[2].Code === 'FOOD', 'Code in element 3 is ok');
-	ok(parsedXml[2].Name === 'Food Nightlife', 'Code in element 3 is ok');
-	ok(parsedXml[3].Code === 'HD', 'Code in element 4 is ok');
-	ok(parsedXml[3].Name === 'In the morning', 'Code in element 4 is ok');
-	ok(parsedXml[4].Code === 'MD', 'Code in element 5 is ok');
-	ok(parsedXml[4].Name === 'Multi Day Services', 'Code in element 5 is ok');
-	ok(parsedXml[5].Code === 'OUTAC', 'Code in element 6 is ok');
-	ok(parsedXml[5].Name === 'Outdoor Adventure', 'Code in element 6 is ok');
-	ok(parsedXml[6].Code === 'PARTE', 'Code in element 7 is ok');
-	ok(parsedXml[6].Name === 'Theme Aquatic Parks', 'Code in element 7 is ok');
-	ok(parsedXml[7].Code === 'SHOW', 'Code in element 8 is ok');
-	ok(parsedXml[7].Name === 'Shows and Events', 'Code in element 8 is ok');
-	ok(parsedXml[8].Code === 'SIGHT', 'Code in element 9 is ok');
-	ok(parsedXml[8].Name === 'Sightseeing Tours', 'Code in element 9 is ok');
 
 });

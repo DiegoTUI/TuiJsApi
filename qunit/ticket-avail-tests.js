@@ -4,22 +4,30 @@
  *
  * Copyright (C) 2013 TuiInnovation.
  */
-
 var ticketAvailMap = [
 {'DateFrom':'DateFrom.@date'},
 {'DateTo':'DateTo.@date'},
 'Currency',
 {'CurrencyCode': 'Currency.@code'},
 {'Name': 'TicketInfo.Name'},
-{'TicketInfo.DescriptionList.Description':[{'Type': '@type',
-					 			'Description': ''}]},
-{'TicketInfo.ImageList.Image': [{'Type': 'Type',
-							'Url': 'Url'}]}];
+{'TicketInfo.DescriptionList.Description':[{'Type': '@type'},
+					 			{'Description': ''}]},
+{'TicketInfo.ImageList.Image': [{'Type': 'Type'},
+							{'Url': 'Url'}]}];
 
-var ticketClassificationListMap = [
+var ticketAvailMapAlt = [
 {'TotalItems':'@totalItems'},
-{'Classification':[{'Code':'@code',
-					'Name':''}]}];
+{'ServiceTicket':[{'DateFrom':'DateFrom.@date'},
+	{'DateTo':'DateTo.@date'},
+	'Currency',
+	{'CurrencyCode': 'Currency.@code'},
+	{'Name': 'TicketInfo.Name'},
+	{'TicketInfo.DescriptionList.Description':[{'Type': '@type'},
+					 			{'Description': ''}]},
+	{'TicketInfo.ImageList.Image': [{'Type': 'Type'},
+							{'Url': 'Url'}]}
+	]}
+];
 
 function ok_ticket_avail_request(data, textStatus, jqXhr)
 {

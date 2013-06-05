@@ -36,7 +36,7 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 		//parse it
 		objectToBrowse.each(function() {
 			//result.push(processElement(this));
-			result.push(processElement2(this, descriptionMap));
+			result.push(processElement(this, descriptionMap));
 		});
 		
 		return result;
@@ -46,7 +46,7 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 	 * Process an element of the xml according to the description Map and returns an object
 	 * element: a DOM object containing the element to be processed
 	 */
-	function processElement2(element, descriptionMap) {
+	function processElement(element, descriptionMap) {
 		//initialize result
 		var result = {};
 		//iterate descriptionMap
@@ -71,50 +71,7 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 						//get in the list replacing the dots by spaces
 						$(element).find(key.replace(/\./g,' ')).each(function(){
 							//tui.debug("Checking for: " + $(this).text());
-							result[listifiedKey].push(processElement2(this, value));
-						});
-					}
-					else if (typeof value === 'string') {	//It's a deep value
-						result[key] = valueInXml(element, value);
-					}
-					break;	//we only consider the first key
-				}
-			} 
-		}
-		return result;
-	}
-
-	function processElement(element) {
-		//initialize result
-		var result = {};
-		//iterate descriptionMap
-		for (var i=0; i<descriptionMap.length; i++) {
-			var item = descriptionMap[i];
-			if (typeof item === 'string') {	//It's a string
-				result[item] = $(element).find(item).text();
-				//tui.debug("Found string in descriptionMap. Field: " + item +". Value: " + result[item]);
-			} 
-			else if (typeof item === 'object') {	//It's a dictionary
-				 if (Object.keys(item).length !== 1)
-                    tui.error ("Malformed descriptionMap. More than 1 element in object: " + JSON.stringify(item));
-				//get the first (and only) key of the dictionary
-				for (var key in item) {
-					var value = item[key];
-					if (value instanceof Array) {	//It's a list
-						//tui.debug("Key: " + key + " is listified as: " + key.listify());
-						//initialize list
-						result[key.listify()] = [];
-						//The array should contain only one element and it should be a dictionary
-						if (value.length != 1) tui.error ("Malformed descriptionMap. More than 1 element in inner array: " + value);
-						var innerObject = value[0];
-						//get in the list replacing the dots by spaces
-						$(element).find(key.replace(/\./g,' ')).each(function(){
-							//tui.debug("Checking for: " + key);
-							var elementInList = {};
-							for (var innerKey in innerObject) {
-								elementInList[innerKey] = valueInXml(this, innerObject[innerKey]);
-							}
-							result[key.listify()].push(elementInList);
+							result[listifiedKey].push(processElement(this, value));
 						});
 					}
 					else if (typeof value === 'string') {	//It's a deep value
