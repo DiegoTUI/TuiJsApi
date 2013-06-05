@@ -14,6 +14,7 @@ function ok_ticket_avail_request(data, textStatus, jqXhr)
 
 function nok(jqXhr, textStatus, errorThrown)
 {
+	tui.debug("Entering nok callback");
 	var message = errorThrown || 'test failed';
 	ok(false, message);
 	start();

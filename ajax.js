@@ -77,7 +77,7 @@ var ajaxRequest = function(options)
 			data: self.data,
 			url: self.url,
 			type: self.type,
-			dataType: 'json',
+			dataType: 'text',
 			timeout: ajaxTimeout,
 			success: self.ok,
 			error: self.nok,
