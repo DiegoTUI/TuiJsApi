@@ -5,13 +5,24 @@
  * Copyright (C) 2013 TuiInnovation.
  */
 
+var ticketAvailMap = [
+{'DateFrom':'DateFrom.@date'},
+{'DateTo':'DateTo.@date'},
+'Currency',
+{'CurrencyCode': 'Currency.@code'},
+{'Name': 'TicketInfo.Name'},
+{'TicketInfo.DescriptionList.Description':[{'Type': '@type',
+					 			'Description': ''}]},
+{'TicketInfo.ImageList.Image': [{'Type': 'Type',
+							'Url': 'Url'}]}];
 
 function ok_ticket_avail_request(data, textStatus, jqXhr)
 {
-	//tui.debug("Data received TicketAvailRQ: " + data);
+	tui.debug("Data received TicketAvailRQ: " + data);
 	tui.debug("text status: " + textStatus);
 	//tui.debug("jqXhr: " + JSON.stringify(jqXhr));
 	ok(textStatus === 'success', 'entered ok callback with an error: ' + textStatus);
+	//Let's parse the response
 	start();
 }
 
