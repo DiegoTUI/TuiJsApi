@@ -36,9 +36,10 @@ function ok_ticket_avail_request(data, textStatus, jqXhr)
 	//tui.debug("jqXhr: " + JSON.stringify(jqXhr));
 	ok(textStatus === 'success', 'entered ok callback with an error: ' + textStatus);
 	//Let's parse the response
-	var xmlReader = new tuins.xmlReader (data, ticketAvailMap);
-	var parsedXml = xmlReader.readObjects('ServiceTicket');
+	var xmlReader = new tuins.xmlReader (data, ticketAvailMapAlt);
+	var parsedXml = xmlReader.readObjects('');
 	tui.debug("number of serviceTickets retrieved: " + parsedXml.length);
+	ok(parsedXml[0].ServiceTicketList.length.toString === parsedXml[0].TotalItems, "Wrong number of items retrieved. Should have retrieved " + parsedXml[0].TotalItems + "but the parsed array only has " + parsedXml[0].ServiceTicketList.length);
 	start();
 }
 
