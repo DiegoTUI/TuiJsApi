@@ -70,7 +70,7 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 						
 						//get in the list replacing the dots by spaces
 						$(element).find(key.replace(/\./g,' ')).each(function(){
-							tui.debug("Checking for: " + $(this).text());
+							//tui.debug("Checking for: " + $(this).text());
 							result[listifiedKey].push(processElement2(this, value));
 						});
 					}
