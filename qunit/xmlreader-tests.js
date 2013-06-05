@@ -27,7 +27,7 @@ var ticketAvailString = '<TicketAvailRS xsi-schemaLocation="http://www.hotelbeds
 			<Name>Ticket1</Name> \
 			<DescriptionList> \
 				<Description type="generalDescription" languageCode="ENG">Description 11</Description> \
-				<Description type="generalDescription" languageCode="SPA">Descripcion 12</Description> \
+				<Description type="generalDescription" languageCode="SPA">Description 12</Description> \
 			</DescriptionList> \
 			<ImageList> \
 				<Image> \
@@ -172,8 +172,8 @@ test('TicketAvail parsing test xml', function() {
 		}
 		ok(DescriptionList.length === 2, 'Only 2 descriptions in the list: ' + DescriptionList.length);
 		for (var j=0; j<2; j++) {
-			ok(DescriptionList[j].Type === "generalDescription", "wrong description type in ticket " + i + " image " + j);
-			ok(DescriptionList[j].Description === "Description "+(i+1)+""+(j+1), "wrong description text in ticket " + i + " image " + j);
+			ok(DescriptionList[j].Type === "generalDescription", "wrong description type in ticket " + i + " description " + j);
+			ok(DescriptionList[j].Description === "Description "+(i+1)+""+(j+1), "wrong description text in ticket " + i + " description " + j);
 		}
 	}
 });
