@@ -16,6 +16,11 @@ var ticketAvailMap = [
 {'TicketInfo.ImageList.Image': [{'Type': 'Type',
 							'Url': 'Url'}]}];
 
+var ticketClassificationListMap = [
+{'TotalItems':'@totalItems'},
+{'Classification':[{'Code':'@code',
+					'Name':''}]}];
+
 function ok_ticket_avail_request(data, textStatus, jqXhr)
 {
 	//tui.debug("Data received TicketAvailRQ: " + data);
