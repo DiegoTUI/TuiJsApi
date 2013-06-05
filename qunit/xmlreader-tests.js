@@ -210,15 +210,15 @@ test('TicketAvailAlt parsing test xml', function() {
 	ok(parsedXml[0].ServiceTicketList[0].DateTo === 'DateTo1', 'dateTo is correct in 1');
 	ok(parsedXml[0].ServiceTicketList[1].DateFrom === 'DateFrom2', 'dateFrom is correct in 2');
 	ok(parsedXml[0].ServiceTicketList[1].DateTo === 'DateTo2', 'dateTo is correct in 2');
-	/*ok(parsedXml[0].Currency === 'Euro1', 'Currency is correct in 1');
-	ok(parsedXml[0].CurrencyCode === 'EUR1', 'CurrencyCode is correct in 1');
-	ok(parsedXml[1].Currency === 'Euro2', 'Currency is correct in 2');
-	ok(parsedXml[1].CurrencyCode === 'EUR2', 'CurrencyCode is correct in 2');
-	ok(parsedXml[0].Name === 'Ticket1', 'Ticket name is correct in 1');
-	ok(parsedXml[1].Name === 'Ticket2', 'Ticket name is correct in 2');
-	for (var i=0; i<parsedXml.length; i++) {
-		var ImageList = parsedXml[i]['TicketInfo.ImageList.Image'.listify()];
-		var DescriptionList = parsedXml[i]['TicketInfo.DescriptionList.Description'.listify()];
+	ok(parsedXml[0].ServiceTicketList[0].Currency === 'Euro1', 'Currency is correct in 1');
+	ok(parsedXml[0].ServiceTicketList[0].CurrencyCode === 'EUR1', 'CurrencyCode is correct in 1');
+	ok(parsedXml[0].ServiceTicketList[1].Currency === 'Euro2', 'Currency is correct in 2');
+	ok(parsedXml[0].ServiceTicketList[1].CurrencyCode === 'EUR2', 'CurrencyCode is correct in 2');
+	ok(parsedXml[0].ServiceTicketList[0].Name === 'Ticket1', 'Ticket name is correct in 1');
+	ok(parsedXml[0].ServiceTicketList[1].Name === 'Ticket2', 'Ticket name is correct in 2');
+	for (var i=0; i<parsedXml[0].ServiceTicketList.length; i++) {
+		var ImageList = parsedXml[i].ServiceTicketList['TicketInfo.ImageList.Image'.listify()];
+		var DescriptionList = parsedXml[i].ServiceTicketList['TicketInfo.DescriptionList.Description'.listify()];
 		ok(ImageList.length === 3, 'Only 3 images in the list: ' + ImageList.length);
 		for (var j=0; j<3; j++) {
 			ok(ImageList[j].Type === "S", "wrong image type in ticket " + i + " image " + j);
@@ -229,7 +229,7 @@ test('TicketAvailAlt parsing test xml', function() {
 			ok(DescriptionList[j].Type === "generalDescription", "wrong description type in ticket " + i + " description " + j);
 			ok(DescriptionList[j].Description === "Description "+(i+1)+""+(j+1), "wrong description text in ticket " + i + " description " + j);
 		}
-	}*/
+	}
 });
 
 test('ticketClassificationList parsing test xml', function() {
