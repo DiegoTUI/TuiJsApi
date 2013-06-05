@@ -146,7 +146,7 @@ var ticketClassificationListMapAlt = [
 QUnit.module('xmlreader');
 
 test('TicketAvail parsing test xml', function() {
-	var xmlReader = new tuins.xmlReader (ticketAvailString, ticketAvailMap);
+	var xmlReader = new tuins.xmlReader (ticketAvailString, ticketAvailMap2);
 	var parsedXml = xmlReader.readObjects('ServiceTicket');
 	tui.debug("ticketAvail parsed: " + JSON.stringify(parsedXml));
 	//Now chek some stuff about the parsed xml
