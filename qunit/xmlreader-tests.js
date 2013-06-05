@@ -217,8 +217,8 @@ test('TicketAvailAlt parsing test xml', function() {
 	ok(parsedXml[0].ServiceTicketList[0].Name === 'Ticket1', 'Ticket name is correct in 1');
 	ok(parsedXml[0].ServiceTicketList[1].Name === 'Ticket2', 'Ticket name is correct in 2');
 	for (var i=0; i<parsedXml[0].ServiceTicketList.length; i++) {
-		var ImageList = parsedXml[i].ServiceTicketList['TicketInfo.ImageList.Image'.listify()];
-		var DescriptionList = parsedXml[i].ServiceTicketList['TicketInfo.DescriptionList.Description'.listify()];
+		var ImageList = parsedXml[0].ServiceTicketList[i]['TicketInfo.ImageList.Image'.listify()];
+		var DescriptionList = parsedXml[0].ServiceTicketList[i]['TicketInfo.DescriptionList.Description'.listify()];
 		ok(ImageList.length === 3, 'Only 3 images in the list: ' + ImageList.length);
 		for (var j=0; j<3; j++) {
 			ok(ImageList[j].Type === "S", "wrong image type in ticket " + i + " image " + j);
