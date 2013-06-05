@@ -97,6 +97,17 @@ var ticketAvailMap = [
 {'TicketInfo.ImageList.Image': [{'Type': 'Type',
 							'Url': 'Url'}]}];
 
+var ticketAvailMap2 = [
+{'DateFrom':'DateFrom.@date'},
+{'DateTo':'DateTo.@date'},
+'Currency',
+{'CurrencyCode': 'Currency.@code'},
+{'Name': 'TicketInfo.Name'},
+{'TicketInfo.DescriptionList.Description':[{'Type': '@type'},
+					 			{'Description': ''}]},
+{'TicketInfo.ImageList.Image': [{'Type': 'Type'},
+							{'Url': 'Url'}]}];
+
 var ticketClassificationListString = '<TicketClassificationListRS xsi-schemaLocation="http://www.hotelbeds.com/schemas/2005/06/messages TicketClassificationListRS.xsd" totalItems="9" echoToken="DummyEchoToken"> \
 	<AuditData> \
 		<ProcessTime>4</ProcessTime> \
@@ -159,7 +170,7 @@ test('TicketAvail parsing test xml', function() {
 	}
 });
 
-test('ticketClassificationList parsing test xml', function() {
+/*test('ticketClassificationList parsing test xml', function() {
 	var xmlReader = new tuins.xmlReader (ticketClassificationListString, ticketClassificationListMap);
 	var parsedXml = xmlReader.readObjects('');	//Trying to read the base object
 	tui.debug("ticketClassificationList parsed: " + JSON.stringify(parsedXml));
@@ -214,4 +225,4 @@ test('ticketClassificationListAlt parsing test xml', function() {
 	ok(parsedXml[8].Code === 'SIGHT', 'Code in element 9 is ok');
 	ok(parsedXml[8].Name === 'Sightseeing Tours', 'Code in element 9 is ok');
 
-});
+});*/

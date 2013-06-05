@@ -57,8 +57,8 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 				//tui.debug("Found string in descriptionMap. Field: " + item +". Value: " + result[item]);
 			} 
 			else if (typeof item === 'object') {	//It's a dictionary
-				 //if (Object.keys(item).length !== 1)
-                    //tui.error ("Malformed descriptionMap. More than 1 element in object: " + JSON.stringify(item));
+				 if (Object.keys(item).length !== 1)
+                    tui.error ("Malformed descriptionMap. More than 1 element in object: " + JSON.stringify(item));
 				//get the first (and only) key of the dictionary
 				for (var key in item) {
 					var value = item[key];
