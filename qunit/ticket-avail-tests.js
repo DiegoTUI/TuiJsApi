@@ -8,9 +8,10 @@
 
 function ok_ticket_avail_request(data, textStatus, jqXhr)
 {
-	tui.debug("Data received TicketAvailRQ: " + data);
+	//tui.debug("Data received TicketAvailRQ: " + data);
 	tui.debug("text status: " + textStatus);
 	//tui.debug("jqXhr: " + JSON.stringify(jqXhr));
+	ok(textStatus === 'success', 'entered ok callback with an error: ' + textStatus);
 	start();
 }
 
