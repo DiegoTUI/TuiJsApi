@@ -136,6 +136,11 @@ var ticketClassificationListMap = [
 {'Classification':[{'Code':'@code',
 					'Name':''}]}];
 
+var ticketClassificationListMap2 = [
+{'TotalItems':'@totalItems'},
+{'Classification':[{'Code':'@code'},
+					{'Name':''}]}];
+
 var ticketClassificationListMapAlt = [
 {'Code':'@code'},
 {'Name':''}];
@@ -178,8 +183,8 @@ test('TicketAvail parsing test xml', function() {
 	}
 });
 
-/*test('ticketClassificationList parsing test xml', function() {
-	var xmlReader = new tuins.xmlReader (ticketClassificationListString, ticketClassificationListMap);
+test('ticketClassificationList parsing test xml', function() {
+	var xmlReader = new tuins.xmlReader (ticketClassificationListString, ticketClassificationListMap2);
 	var parsedXml = xmlReader.readObjects('');	//Trying to read the base object
 	tui.debug("ticketClassificationList parsed: " + JSON.stringify(parsedXml));
 	//Now chek some stuff about the parsed xml
@@ -233,4 +238,4 @@ test('ticketClassificationListAlt parsing test xml', function() {
 	ok(parsedXml[8].Code === 'SIGHT', 'Code in element 9 is ok');
 	ok(parsedXml[8].Name === 'Sightseeing Tours', 'Code in element 9 is ok');
 
-});*/
+});
