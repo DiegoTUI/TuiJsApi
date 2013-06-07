@@ -27,16 +27,16 @@ tuins.TicketAvailRequest = function(queryParameters, descriptionMap, tag)
 	var ajax = require('/js/ajax.js');
 	var XmlReader = require('/js/XmlReader.js');
 
-	//Initialize parameters
-	initParams();
+	//Initialize query parameters
+	initQueryParams();
 
 	/**
-	 * Sends the ajax request to the apropriate url with the right xml and parameters
+	 * Sends the ajax request to the apropriate url with the right xml and query parameters
 	 * ok: callback in case of ok
 	 * nok: callback in case of not ok
 	 */
 	self.sendRequest = function(ok, nok) {
-		var parametrizedRequest = new ParametrizedString(tui.atlas.ticketAvailRequest, parameters);
+		var parametrizedRequest = new ParametrizedString(tui.atlas.ticketAvailRequest, queryParameters);
 		var data = {xml_request: parametrizedRequest.replaceAllClean()};
 		tui.debug("about to launch request: " + JSON.stringify(data));
 		//ajax.send(data, tui.atlas.url, ok, nok, /*isPost*/ true);
@@ -44,9 +44,9 @@ tuins.TicketAvailRequest = function(queryParameters, descriptionMap, tag)
 	}
 
 	/**
-	 * Check the parameters and creates (if needed) some of the compulsory fields
+	 * Check the query parameters and creates (if needed) some of the compulsory fields
 	 */
-	function initParams() {
+	function initQueryParams() {
 		//tui.debug("atlasDefaults for ticketAvailRequest: " + JSON.stringify(tui.atlasDefaults.ticketAvailRequest)); 
 		for (var key in tui.atlasDefaults.ticketAvailRequest) {
 			if (!(key in queryParameters)){
