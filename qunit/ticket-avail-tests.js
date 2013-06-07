@@ -46,6 +46,7 @@ var ticketAvailMapAlt = [
 function ok_ticket_avail_request(data)
 {
 	tui.debug("number of objects in the reply: " + data.length);
+	tui.debug("number of serviceTickets in the reply: " + data[0].ServiceTicketList.length);
 	ok(data[0].ServiceTicketList.length == parseInt(data[0].TotalItems), "Wrong number of items retrieved. Should have retrieved " + data[0].TotalItems + " but the parsed array only has " + data[0].ServiceTicketList.length);
 	start();
 }
