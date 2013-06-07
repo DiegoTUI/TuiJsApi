@@ -7,7 +7,7 @@
  */
 
 if (typeof tuins === 'undefined') {
-	tui.debug("xmlReader.js - initializing tuins");
+	tui.debug("XmlReader.js - initializing tuins");
 	var tuins = {};
 }
 
@@ -15,9 +15,10 @@ if (typeof tuins === 'undefined') {
  * The XML reader.
  * xmlString: the xml in string format
  * descriptionMap: an array representing the values to be extracted from the xml.
+ * tag: the tag to indicate which objects in the xml should we look for. Root if undefined or null
  * see xmlreader-tests to fully understand this class
  */
-tuins.xmlReader = function(xmlString, descriptionMap)
+tuins.XmlReader = function(xmlString, descriptionMap, tag)
 {
 	// self-reference
 	var self = this;
@@ -27,12 +28,12 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 	 * Returns an array of JS objects
 	 * tag: the tag representing the objects in the xml to be read
 	 */
-	self.readObjects = function(tag) {
+	self.readObjects = function() {
 		//initialize result
 		var result =[];
 		//wrap the string in a jquery object
 		var xmlObject = $($.parseXML(xmlString));
-		var objectToBrowse = tag.length > 0 ? xmlObject.find(tag) : xmlObject.find(":root");
+		var objectToBrowse = (tag && (tag.length > 0)) ? xmlObject.find(tag) : xmlObject.find(":root");
 		//parse it
 		objectToBrowse.each(function() {
 			result.push(processElement(this, descriptionMap));
@@ -106,5 +107,5 @@ tuins.xmlReader = function(xmlString, descriptionMap)
 	return self;
 }
 
-module.exports = tuins.xmlReader;
+module.exports = tuins.XmlReader;
 

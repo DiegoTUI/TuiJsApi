@@ -149,8 +149,8 @@ var ticketClassificationListMapAlt = [
 QUnit.module('xmlreader');
 
 test('TicketAvail parsing test xml', function() {
-	var xmlReader = new tuins.xmlReader (ticketAvailString, ticketAvailMap);
-	var parsedXml = xmlReader.readObjects('ServiceTicket');
+	var xmlReader = new tuins.XmlReader (ticketAvailString, ticketAvailMap, 'ServiceTicket');
+	var parsedXml = xmlReader.readObjects();
 	//tui.debug("ticketAvail parsed: " + JSON.stringify(parsedXml));
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');
@@ -182,8 +182,8 @@ test('TicketAvail parsing test xml', function() {
 });
 
 test('TicketAvailAlt parsing test xml', function() {
-	var xmlReader = new tuins.xmlReader (ticketAvailString, ticketAvailMapAlt);
-	var parsedXml = xmlReader.readObjects('');
+	var xmlReader = new tuins.XmlReader (ticketAvailString, ticketAvailMapAlt);
+	var parsedXml = xmlReader.readObjects();
 	//tui.debug("ticketAvail parsed: " + JSON.stringify(parsedXml));
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');
@@ -217,8 +217,8 @@ test('TicketAvailAlt parsing test xml', function() {
 });
 
 test('ticketClassificationList parsing test xml', function() {
-	var xmlReader = new tuins.xmlReader (ticketClassificationListString, ticketClassificationListMap);
-	var parsedXml = xmlReader.readObjects('Classification');	//reading classification tags
+	var xmlReader = new tuins.XmlReader (ticketClassificationListString, ticketClassificationListMap, 'Classification');
+	var parsedXml = xmlReader.readObjects();	//reading classification tags
 	//tui.debug("ticketClassificationList parsed: " + JSON.stringify(parsedXml));
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');
@@ -245,8 +245,8 @@ test('ticketClassificationList parsing test xml', function() {
 });
 
 test('ticketClassificationListAlt parsing test xml', function() {
-	var xmlReader = new tuins.xmlReader (ticketClassificationListString, ticketClassificationListMapAlt);
-	var parsedXml = xmlReader.readObjects('');	//Trying to read the base object
+	var xmlReader = new tuins.XmlReader (ticketClassificationListString, ticketClassificationListMapAlt);
+	var parsedXml = xmlReader.readObjects();	//Trying to read the base object
 	//tui.debug("ticketClassificationList parsed: " + JSON.stringify(parsedXml));
 	//Now chek some stuff about the parsed xml
 	ok(parsedXml instanceof Array, 'parsedXml is an array');

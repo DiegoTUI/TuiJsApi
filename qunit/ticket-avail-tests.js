@@ -29,17 +29,24 @@ var ticketAvailMapAlt = [
 	]}
 ];
 
-function ok_ticket_avail_request(data, textStatus, jqXhr)
+/*function ok_ticket_avail_request(data, textStatus, jqXhr)
 {
 	//tui.debug("Data received TicketAvailRQ: " + data);
 	tui.debug("text status: " + textStatus);
 	//tui.debug("jqXhr: " + JSON.stringify(jqXhr));
 	ok(textStatus === 'success', 'entered ok callback with an error: ' + textStatus);
 	//Let's parse the response
-	var xmlReader = new tuins.xmlReader (data, ticketAvailMapAlt);
+	var xmlReader = new tuins.XmlReader (data, ticketAvailMapAlt);
 	var parsedXml = xmlReader.readObjects('');
 	tui.debug("number of serviceTickets retrieved: " + parsedXml.length);
 	ok(parsedXml[0].ServiceTicketList.length == parseInt(parsedXml[0].TotalItems), "Wrong number of items retrieved. Should have retrieved " + parsedXml[0].TotalItems + " but the parsed array only has " + parsedXml[0].ServiceTicketList.length);
+	start();
+}*/
+
+function ok_ticket_avail_request(data)
+{
+	tui.debug("number of objects in the reply: " + data.length);
+	ok(data[0].ServiceTicketList.length == parseInt(data[0].TotalItems), "Wrong number of items retrieved. Should have retrieved " + parsedXml[0].TotalItems + " but the parsed array only has " + parsedXml[0].ServiceTicketList.length);
 	start();
 }
 
@@ -63,7 +70,7 @@ asyncTest('ticketAvailRequest', function() {
 	};
 
 	tui.debug("Passed var parameters");
-	var ticketAvailRQ = new tuins.ticketAvailRequest(parameters);
+	var ticketAvailRQ = new tuins.TicketAvailRequest(parameters, ticketAvailMapAlt);
 	tui.debug("Passed var ticketAvailRQ");
 	ticketAvailRQ.sendRequest(ok_ticket_avail_request, nok);
 });

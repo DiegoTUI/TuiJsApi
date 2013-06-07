@@ -7,22 +7,25 @@
  */
 
 if (typeof tuins === 'undefined') {
-	tui.debug("ticketAvailRequest.js - initializing tuins");
+	tui.debug("TicketAvailRequest.js - initializing tuins");
 	var tuins = {};
 }
 
 /**
  * The TicketAvail request.
- * parameters: the parameters to build the xml and perform the call
+ * queryParameters: the parameters to build the xml and perform the call
+ * descriptionMap: the json describing wich fields you want to read from the xml
+ * tag: the tag to indicate which objects in the xml should we look for. Root if undefined or null
  */
-tuins.ticketAvailRequest = function(parameters)
+tuins.TicketAvailRequest = function(queryParameters, descriptionMap, tag)
 {
 	// self-reference
 	var self = this;
 
 	//requires
-	var ParametrizedString = require('/js/parametrizedString.js');
-	var ajax = require('/js/ajax.js')
+	var ParametrizedString = require('/js/ParametrizedString.js');
+	var ajax = require('/js/ajax.js');
+	var XmlReader = require('/js/XmlReader.js');
 
 	//Initialize parameters
 	initParams();
@@ -36,7 +39,8 @@ tuins.ticketAvailRequest = function(parameters)
 		var parametrizedRequest = new ParametrizedString(tui.atlas.ticketAvailRequest, parameters);
 		var data = {xml_request: parametrizedRequest.replaceAllClean()};
 		tui.debug("about to launch request: " + JSON.stringify(data));
-		ajax.send(data, tui.atlas.url, ok, nok, /*isPost*/ true);
+		//ajax.send(data, tui.atlas.url, ok, nok, /*isPost*/ true);
+		ajax.send(data, tui.atlas.url, ajax.process([parseResponse, ok]), nok, /*isPost*/ true);
 	}
 
 	/**
@@ -52,8 +56,17 @@ tuins.ticketAvailRequest = function(parameters)
 		}
 	}
 
+	/**
+	 * Parses the xml received according to the provided descriptionMap and returns the result
+	 * data: the xml received
+	 */
+	function parseResponse(data) {
+		var xmlReader = new XmlReader (data, descriptionMap, tag);
+		return xmlReader.readObjects();
+	}
+
 	return self;
 }
 
-module.exports = tuins.ticketAvailRequest;
+module.exports = tuins.TicketAvailRequest;
 

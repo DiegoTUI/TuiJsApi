@@ -7,7 +7,7 @@
  */
 
 if (typeof tuins === 'undefined') {
-	tui.debug("parametrizedString.js - initializing tuins");
+	tui.debug("ParametrizedString.js - initializing tuins");
 	var tuins = {};
 }
 
@@ -16,7 +16,7 @@ if (typeof tuins === 'undefined') {
  * baseString: the string with the $keys$ in it
  * parameters: a dictionary with keys and values to be replaced in the baseString
  */
-tuins.parametrizedString = function(baseString, parameters)
+tuins.ParametrizedString = function(baseString, parameters)
 {
 	// self-reference
 	var self = this;
@@ -66,5 +66,5 @@ tuins.parametrizedString = function(baseString, parameters)
 	return self;
 }
 
-module.exports = tuins.parametrizedString;
+module.exports = tuins.ParametrizedString;
 
