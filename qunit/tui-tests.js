@@ -42,7 +42,7 @@ test('check that xmlToJson works', function() {
 	    }
 	}
 
-	var xmlString = util.jsonToXml(jsonObject);
+	var xmlString = tui.jsonToXml(jsonObject);
     for (var key in jsonObject) {
         checkNode(key, jsonObject[key], xmlString);
     }
