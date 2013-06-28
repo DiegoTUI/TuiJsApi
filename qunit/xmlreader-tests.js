@@ -215,41 +215,6 @@ test('TicketAvailAlt parsing test xml', function() {
 	}
 });
 
-/*test('TicketAvailAlt parsing test xml', function() {
-	var xmlReader = new tuins.XmlReader (ticketAvailString, ticketAvailMapAlt);
-	var parsedXml = xmlReader.readObjects();
-	//tui.debug("ticketAvail parsed: " + JSON.stringify(parsedXml));
-	//Now chek some stuff about the parsed xml
-	ok(parsedXml instanceof Array, 'parsedXml is an array');
-	ok(parsedXml.length === 1, 'parsedXml has 1 element');
-	ok(parsedXml[0].TotalItems === '27', 'TotalItems retrieved is correct');
-	ok(parsedXml[0].ServiceTicketList.length === 2, 'ServiceTicketList has 2 elements');
-	ok(parsedXml[0].ServiceTicketList[0].DateFrom === 'DateFrom1', 'dateFrom is correct in 1');
-	ok(parsedXml[0].ServiceTicketList[0].DateTo === 'DateTo1', 'dateTo is correct in 1');
-	ok(parsedXml[0].ServiceTicketList[1].DateFrom === 'DateFrom2', 'dateFrom is correct in 2');
-	ok(parsedXml[0].ServiceTicketList[1].DateTo === 'DateTo2', 'dateTo is correct in 2');
-	ok(parsedXml[0].ServiceTicketList[0].Currency === 'Euro1', 'Currency is correct in 1');
-	ok(parsedXml[0].ServiceTicketList[0].CurrencyCode === 'EUR1', 'CurrencyCode is correct in 1');
-	ok(parsedXml[0].ServiceTicketList[1].Currency === 'Euro2', 'Currency is correct in 2');
-	ok(parsedXml[0].ServiceTicketList[1].CurrencyCode === 'EUR2', 'CurrencyCode is correct in 2');
-	ok(parsedXml[0].ServiceTicketList[0].Name === 'Ticket1', 'Ticket name is correct in 1');
-	ok(parsedXml[0].ServiceTicketList[1].Name === 'Ticket2', 'Ticket name is correct in 2');
-	for (var i=0; i<parsedXml[0].ServiceTicketList.length; i++) {
-		var ImageList = parsedXml[0].ServiceTicketList[i]['TicketInfo.ImageList.Image'.listify()];
-		var DescriptionList = parsedXml[0].ServiceTicketList[i]['TicketInfo.DescriptionList.Description'.listify()];
-		ok(ImageList.length === 3, 'Only 3 images in the list: ' + ImageList.length);
-		for (var j=0; j<3; j++) {
-			ok(ImageList[j].Type === "S", "wrong image type in ticket " + i + " image " + j);
-			ok(ImageList[j].Url === "Image"+(i+1)+""+(j+1), "wrong image url in ticket " + i + " image " + j);
-		}
-		ok(DescriptionList.length === 2, 'Only 2 descriptions in the list: ' + DescriptionList.length);
-		for (var j=0; j<2; j++) {
-			ok(DescriptionList[j].Type === "generalDescription", "wrong description type in ticket " + i + " description " + j);
-			ok(DescriptionList[j].Description === "Description "+(i+1)+""+(j+1), "wrong description text in ticket " + i + " description " + j);
-		}
-	}
-});*/
-
 test('ticketClassificationList parsing test xml', function() {
 	var xmlReader = new tuins.XmlReader (ticketClassificationListString, ticketClassificationListMap, 'Classification');
 	var parsedXml = xmlReader.readObjects();	//reading classification tags
@@ -306,33 +271,3 @@ test('ticketClassificationListAlt parsing test xml', function() {
 	ok(parsedXml.ClassificationList[8].Name === 'Sightseeing Tours', 'Code in element 9 is ok');
 
 });
-
-/*test('ticketClassificationListAlt parsing test xml', function() {
-	var xmlReader = new tuins.XmlReader (ticketClassificationListString, ticketClassificationListMapAlt);
-	var parsedXml = xmlReader.readObjects();	//Trying to read the base object
-	//tui.debug("ticketClassificationList parsed: " + JSON.stringify(parsedXml));
-	//Now chek some stuff about the parsed xml
-	ok(parsedXml instanceof Array, 'parsedXml is an array');
-	ok(parsedXml.length === 1, 'parsedXml has 1 elements');
-	ok(parsedXml[0].TotalItems === '9', 'TotalItems retrieved is correct');
-	ok(parsedXml[0].ClassificationList.length === 9, 'ClassificationList has 9 elements');
-	ok(parsedXml[0].ClassificationList[0].Code === 'CULTU', 'Code in element 1 is ok');
-	ok(parsedXml[0].ClassificationList[0].Name === 'Culture Museums', 'Code in element 1 is ok');
-	ok(parsedXml[0].ClassificationList[1].Code === 'FD', 'Code in element 2 is ok');
-	ok(parsedXml[0].ClassificationList[1].Name === 'Full Day', 'Code in element 2 is ok');
-	ok(parsedXml[0].ClassificationList[2].Code === 'FOOD', 'Code in element 3 is ok');
-	ok(parsedXml[0].ClassificationList[2].Name === 'Food Nightlife', 'Code in element 3 is ok');
-	ok(parsedXml[0].ClassificationList[3].Code === 'HD', 'Code in element 4 is ok');
-	ok(parsedXml[0].ClassificationList[3].Name === 'In the morning', 'Code in element 4 is ok');
-	ok(parsedXml[0].ClassificationList[4].Code === 'MD', 'Code in element 5 is ok');
-	ok(parsedXml[0].ClassificationList[4].Name === 'Multi Day Services', 'Code in element 5 is ok');
-	ok(parsedXml[0].ClassificationList[5].Code === 'OUTAC', 'Code in element 6 is ok');
-	ok(parsedXml[0].ClassificationList[5].Name === 'Outdoor Adventure', 'Code in element 6 is ok');
-	ok(parsedXml[0].ClassificationList[6].Code === 'PARTE', 'Code in element 7 is ok');
-	ok(parsedXml[0].ClassificationList[6].Name === 'Theme Aquatic Parks', 'Code in element 7 is ok');
-	ok(parsedXml[0].ClassificationList[7].Code === 'SHOW', 'Code in element 8 is ok');
-	ok(parsedXml[0].ClassificationList[7].Name === 'Shows and Events', 'Code in element 8 is ok');
-	ok(parsedXml[0].ClassificationList[8].Code === 'SIGHT', 'Code in element 9 is ok');
-	ok(parsedXml[0].ClassificationList[8].Name === 'Sightseeing Tours', 'Code in element 9 is ok');
-
-});*/
