@@ -21,7 +21,7 @@ var ajaxRequest = function(options)
 
 	// globals
 	var maxRetries = 3;
-	var ajaxTimeout = 4000;
+	var ajaxTimeout = 6000;
 
 	// instance data
 	self.retries = 0;
