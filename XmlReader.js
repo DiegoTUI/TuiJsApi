@@ -33,12 +33,22 @@ tuins.XmlReader = function(xmlString, descriptionMap, tag)
 		var result =[];
 		//wrap the string in a jquery object
 		var xmlObject = $($.parseXML(xmlString));
-		var objectToBrowse = (tag && (tag.length > 0)) ? xmlObject.find(tag) : xmlObject.find(":root");
+		/*var objectToBrowse = (tag && (tag.length > 0)) ? xmlObject.find(tag) : xmlObject.find(":root");
 		//parse it
 		objectToBrowse.each(function() {
 			result.push(processElement(this, descriptionMap));
-		});
+		});*/
 		
+		if (tag && (tag.length > 0)) { //We should return an array of objects
+			xmlObject.find(tag).each(function() {
+				result.push(processElement(this, descriptionMap));
+			});
+		} else {	//We should return a single object
+			xmlObject.find(":root").each(function() {
+				result = processElement(this, descriptionMap);
+			});
+		}
+
 		return result;
 	}
 
